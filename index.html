@@ -920,7 +920,7 @@ const firebaseConfig = {
 
 // NEW API KEY ADDED HERE FOR ADMIN USE
 const GEMINI_API = "AIzaSyAGFC_3e5SPgqyGlXiTi_n6wbw3oR1-8aQ";
-const ADMIN_UID = "10CLrVVUtmcKZqHr1x2SUHbQGtn1";
+const ADMIN_EMAILS = ["abhinashdhar72@gmail.com", "shimantasaikia09@gmail.com"];
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -1102,7 +1102,7 @@ onAuthStateChanged(auth, async user => {
             });
         }
 
-        if(user.uid === ADMIN_UID) {
+        if(ADMIN_EMAILS.includes(user.email)) {
             document.getElementById('nav-admin').style.display = 'flex';
             window.loadAdminChapters();
             window.loadAdminUsersList(); // Load user tracker
@@ -1117,7 +1117,7 @@ onAuthStateChanged(auth, async user => {
         loadLeaderboard();
         loadCommunityFeed();
         loadReviews();
-        if(user.uid === ADMIN_UID) loadAdminReviews();
+        if(ADMIN_EMAILS.includes(user.email)) loadAdminReviews();
 
     } else {
         document.getElementById('login-screen').style.display = 'flex';
