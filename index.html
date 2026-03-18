@@ -29,41 +29,40 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--text-sub); }
-
-        /* LOGIN SCREEN */
         #login-screen { width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, var(--bg), var(--border-color)); position:fixed; z-index:3000; }
         .login-card { background:var(--card); padding:50px 40px; border-radius:24px; box-shadow:var(--shadow-md); width:100%; max-width:380px; text-align:center; border:1px solid var(--border-color); display:flex; flex-direction:column; align-items:center; }
-        /* FIX 1: Logo circular with proper zoom/object-fit */
         .login-card .logo-circle { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin-bottom: 20px; border: 3px solid var(--border-color); background: var(--bg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(79,70,229,0.15); flex-shrink: 0; }
-        .login-card .logo-circle img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+        .login-card .logo-circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .login-card .logo-circle i { font-size: 40px; color: var(--primary); }
         .login-card h1 { margin:0 0 8px; font-size:28px; font-weight:800; letter-spacing:-0.5px; color:var(--primary); }
         .login-card h1 span { color:var(--dark); }
         .btn-google { width:100%; padding:14px; border-radius:12px; border:1px solid var(--border-color); background:var(--card); color:var(--text-main); font-weight:600; font-size:15px; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:12px; margin-top:35px; transition:all 0.2s ease; box-shadow: var(--shadow-sm); }
         .btn-google:hover { background:var(--hover-bg); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-        /* MOBILE HEADER */
         .mobile-header { display:none; background:var(--card); padding:12px 20px; border-bottom:1px solid var(--border-color); align-items:center; justify-content:space-between; position:fixed; top:0; width:100%; z-index:1000; box-shadow: var(--shadow-sm); }
         .mobile-header .brand-wrap { display:flex; align-items:center; gap:10px; }
-        /* FIX 1: Mobile header logo circle */
         .mobile-header .logo-circle-sm { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-color); background: var(--bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .mobile-header .logo-circle-sm img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+        .mobile-header .logo-circle-sm img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .mobile-header .logo-circle-sm i { font-size: 16px; color: var(--primary); }
         .mobile-header .brand { font-size:18px; font-weight:800; color:var(--dark); }
         .mobile-header .brand span { color:var(--primary); }
         #app-shell { display:none; width:100%; }
-
-        /* SIDEBAR */
         .sidebar { width:260px; height:100vh; background:#0b1120; color:white; position:fixed; display:flex; flex-direction:column; z-index:1500; transition:transform 0.3s cubic-bezier(0.4,0,0.2,1); overflow-y:auto; border-right: 1px solid rgba(255,255,255,0.05); }
         .brand-box { font-size:22px; font-weight:800; padding:25px 20px; border-bottom:1px solid rgba(255,255,255,0.05); flex-shrink:0; display:flex; align-items:center; gap:12px; }
-        /* FIX 1: Sidebar logo circle */
         .brand-box .logo-circle-sidebar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .brand-box .logo-circle-sidebar img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+        .brand-box .logo-circle-sidebar img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .brand-box .logo-circle-sidebar i { font-size: 18px; color: #818cf8; }
-        .profile-widget { padding:20px; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; gap:14px; flex-shrink:0; }
+        .profile-widget { padding:20px; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; gap:14px; flex-shrink:0; cursor:pointer; position:relative; }
+        .profile-widget:hover { background:rgba(255,255,255,0.03); }
         .profile-img { width:46px; height:46px; border-radius:50%; background:#1e293b; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0; border:2px solid #334155; }
         .profile-img img { width:100%; height:100%; object-fit:cover; }
-        .profile-info h4 { margin:0; font-size:14px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; font-weight:700; color:white; }
+        .profile-info h4 { margin:0; font-size:14px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; font-weight:700; color:white; max-width:140px; }
+        .user-points-badge { margin-top:6px; font-size:11px; font-weight:800; background:linear-gradient(135deg,var(--warning),#d97706); color:white; padding:3px 10px; border-radius:12px; display:inline-flex; align-items:center; gap:4px; }
+        /* Profile Dropdown */
+        .profile-dropdown { position:absolute; left:0; top:100%; width:100%; background:#1e293b; border-top:1px solid rgba(255,255,255,0.08); z-index:200; display:none; }
+        .profile-dropdown.open { display:block; animation:fadeInDown 0.2s ease; }
+        @keyframes fadeInDown { from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:translateY(0);} }
+        .pd-item { padding:13px 20px; font-size:13px; color:#94a3b8; cursor:pointer; display:flex; align-items:center; gap:10px; transition:0.2s; }
+        .pd-item:hover { background:rgba(255,255,255,0.05); color:white; }
         .nav-item { padding:14px 20px; margin:4px 12px; cursor:pointer; display:flex; align-items:center; gap:14px; color:#94a3b8; border-radius:10px; font-weight:600; font-size:14px; transition:all 0.2s ease; }
         .nav-item:hover { color:white; background:rgba(255,255,255,0.08); transform: translateX(4px); }
         .nav-item.active { background:var(--primary); color:white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); }
@@ -72,12 +71,9 @@
         .close-sidebar:hover { color: white; }
         @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);} }
         .live-dot { width:8px; height:8px; background:var(--danger); border-radius:50%; display:inline-block; animation:pulse 1.5s ease infinite; margin-left:auto; }
-        .user-points-badge { margin-top:6px; font-size:11px; font-weight:800; background:linear-gradient(135deg,var(--warning),#d97706); color:white; padding:3px 10px; border-radius:12px; display:inline-flex; align-items:center; gap:4px; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3); }
         .goog-te-gadget { color: transparent !important; margin: 10px 12px; font-family: 'Inter', sans-serif; }
         .goog-te-gadget select { padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); width: calc(100% - 24px); outline: none; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; }
         .goog-te-gadget select:hover { background: rgba(255,255,255,0.1); color: white; }
-
-        /* MAIN WORKSPACE */
         .main-workspace { margin-left:260px; width:calc(100% - 260px); padding:40px; box-sizing:border-box; min-height:100vh; }
         .view-title { font-size:24px; font-weight:800; margin-top:0; margin-bottom:24px; color:var(--dark); letter-spacing:-0.5px; display:flex; align-items:center; gap:10px; }
         .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; margin-bottom:35px; }
@@ -90,12 +86,10 @@
         .card h3 { font-size:16px; margin:0; font-weight:700; color:var(--text-main); }
         .section-heading { font-size:14px; color:var(--text-sub); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:20px; font-weight:800; display:flex; align-items:center; gap:10px; }
         .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
-
-        /* STUDY & PROGRESS */
         .study-grid { display:grid; grid-template-columns:300px 1fr; gap:24px; align-items:start; }
         .box { background:var(--card); border-radius:16px; border:1px solid var(--border-color); display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-sm); }
         .chapter-list { max-height:calc(100vh - 200px); overflow-y:auto; padding:12px; }
-        .chapter-item { padding:14px 16px; border-radius:10px; margin-bottom:10px; cursor:pointer; font-size:13px; font-weight:500; color:var(--text-main); transition:all 0.2s ease; border:1px solid var(--border-color); background:var(--bg); position: relative; }
+        .chapter-item { padding:14px 16px; border-radius:10px; margin-bottom:10px; cursor:pointer; font-size:13px; font-weight:500; color:var(--text-main); transition:all 0.2s ease; border:1px solid var(--border-color); background:var(--bg); }
         .chapter-item:hover { border-color:var(--primary); transform: translateX(2px); }
         .chapter-item.active { background:var(--hover-bg); border-color:var(--primary); box-shadow: inset 4px 0 0 var(--primary); }
         .chapter-name { font-weight:700; margin-bottom:8px; display:flex; align-items:flex-start; gap:8px; font-size:14px; line-height: 1.4; }
@@ -103,7 +97,7 @@
         .chapter-item.active .chapter-name i { color: var(--primary); }
         .progress-bar-container { width:100%; height:6px; background:var(--border-color); border-radius:4px; overflow:hidden; margin-top:8px; }
         .progress-bar-fill { height:100%; background:linear-gradient(90deg, var(--success), #34d399); width:0%; transition:width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .progress-text { font-size:11px; color:var(--text-sub); display:flex; justify-content:space-between; margin-top:4px; font-weight:700;}
+        .progress-text { font-size:11px; color:var(--text-sub); display:flex; justify-content:space-between; margin-top:4px; font-weight:700; }
         .resource-tabs { display:flex; background:var(--card); border-bottom:1px solid var(--border-color); padding:12px 20px; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
         .tab-btn { padding:10px 18px; border-radius:10px; font-weight:600; font-size:13px; cursor:pointer; color:var(--text-sub); transition:all 0.2s ease; display:flex; align-items:center; gap:8px; border: 1px solid transparent; }
         .tab-btn:hover { background:var(--hover-bg); color: var(--text-main); border-color: var(--border-color); }
@@ -112,35 +106,25 @@
         .control-icon { color:var(--text-sub); cursor:pointer; font-size:18px; transition:0.2s; background: var(--bg); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--border-color); }
         .control-icon:hover { color:var(--primary); border-color: var(--primary); background: var(--hover-bg); }
         #content-panel { display:none; height:calc(100vh - 120px); }
-
-        /* ADMIN FORM */
         .admin-form { background:var(--card); padding:30px; border-radius:20px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm); }
         .admin-form label { display:block; font-size:12px; font-weight:800; color:var(--text-sub); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px; }
         .admin-form input, .admin-form select { background:var(--bg); color:var(--text-main); width:100%; padding:14px; margin-bottom:20px; border-radius:10px; border:1px solid var(--border-color); outline:none; font-family:inherit; font-size:14px; transition: 0.2s; }
         .admin-form input:focus, .admin-form select:focus { border-color:var(--primary); box-shadow:0 0 0 4px rgba(79,70,229,0.1); }
         .admin-btn { width:100%; background:var(--primary); color:white; padding:16px; border:none; border-radius:10px; font-weight:800; cursor:pointer; font-size:15px; transition:0.2s; display:flex; justify-content:center; align-items:center; gap:8px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
-        .admin-btn:hover { background:#4338ca; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4); }
-
-        /* VIEWS */
+        .admin-btn:hover { background:#4338ca; transform: translateY(-2px); }
         .view-section { display:none; animation:fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .view-section.active { display:block; }
         .view-section.active-grid { display:grid; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);} }
-
-        /* QUIZ */
         .quiz-opt-label { display:flex; align-items:center; padding:16px; border:1px solid var(--border-color); border-radius:12px; margin-bottom:12px; cursor:pointer; transition:all 0.2s ease; font-size:14px; color:var(--text-main); font-weight: 500; background: var(--bg); }
         .quiz-opt-label:hover { border-color: var(--primary); background: var(--hover-bg); }
         .quiz-opt-label input { margin-right:15px; transform:scale(1.3); cursor:pointer; accent-color: var(--primary); }
-
-        /* FIX 2: SETTINGS - Profile pic circular + proper working */
         .settings-pic-wrapper { width:110px; height:110px; margin:0 auto 24px; position:relative; border-radius:50%; overflow:hidden; border:4px solid var(--primary); box-shadow:var(--shadow-md); cursor:pointer; background:var(--bg); transition: 0.2s; }
         .settings-pic-wrapper:hover { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(79,70,229,0.15); }
         .settings-pic-overlay { position:absolute; bottom:0; left:0; width:100%; background:rgba(15, 23, 42, 0.7); color:white; font-size:12px; font-weight:700; padding:8px 0; text-align:center; transform:translateY(100%); transition:transform 0.3s ease; backdrop-filter: blur(2px); }
         .settings-pic-wrapper:hover .settings-pic-overlay { transform:translateY(0); }
         #settings-pfp-trigger { width:100%; height:100%; display:flex; justify-content:center; align-items:center; }
         #settings-pfp-trigger img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
-
-        /* TOAST */
         #toast-container { position:fixed; top:24px; right:24px; z-index:4000; display:flex; flex-direction:column; gap:12px; pointer-events: none; }
         .toast { padding:16px 24px; border-radius:12px; color:white; font-weight:600; font-size:14px; display:flex; align-items:center; gap:12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation:slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         .toast.success { background:var(--success); }
@@ -148,8 +132,6 @@
         .toast.info { background:var(--primary); }
         @keyframes slideIn { from{transform:translateX(120%);opacity:0;}to{transform:translateX(0);opacity:1;} }
         @keyframes fadeOut { to{opacity:0;transform:translateY(-20px) scale(0.9);} }
-
-        /* MODAL */
         #modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.7); z-index:3500; align-items:center; justify-content:center; backdrop-filter:blur(6px); }
         .modal-content { background:var(--card); padding:35px; border-radius:24px; width:90%; max-width:550px; box-shadow:0 25px 50px rgba(0,0,0,0.25); animation:scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height:90vh; overflow-y:auto; color:var(--text-main); border: 1px solid var(--border-color); }
         @keyframes scaleIn { from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;} }
@@ -160,32 +142,37 @@
         .btn-cancel:hover { background: var(--hover-bg); }
         .btn-save { background:var(--primary); color:white; padding:12px 28px; border:none; border-radius:10px; cursor:pointer; font-weight:700; transition: 0.2s; box-shadow: 0 4px 10px rgba(79,70,229,0.3); }
         .btn-save:hover { background: #4338ca; transform: translateY(-1px); }
-
-        /* SPINNER */
         .spinner { border:3px solid rgba(0,0,0,0.1); width:28px; height:28px; border-radius:50%; border-left-color:var(--primary); animation:spin 1s linear infinite; margin:30px auto; }
         @keyframes spin { to{transform:rotate(360deg);} }
-
-        /* LIVE CLASSES */
-        .cinematic-live { border-radius:20px; overflow:hidden; background:#0f172a; margin-bottom:30px; box-shadow:0 20px 40px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); position: relative; }
-        .cinematic-live iframe { width:100%; aspect-ratio:16/9; border:none; display:block;}
+        .cinematic-live { border-radius:20px; overflow:hidden; background:#0f172a; margin-bottom:30px; box-shadow:0 20px 40px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); }
+        .cinematic-live iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
         .cinematic-info { padding:18px 24px; background:var(--card); display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--border-color); }
         .cinematic-info h2 { margin:0; font-size:18px; color:var(--text-main); display:flex; align-items:center; gap:12px; font-weight: 800; }
         .cinematic-badge { background:var(--danger); color:white; padding:6px 14px; border-radius:10px; font-size:12px; font-weight:800; animation:pulse 1.5s infinite; letter-spacing: 0.5px; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-
-        /* FIX 3: VIDEO PLAYER MODAL - Mobile fullscreen fix */
-        #video-player-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.95); z-index:5000; flex-direction:column; backdrop-filter: blur(10px); }
-        .vp-topbar { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; background:rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+        /* VIDEO PLAYER - Mobile fullscreen fixed */
+        #video-player-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:5000; flex-direction:column; }
+        .vp-topbar { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
         .vp-close-btn { color:white; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition: 0.2s; flex-shrink: 0; }
         .vp-close-btn:hover { background:var(--danger); border-color: var(--danger); transform: rotate(90deg); }
-        .vp-title-bar { color:white; font-size:16px; font-weight:700; flex:1; margin:0 20px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .vp-points-display { background:linear-gradient(135deg,var(--warning),#d97706); color:white; padding:8px 16px; border-radius:20px; font-size:13px; font-weight:800; margin-right:15px; display:flex; align-items:center; gap:8px; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); flex-shrink: 0; }
-        .vp-ai-btn { background:linear-gradient(135deg,var(--primary),#818cf8); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; font-size:14px; font-weight:800; display:flex; align-items:center; gap:8px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); transition: 0.2s; flex-shrink: 0; }
-        .vp-ai-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .vp-title-bar { color:white; font-size:15px; font-weight:700; flex:1; margin:0 16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .vp-points-display { background:linear-gradient(135deg,var(--warning),#d97706); color:white; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:800; margin-right:12px; display:flex; align-items:center; gap:6px; flex-shrink: 0; }
+        .vp-ai-btn { background:linear-gradient(135deg,var(--primary),#818cf8); color:white; border:none; padding:9px 18px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:800; display:flex; align-items:center; gap:8px; transition: 0.2s; flex-shrink: 0; }
         .vp-main { display:flex; flex:1; overflow:hidden; min-height: 0; }
-        /* FIX 3: Video area properly fills space on mobile */
-        .vp-video-area { flex:1; display:flex; align-items:center; justify-content:center; padding:24px; overflow: hidden; }
-        .vp-video-area iframe { width:100%; height:100%; border:none; border-radius:16px; max-width:1280px; display: block; box-shadow: 0 25px 50px rgba(0,0,0,0.5); background: #000; }
-        .vp-ai-panel { width:380px; background:#0f172a; display:none; flex-direction:column; border-left:1px solid rgba(255,255,255,0.1); box-shadow: -10px 0 30px rgba(0,0,0,0.5); flex-shrink: 0; }
+        .vp-left-col { display:flex; flex-direction:column; flex:1; overflow:hidden; }
+        .vp-video-area { flex:1; background:#000; min-height:0; }
+        .vp-video-area iframe { width:100%; height:100%; border:none; display:block; }
+        /* VIDEO COMMENTS */
+        .vp-comments-section { height:220px; background:#111827; display:flex; flex-direction:column; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0; }
+        .vp-comments-header { padding:10px 16px; font-size:12px; font-weight:700; color:#94a3b8; border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0; display:flex; align-items:center; gap:6px; }
+        .vp-comments-list { flex:1; overflow-y:auto; padding:10px 14px; display:flex; flex-direction:column; gap:8px; }
+        .vp-comment-item { padding:8px 12px; background:rgba(255,255,255,0.06); border-radius:10px; }
+        .vp-comment-author { font-size:11px; font-weight:800; color:#818cf8; margin-bottom:3px; }
+        .vp-comment-text { font-size:12px; color:#cbd5e1; line-height:1.5; }
+        .vp-comment-input-row { display:flex; gap:8px; padding:10px 14px; border-top:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.2); flex-shrink:0; }
+        .vp-comment-input { flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:white; padding:9px 14px; border-radius:20px; outline:none; font-family:inherit; font-size:13px; }
+        .vp-comment-input::placeholder { color:#475569; }
+        .vp-comment-send { background:var(--primary); color:white; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .vp-ai-panel { width:380px; background:#0f172a; display:none; flex-direction:column; border-left:1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
         .vp-ai-panel.open { display:flex; animation: slideLeft 0.3s ease; }
         @keyframes slideLeft { from { transform: translateX(100%); } to { transform: translateX(0); } }
         .vp-ai-header { padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center; background: rgba(0,0,0,0.2); }
@@ -195,17 +182,16 @@
         .vp-quick-btn { background:rgba(255,255,255,0.05); color:#e2e8f0; border:1px solid rgba(255,255,255,0.1); padding:8px 14px; border-radius:20px; cursor:pointer; font-size:12px; font-weight:600; transition:all 0.2s ease; white-space:nowrap; }
         .vp-quick-btn:hover { background:var(--primary); color:white; border-color:var(--primary); transform: translateY(-1px); }
         .vp-ai-messages { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:16px; }
-        .vp-msg { padding:14px 18px; border-radius:16px; font-size:14px; line-height:1.6; max-width:90%; position: relative; }
-        .vp-msg.user { background:var(--primary); color:white; align-self:flex-end; border-bottom-right-radius:4px; box-shadow: 0 4px 12px rgba(79,70,229,0.2); }
+        .vp-msg { padding:14px 18px; border-radius:16px; font-size:14px; line-height:1.6; max-width:90%; }
+        .vp-msg.user { background:var(--primary); color:white; align-self:flex-end; border-bottom-right-radius:4px; }
         .vp-msg.ai { background:rgba(255,255,255,0.08); color:#f1f5f9; align-self:flex-start; border-bottom-left-radius:4px; border: 1px solid rgba(255,255,255,0.1); }
         .vp-msg.ai strong { color: #818cf8; }
         .vp-ai-input-area { padding:16px; border-top:1px solid rgba(255,255,255,0.1); display:flex; gap:10px; background: rgba(0,0,0,0.2); }
         .vp-ai-input { flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.2); color:white; padding:12px 18px; border-radius:24px; outline:none; font-family:inherit; font-size:14px; transition: 0.2s; }
         .vp-ai-input:focus { border-color: #818cf8; background: rgba(255,255,255,0.1); }
         .vp-ai-input::placeholder { color:#64748b; }
-        .vp-ai-send { background:var(--primary); color:white; border:none; width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition: 0.2s; flex-shrink: 0; box-shadow: 0 4px 12px rgba(79,70,229,0.3); }
+        .vp-ai-send { background:var(--primary); color:white; border:none; width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition: 0.2s; flex-shrink: 0; }
         .vp-ai-send:hover { background: #6366f1; transform: scale(1.05); }
-
         /* CHAPTER VIDEOS */
         .chapter-videos-wrap { padding:24px; overflow-y:auto; background:var(--bg); }
         .vid-type-section { margin-bottom:35px; }
@@ -214,10 +200,10 @@
         .vid-type-icon.full { background:rgba(59,130,246,0.15); color:#2563eb; }
         .vid-type-icon.oneshot { background:rgba(34,197,94,0.15); color:#16a34a; }
         .vid-type-icon.mindmap { background:rgba(236,72,153,0.15); color:#db2777; }
-        .vid-type-label { font-size:18px; font-weight:800; color:var(--text-main); letter-spacing: -0.5px; }
+        .vid-type-label { font-size:18px; font-weight:800; color:var(--text-main); }
         .vid-type-count { font-size:12px; background:var(--card); color:var(--text-sub); padding:4px 10px; border-radius:12px; font-weight:700; border: 1px solid var(--border-color); margin-left: auto; }
         .chapter-vid-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
-        .chap-vid-card { background:var(--card); border-radius:16px; border:1px solid var(--border-color); overflow:hidden; cursor:pointer; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow:var(--shadow-sm); display: flex; flex-direction: column; }
+        .chap-vid-card { background:var(--card); border-radius:16px; border:1px solid var(--border-color); overflow:hidden; cursor:pointer; transition:all 0.3s; box-shadow:var(--shadow-sm); display: flex; flex-direction: column; }
         .chap-vid-card:hover { transform:translateY(-6px); border-color:var(--primary); box-shadow:var(--shadow-md); }
         .chap-vid-thumb { position:relative; width:100%; aspect-ratio:16/9; background:#0f172a; overflow:hidden; border-bottom: 1px solid var(--border-color); }
         .chap-vid-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.5s ease; }
@@ -234,8 +220,6 @@
         .badge-mindmap { background:rgba(236,72,153,0.1); color:#db2777; border: 1px solid rgba(236,72,153,0.2); }
         .no-videos-msg { text-align:center; padding:60px 20px; color:var(--text-sub); font-size:15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
         .no-videos-msg i { font-size:48px; color:var(--border-color); }
-
-        /* ADMIN VIDEO SECTION */
         .admin-vid-section { background:var(--card); border-radius:20px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm); padding:30px; margin-bottom:24px; }
         .admin-vid-section h3 { margin:0 0 24px; font-size:18px; color:var(--text-main); display:flex; align-items:center; gap:10px; font-weight: 800; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; }
         .vid-type-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; margin-bottom:20px; }
@@ -243,20 +227,18 @@
         .vid-type-radio:hover { border-color:var(--text-sub); transform: translateY(-2px); }
         .vid-type-radio input { cursor:pointer; accent-color: var(--primary); transform: scale(1.2); }
         .vid-type-radio span { font-size:13px; font-weight:800; color:var(--text-sub); letter-spacing: 0.5px; }
-        .vid-type-radio.sel-full { border-color:#3b82f6; background:rgba(59,130,246,0.05); box-shadow: 0 4px 12px rgba(59,130,246,0.1); }
+        .vid-type-radio.sel-full { border-color:#3b82f6; background:rgba(59,130,246,0.05); }
         .vid-type-radio.sel-full span { color:#2563eb; }
-        .vid-type-radio.sel-oneshot { border-color:#22c55e; background:rgba(34,197,94,0.05); box-shadow: 0 4px 12px rgba(34,197,94,0.1); }
+        .vid-type-radio.sel-oneshot { border-color:#22c55e; background:rgba(34,197,94,0.05); }
         .vid-type-radio.sel-oneshot span { color:#16a34a; }
-        .vid-type-radio.sel-mindmap { border-color:#ec4899; background:rgba(236,72,153,0.05); box-shadow: 0 4px 12px rgba(236,72,153,0.1); }
+        .vid-type-radio.sel-mindmap { border-color:#ec4899; background:rgba(236,72,153,0.05); }
         .vid-type-radio.sel-mindmap span { color:#db2777; }
         .admin-vid-item { display:flex; align-items:center; gap:16px; padding:12px 16px; background:var(--card); border-radius:12px; margin-bottom:10px; border:1px solid var(--border-color); transition: 0.2s; box-shadow: var(--shadow-sm); }
-        .admin-vid-item:hover { border-color: var(--text-sub); }
         .admin-vid-item img { width:80px; height:45px; object-fit:cover; border-radius:8px; flex-shrink:0; border: 1px solid var(--border-color); }
-        .admin-vid-item .avi-title { font-size:13px; font-weight:700; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom: 4px;}
+        .admin-vid-item .avi-title { font-size:13px; font-weight:700; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom: 4px; }
         .del-vid-btn { background:rgba(239,68,68,0.1); color:var(--danger); border:1px solid rgba(239,68,68,0.2); padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; flex-shrink:0; transition:all 0.2s ease; display: flex; align-items: center; gap: 6px; }
         .del-vid-btn:hover { background:var(--danger); color:white; border-color: var(--danger); }
-
-        /* NEW: SETTINGS - Notification & Goal section */
+        /* SETTINGS */
         .settings-section-card { background:var(--card); border:1px solid var(--border-color); border-radius:20px; padding:30px; margin-bottom:20px; box-shadow:var(--shadow-sm); max-width:600px; }
         .settings-section-card h3 { margin:0 0 20px; font-size:16px; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:10px; border-bottom:2px solid var(--border-color); padding-bottom:12px; }
         .settings-input { background:var(--bg); color:var(--text-main); width:100%; padding:14px; border-radius:10px; border:1px solid var(--border-color); outline:none; font-family:inherit; font-size:14px; transition: 0.2s; margin-bottom:15px; }
@@ -275,12 +257,59 @@
         input:checked + .toggle-slider:before { transform:translateX(22px); }
         .goal-progress-bar { width:100%; height:10px; background:var(--border-color); border-radius:10px; overflow:hidden; margin-top:8px; }
         .goal-progress-fill { height:100%; background:linear-gradient(90deg,var(--primary),#818cf8); border-radius:10px; transition:width 0.8s ease; }
-
-        /* NOTIFICATION BELL */
-        .notif-bell { position:fixed; top:16px; right:70px; z-index:2000; width:40px; height:40px; background:var(--card); border:1px solid var(--border-color); border-radius:50%; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:var(--shadow-sm); transition:0.2s; }
-        .notif-bell:hover { border-color:var(--primary); color:var(--primary); }
-        .notif-badge { position:absolute; top:-4px; right:-4px; width:18px; height:18px; background:var(--danger); border-radius:50%; font-size:10px; font-weight:800; color:white; display:flex; align-items:center; justify-content:center; }
-
+        /* COMMUNITY */
+        .community-compose { background:var(--card); border:1px solid var(--border-color); border-radius:16px; padding:20px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+        .community-compose textarea { background:var(--bg); color:var(--text-main); width:100%; padding:14px; border:1px solid var(--border-color); border-radius:12px; outline:none; font-family:inherit; font-size:14px; resize:none; height:80px; transition:0.2s; }
+        .community-compose textarea:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(79,70,229,0.1); }
+        .community-post-card { background:var(--card); border:1px solid var(--border-color); border-radius:16px; padding:20px; margin-bottom:14px; box-shadow:var(--shadow-sm); transition:0.2s; }
+        .community-post-card:hover { border-color:var(--primary); }
+        .community-author-row { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+        .community-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; color:white; flex-shrink:0; }
+        .community-author-name { font-size:14px; font-weight:700; color:var(--text-main); }
+        .community-post-time { font-size:11px; color:var(--text-sub); margin-left:auto; }
+        .community-post-text { font-size:14px; color:var(--text-main); line-height:1.6; margin-bottom:14px; }
+        .community-actions { display:flex; gap:12px; }
+        .community-action-btn { background:none; border:1px solid var(--border-color); color:var(--text-sub); font-size:12px; font-weight:600; cursor:pointer; padding:6px 14px; border-radius:20px; display:flex; align-items:center; gap:6px; transition:0.2s; font-family:inherit; }
+        .community-action-btn:hover { border-color:var(--primary); color:var(--primary); background:var(--hover-bg); }
+        .community-replies-section { margin-top:14px; padding-top:14px; border-top:1px solid var(--border-color); display:none; }
+        .community-reply-item { display:flex; gap:10px; margin-bottom:10px; }
+        .community-reply-avatar { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:white; flex-shrink:0; }
+        .community-reply-bubble { background:var(--bg); border-radius:10px; padding:10px 14px; flex:1; }
+        .community-reply-name { font-size:12px; font-weight:700; color:var(--primary); margin-bottom:3px; }
+        .community-reply-text { font-size:13px; color:var(--text-main); }
+        .reply-input-row { display:flex; gap:8px; margin-top:10px; }
+        .reply-input { flex:1; background:var(--bg); color:var(--text-main); border:1px solid var(--border-color); border-radius:20px; padding:9px 16px; outline:none; font-family:inherit; font-size:13px; transition:0.2s; }
+        .reply-input:focus { border-color:var(--primary); }
+        .reply-send-btn { background:var(--primary); color:white; border:none; width:34px; height:34px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+        /* REVIEWS */
+        .review-compose { background:var(--card); border:1px solid var(--border-color); border-radius:16px; padding:24px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+        .review-compose h3 { margin:0 0 16px; font-size:16px; font-weight:800; color:var(--text-main); }
+        .star-row { display:flex; gap:4px; margin-bottom:14px; }
+        .star-btn { background:none; border:none; font-size:28px; cursor:pointer; transition:transform 0.1s; padding:0 2px; line-height:1; }
+        .star-btn:hover { transform:scale(1.2); }
+        .review-compose textarea { background:var(--bg); color:var(--text-main); width:100%; padding:14px; border:1px solid var(--border-color); border-radius:12px; outline:none; font-family:inherit; font-size:14px; resize:none; height:90px; transition:0.2s; margin-bottom:14px; }
+        .review-compose textarea:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(79,70,229,0.1); }
+        .review-card { background:var(--card); border:1px solid var(--border-color); border-radius:14px; padding:18px; margin-bottom:12px; box-shadow:var(--shadow-sm); }
+        .review-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+        .review-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--primary),#818cf8); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; color:white; flex-shrink:0; }
+        .review-stars { font-size:16px; margin-left:auto; }
+        .review-name { font-size:14px; font-weight:700; color:var(--text-main); }
+        .review-time { font-size:11px; color:var(--text-sub); }
+        .review-text { font-size:14px; color:var(--text-main); line-height:1.6; }
+        /* LEADERBOARD */
+        .lb-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+        .lb-filter-btn { padding:8px 18px; border-radius:20px; border:1px solid var(--border-color); font-size:13px; font-weight:600; cursor:pointer; background:var(--bg); color:var(--text-sub); transition:0.2s; font-family:inherit; }
+        .lb-filter-btn.active { background:var(--primary); color:white; border-color:var(--primary); }
+        .lb-filter-btn:hover:not(.active) { border-color:var(--primary); color:var(--primary); background:var(--hover-bg); }
+        /* BADGE STYLES */
+        .badge-master { display:inline-block; padding:2px 10px; border-radius:10px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#f59e0b,#d97706); color:white; margin-top:3px; }
+        .badge-gold { display:inline-block; padding:2px 10px; border-radius:10px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#94a3b8,#64748b); color:white; margin-top:3px; }
+        .badge-bronze { display:inline-block; padding:2px 10px; border-radius:10px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#b45309,#92400e); color:white; margin-top:3px; }
+        /* Admin live section styling */
+        .admin-live-section { background:var(--card); padding:30px; border-radius:20px; border:2px solid rgba(239,68,68,0.25); box-shadow:var(--shadow-sm); margin-bottom:24px; }
+        .admin-live-section h3 { margin:0 0 5px; font-size:18px; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:10px; }
+        .admin-live-section input { background:var(--bg); color:var(--text-main); width:100%; padding:14px; margin-bottom:16px; border-radius:10px; border:1px solid var(--border-color); outline:none; font-family:inherit; font-size:14px; transition:0.2s; }
+        .admin-live-section input:focus { border-color:var(--danger); box-shadow:0 0 0 3px rgba(239,68,68,0.1); }
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .mobile-header { display:flex; }
@@ -296,17 +325,20 @@
             #content-panel { min-height:600px; height:auto; }
             .chapter-vid-grid { grid-template-columns:1fr; }
             .vid-type-row { grid-template-columns:1fr; }
-            /* FIX 3: Mobile video fullscreen */
-            #video-player-modal { position:fixed; top:0; left:0; width:100vw; height:100vh; }
-            .vp-topbar { padding:10px 12px; }
-            .vp-title-bar { font-size:13px; margin:0 8px; }
+            /* Mobile video fullscreen */
+            #video-player-modal { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:99999; }
+            .vp-topbar { padding:8px 12px; }
+            .vp-title-bar { font-size:12px; margin:0 8px; }
             .vp-ai-btn { display:none; }
-            .vp-points-display { font-size:11px; padding:6px 10px; margin-right:6px; }
+            .vp-points-display { font-size:10px; padding:5px 9px; margin-right:6px; }
             .vp-main { flex-direction:column; }
-            .vp-video-area { padding:0; flex:1; align-items:stretch; }
-            .vp-video-area iframe { border-radius:0; width:100%; height:100%; max-width:100%; }
+            .vp-left-col { flex:1; }
+            .vp-video-area { height:220px; flex:none; }
+            .vp-video-area iframe { width:100%; height:100%; }
             .vp-ai-panel { display:none !important; }
+            .vp-comments-section { height:180px; }
             .settings-section-card { max-width:100%; }
+            #view-admin .admin-grid { display:flex; flex-direction:column; }
         }
     </style>
 </head>
@@ -338,6 +370,7 @@
     </div>
 </div>
 
+<!-- VIDEO PLAYER WITH COMMENTS -->
 <div id="video-player-modal">
     <div class="vp-topbar">
         <button class="vp-close-btn" onclick="closeVideoPlayer()"><i class="fas fa-arrow-left"></i></button>
@@ -346,19 +379,32 @@
         <button class="vp-ai-btn" onclick="toggleVideoAI()"><i class="fas fa-sparkles"></i> Ask AI</button>
     </div>
     <div class="vp-main">
-        <div class="vp-video-area">
-            <iframe id="vp-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        <div class="vp-left-col">
+            <div class="vp-video-area">
+                <iframe id="vp-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="vp-comments-section">
+                <div class="vp-comments-header"><i class="fas fa-comments"></i> Comments <span id="vp-comment-count" style="background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:8px;font-size:10px;margin-left:4px;">0</span></div>
+                <div class="vp-comments-list" id="vp-comments-list">
+                    <div style="color:#475569;font-size:12px;text-align:center;padding:20px;">Comments load ho rahe hain...</div>
+                </div>
+                <div class="vp-comment-input-row">
+                    <input class="vp-comment-input" id="vp-comment-input" placeholder="Comment karo..." onkeydown="if(event.key==='Enter'){event.preventDefault();postVideoComment();}">
+                    <button class="vp-comment-send" onclick="postVideoComment()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
         </div>
         <div class="vp-ai-panel" id="vp-ai-panel">
-            <div class="vp-ai-header"><h4><i class="fas fa-robot"></i> Video AI Tutor</h4><span>Gemini Pro</span></div>
+            <div class="vp-ai-header"><h4><i class="fas fa-robot"></i> Video AI Tutor</h4><span>Gemini Flash</span></div>
             <div class="vp-quick-btns">
                 <button class="vp-quick-btn" onclick="videoAIQuick('Is video ko simple hindi mein explain karo')">📖 Explain</button>
                 <button class="vp-quick-btn" onclick="videoAIQuick('Important questions batao')">❓ Questions</button>
                 <button class="vp-quick-btn" onclick="videoAIQuick('Key summary points do')">📝 Summary</button>
                 <button class="vp-quick-btn" onclick="videoAIQuick('Formulas list karo')">🔢 Formulas</button>
+                <button class="vp-quick-btn" onclick="videoAIQuick('Exam ke liye important kya hai?')">🎯 Exam Tips</button>
             </div>
             <div class="vp-ai-messages" id="vp-ai-messages">
-                <div class="vp-msg ai"><strong>🤖 Hello!</strong><br>Video play ho raha hai. Agar kuch samajh na aaye toh mujhse pucho!</div>
+                <div class="vp-msg ai"><strong>🤖 Hello!</strong><br>Video play ho raha hai. Kuch samajh na aaye toh mujhse pucho!</div>
             </div>
             <div class="vp-ai-input-area">
                 <input class="vp-ai-input" id="vp-ai-input" placeholder="Type your doubt here..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendVideoAI();}">
@@ -370,7 +416,6 @@
 
 <div id="login-screen">
     <div class="login-card">
-        <!-- FIX 1: Logo in circle -->
         <div class="logo-circle">
             <img src="path/to/Logo2.png" alt="EduNext Pro" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
             <i class="fas fa-graduation-cap" style="display:none;font-size:40px;color:var(--primary);"></i>
@@ -378,13 +423,9 @@
         <h1>EduNext <span>Pro</span></h1>
         <p style="color:var(--text-sub);font-size:14px;margin-top:0px;margin-bottom:0;font-weight:500;">Digital Learning Redefined</p>
         <button id="google-login" class="btn-google">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" width="20"> 
-            Continue with Google
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" width="20"> Continue with Google
         </button>
-        <div style="margin-top: 25px; font-size: 11px; color: var(--text-sub); line-height: 1.5;">
-            By signing in, you agree to our <br><a href="#" style="color:var(--primary);text-decoration:none;font-weight:700;">Terms of Service</a> & <a href="#" style="color:var(--primary);text-decoration:none;font-weight:700;">Privacy Policy</a>
-        </div>
-        <p style="font-size:11px;color:var(--text-sub);margin-top:15px;font-weight:600;"><i class="fas fa-shield-alt" style="color:var(--success);"></i> 256-bit Secure Login</p>
+        <p style="font-size:11px;color:var(--text-sub);margin-top:20px;font-weight:600;"><i class="fas fa-shield-alt" style="color:var(--success);"></i> 256-bit Secure Login</p>
     </div>
 </div>
 
@@ -392,7 +433,6 @@
     <header class="mobile-header">
         <div class="brand-wrap">
             <i class="fas fa-bars" onclick="toggleSidebar()" style="font-size:20px; cursor:pointer; color:var(--text-main);"></i>
-            <!-- FIX 1: Mobile logo in circle -->
             <div class="logo-circle-sm">
                 <img src="path/to/Logo2.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-graduation-cap\' style=\'font-size:16px;color:var(--primary);\'></i>'">
             </div>
@@ -404,7 +444,6 @@
     <aside class="sidebar" id="sidebar">
         <i class="fas fa-times close-sidebar" onclick="toggleSidebar()"></i>
         <div class="brand-box">
-            <!-- FIX 1: Sidebar logo in circle -->
             <div class="logo-circle-sidebar">
                 <img src="path/to/Logo2.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-graduation-cap\' style=\'font-size:18px;color:#818cf8;\'></i>'">
             </div>
@@ -413,11 +452,17 @@
             </div>
         </div>
 
-        <div class="profile-widget">
+        <!-- PROFILE WITH DROPDOWN -->
+        <div class="profile-widget" onclick="toggleProfileDropdown(event)">
             <div class="profile-img" id="user-pfp"><i class="fas fa-user"></i></div>
             <div class="profile-info">
                 <h4 id="user-display-name">Loading...</h4>
                 <div class="user-points-badge" id="sidebar-points-display"><i class="fas fa-star"></i> 0 Pts</div>
+            </div>
+            <i class="fas fa-chevron-down" id="pd-arrow" style="color:#475569;font-size:10px;margin-left:auto;transition:0.2s;"></i>
+            <div class="profile-dropdown" id="profile-dropdown" onclick="event.stopPropagation()">
+                <div class="pd-item" onclick="viewProfile()"><i class="fas fa-user-circle" style="color:#818cf8;"></i> View Profile</div>
+                <div class="pd-item" onclick="navigateSidebar('settings');closeProfileDropdown()"><i class="fas fa-edit" style="color:#10b981;"></i> Change Profile / Settings</div>
             </div>
         </div>
 
@@ -425,12 +470,13 @@
             <div class="nav-item active" id="nav-dashboard" onclick="navigateSidebar('dashboard')"><i class="fas fa-th-large"></i> Categories</div>
             <div class="nav-item" id="nav-videos" onclick="navigateSidebar('videos')"><i class="fas fa-play-circle" style="color:#ef4444;"></i> Open Videos</div>
             <div class="nav-item" id="nav-live" onclick="navigateSidebar('live')"><i class="fas fa-satellite-dish"></i> Live Classes<span class="live-dot" id="nav-live-dot" style="display:none;"></span></div>
+            <div class="nav-item" id="nav-community" onclick="navigateSidebar('community')"><i class="fas fa-comments" style="color:#10b981;"></i> Community</div>
             <div class="nav-item" id="nav-leaderboard" onclick="navigateSidebar('leaderboard')"><i class="fas fa-trophy" style="color:#f59e0b;"></i> Leaderboard</div>
+            <div class="nav-item" id="nav-review" onclick="navigateSidebar('review')"><i class="fas fa-star" style="color:#ec4899;"></i> Reviews</div>
             <div class="nav-item" id="nav-settings" onclick="navigateSidebar('settings')"><i class="fas fa-user-cog"></i> Settings</div>
             <div style="height:1px; background:rgba(255,255,255,0.05); margin:15px 20px;"></div>
             <div class="nav-item" id="nav-admin" style="display:none;color:#10b981;" onclick="navigateSidebar('admin')"><i class="fas fa-shield-alt"></i> Control Panel</div>
         </div>
-        
         <div style="background:rgba(0,0,0,0.2); padding:15px 0;">
             <div id="google_translate_element"></div>
             <div class="nav-item" onclick="toggleDarkMode()" style="color:#818cf8;"><i class="fas fa-moon" id="theme-icon"></i> <span id="theme-text">Dark Mode</span></div>
@@ -500,7 +546,7 @@
                     <iframe id="content-frame" src="" width="100%" height="100%" style="border:none;background:#525659;flex:1;min-height:500px;display:block;"></iframe>
                     <div id="quiz-container" style="display:none;padding:30px;overflow-y:auto;flex:1;">
                         <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding:18px 24px;border-radius:16px;border:1px solid var(--border-color);margin-bottom:30px;position:sticky;top:0;z-index:10;box-shadow:var(--shadow-sm);">
-                            <div><h3 style="margin:0;color:var(--text-main);font-size:16px;font-weight:800;">Target Test</h3><p style="margin:4px 0 0;font-size:12px;color:var(--success);font-weight:700;">+15 Points Correct</p></div>
+                            <div><h3 style="margin:0;color:var(--text-main);font-size:16px;font-weight:800;">Target Test</h3><p style="margin:4px 0 0;font-size:12px;color:var(--success);font-weight:700;">+15 Points per Correct Answer</p></div>
                             <div id="quiz-timer" style="font-weight:800;color:var(--danger);font-size:22px;font-family:monospace;"><i class="far fa-clock"></i> 00:00</div>
                         </div>
                         <div id="questions-area"></div>
@@ -532,16 +578,16 @@
                                 <p style="margin:2px 0 0;font-size:13px;color:var(--success);font-weight:600;">100% Ad-Free • Earn Watch Points</p>
                             </div>
                         </div>
-                        <p style="font-size:14px;color:var(--text-sub);margin:20px 0;line-height:1.5;">YouTube par ads se pareshan? Kisi bhi educational video ka link copy karo aur yahan paste karo. Shanti se padho aur points kamao!</p>
+                        <p style="font-size:14px;color:var(--text-sub);margin:20px 0;line-height:1.5;">YouTube par ads se pareshan? Kisi bhi educational video ka link copy karo aur yahan paste karo!</p>
                         <div style="display:flex;gap:12px;margin-bottom:20px;">
-                            <input id="global-vid-input" type="text" placeholder="Paste YouTube link (e.g., https://youtu.be/...)" style="background:var(--bg);color:var(--text-main);flex:1;padding:16px 20px;border:2px solid var(--border-color);border-radius:14px;font-size:15px;font-family:inherit;outline:none;transition:0.2s;box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);" onfocus="this.style.borderColor='var(--danger)'" onblur="this.style.borderColor='var(--border-color)'" onkeydown="if(event.key==='Enter') openGlobalVideo()">
+                            <input id="global-vid-input" type="text" placeholder="Paste YouTube link (e.g., https://youtu.be/...)" style="background:var(--bg);color:var(--text-main);flex:1;padding:16px 20px;border:2px solid var(--border-color);border-radius:14px;font-size:15px;font-family:inherit;outline:none;transition:0.2s;" onfocus="this.style.borderColor='var(--danger)'" onblur="this.style.borderColor='var(--border-color)'" onkeydown="if(event.key==='Enter') openGlobalVideo()">
                             <button onclick="openGlobalVideo()" style="background:linear-gradient(135deg,#ef4444,#b91c1c);color:white;border:none;padding:16px 28px;border-radius:14px;cursor:pointer;font-weight:800;font-size:15px;display:flex;align-items:center;gap:10px;white-space:nowrap;transition:0.2s;box-shadow:0 4px 12px rgba(239,68,68,0.3);">
                                 <i class="fas fa-play"></i> Watch Now
                             </button>
                         </div>
                     </div>
                 </div>
-                <div style="margin-top:35px;" id="recent-vids-section" style="display:none;">
+                <div style="margin-top:35px;" id="recent-vids-section">
                     <h3 style="font-size:16px;font-weight:800;color:var(--text-main);margin:0 0 16px;display:flex;align-items:center;gap:10px;"><i class="fas fa-history" style="color:var(--primary);"></i> Watch History</h3>
                     <div id="recent-vids-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;"></div>
                 </div>
@@ -550,26 +596,75 @@
 
         <div id="view-live" class="view-section">
             <h1 class="view-title"><i class="fas fa-satellite-dish" style="color:var(--danger);"></i> Live Broadcasts</h1>
-            <div id="live-content"></div>
+            <div id="live-content"><div class="spinner"></div></div>
         </div>
-        
+
+        <!-- COMMUNITY -->
+        <div id="view-community" class="view-section">
+            <h1 class="view-title"><i class="fas fa-comments" style="color:#10b981;"></i> Community</h1>
+            <div style="max-width:700px;">
+                <div class="community-compose">
+                    <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">
+                        <div class="community-avatar" id="compose-avatar" style="background:linear-gradient(135deg,var(--primary),#818cf8);">A</div>
+                        <textarea id="community-post-text" placeholder="Koi sawaal, doubt, ya idea share karo... 💬" style="flex:1;"></textarea>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-size:12px;color:var(--text-sub);"><i class="fas fa-users" style="margin-right:4px;"></i>Sab students dekh sakte hain</span>
+                        <button onclick="submitCommunityPost()" style="background:var(--primary);color:white;border:none;padding:10px 22px;border-radius:10px;cursor:pointer;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;transition:0.2s;">
+                            <i class="fas fa-paper-plane"></i> Post
+                        </button>
+                    </div>
+                </div>
+                <div id="community-feed"><div class="spinner"></div></div>
+            </div>
+        </div>
+
         <div id="view-leaderboard" class="view-section">
             <h1 class="view-title"><i class="fas fa-trophy" style="color:var(--warning);"></i> Hall of Fame</h1>
-            <div style="background:var(--card);border:1px solid var(--border-color);border-radius:16px;padding:20px;margin-bottom:25px;display:flex;align-items:center;gap:15px;max-width:700px;box-shadow:var(--shadow-sm);">
+            <div style="background:var(--card);border:1px solid var(--border-color);border-radius:16px;padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:15px;max-width:700px;box-shadow:var(--shadow-sm);">
                 <div style="width:40px;height:40px;background:rgba(245,158,11,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--warning);font-size:20px;flex-shrink:0;"><i class="fas fa-info-circle"></i></div>
                 <div>
                     <h4 style="margin:0 0 4px;color:var(--text-main);font-size:14px;font-weight:800;">How to earn points?</h4>
                     <p style="margin:0;color:var(--text-sub);font-size:12px;line-height:1.5;">Watch videos inside the app (<b>+10 Pts</b> per minute) • Ace chapter quizzes (<b>+15 Pts</b> per correct answer).</p>
                 </div>
             </div>
-            <div style="max-width:700px;" id="lb-list-container"></div>
+            <div class="lb-filter-row" id="lb-filter-row">
+                <button class="lb-filter-btn active" onclick="filterLeaderboard('all',this)">🌍 All</button>
+                <button class="lb-filter-btn" onclick="filterLeaderboard('NEET',this)">❤️ NEET</button>
+                <button class="lb-filter-btn" onclick="filterLeaderboard('JEE Main',this)">⚛️ JEE</button>
+                <button class="lb-filter-btn" onclick="filterLeaderboard('Class 12 Board',this)">📚 Board</button>
+                <button class="lb-filter-btn" onclick="filterLeaderboard('UPSC CSE',this)">🏛️ UPSC</button>
+            </div>
+            <div style="max-width:700px;" id="lb-list-container"><div class="spinner"></div></div>
         </div>
 
-        <!-- FIX 2 & 4: SETTINGS - Complete rewrite with working profile pic, notifications, goals, exam date -->
+        <!-- REVIEW SECTION -->
+        <div id="view-review" class="view-section">
+            <h1 class="view-title"><i class="fas fa-star" style="color:#f59e0b;"></i> Reviews & Suggestions</h1>
+            <div style="max-width:650px;">
+                <div class="review-compose">
+                    <h3>Apna feedback do 📝</h3>
+                    <label style="font-size:12px;font-weight:700;color:var(--text-sub);display:block;margin-bottom:8px;text-transform:uppercase;">Rating</label>
+                    <div class="star-row" id="star-rating-row">
+                        <button class="star-btn" id="star-1" onclick="setRating(1)">☆</button>
+                        <button class="star-btn" id="star-2" onclick="setRating(2)">☆</button>
+                        <button class="star-btn" id="star-3" onclick="setRating(3)">☆</button>
+                        <button class="star-btn" id="star-4" onclick="setRating(4)">☆</button>
+                        <button class="star-btn" id="star-5" onclick="setRating(5)">☆</button>
+                    </div>
+                    <label style="font-size:12px;font-weight:700;color:var(--text-sub);display:block;margin-bottom:8px;text-transform:uppercase;">Suggestion / Feedback</label>
+                    <textarea id="review-text" placeholder="Kya improve ho sakta hai? Kya feature chahiye? Kya best laga?"></textarea>
+                    <button onclick="submitReview()" style="background:var(--primary);color:white;border:none;padding:14px 28px;border-radius:10px;cursor:pointer;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;transition:0.2s;box-shadow:0 4px 12px rgba(79,70,229,0.3);">
+                        <i class="fas fa-paper-plane"></i> Submit Review
+                    </button>
+                </div>
+                <h3 style="font-size:18px;font-weight:800;color:var(--text-main);margin:0 0 16px;display:flex;align-items:center;gap:10px;"><i class="fas fa-comments" style="color:var(--primary);"></i> Recent Reviews</h3>
+                <div id="reviews-list"><div class="spinner"></div></div>
+            </div>
+        </div>
+
         <div id="view-settings" class="view-section">
             <h1 class="view-title"><i class="fas fa-user-cog" style="color:var(--primary);"></i> Account Settings</h1>
-            
-            <!-- Profile Card -->
             <div class="settings-section-card" style="text-align:center;">
                 <div class="settings-pic-wrapper" onclick="document.getElementById('profile-upload').click()">
                     <div id="settings-pfp-trigger"><i class="fas fa-user" style="font-size:3rem;color:var(--border-color);"></i></div>
@@ -580,16 +675,14 @@
                 <p style="color:var(--text-sub);font-size:14px;margin-top:0;" id="settings-email">Loading...</p>
                 <div style="margin-top:20px;padding:20px;background:rgba(16,185,129,0.05);border-radius:16px;border:1px solid rgba(16,185,129,0.2);">
                     <div style="display:flex;align-items:center;justify-content:center;gap:10px;color:var(--success);font-weight:800;font-size:14px;margin-bottom:8px;">
-                        <i class="fas fa-shield-check" style="font-size:18px;"></i> Account Secured
+                        <i class="fas fa-shield-check" style="font-size:18px;"></i> Account Secured & Synced
                     </div>
-                    <p style="margin:0;font-size:12px;color:var(--text-sub);">Your progress and points are safely synced to the cloud.</p>
+                    <p style="margin:0;font-size:12px;color:var(--text-sub);">Your progress and points are safely synced to your Google account.</p>
                 </div>
             </div>
-
-            <!-- My Goal -->
             <div class="settings-section-card">
                 <h3><i class="fas fa-bullseye" style="color:var(--primary);"></i> My Learning Goal</h3>
-                <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">Target Points Goal (Daily)</label>
+                <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">Daily Points Target</label>
                 <input type="number" class="settings-input" id="goal-points-input" placeholder="e.g., 100 points per day" min="10" max="10000">
                 <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">My Exam</label>
                 <select class="settings-input" id="goal-exam-select">
@@ -607,10 +700,7 @@
                 </select>
                 <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">Exam Date</label>
                 <input type="date" class="settings-input" id="goal-exam-date">
-                
-                <button class="settings-btn" onclick="saveGoal()"><i class="fas fa-save"></i> Save My Goal</button>
-                
-                <!-- Goal Progress Display -->
+                <button class="settings-btn" onclick="saveGoal()"><i class="fas fa-cloud-upload-alt"></i> Save to Account</button>
                 <div id="goal-display" style="margin-top:20px;display:none;">
                     <div style="background:var(--bg);border:1px solid var(--border-color);border-radius:14px;padding:20px;">
                         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
@@ -630,55 +720,33 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Notifications -->
             <div class="settings-section-card">
                 <h3><i class="fas fa-bell" style="color:var(--warning);"></i> Notifications</h3>
-                <p style="font-size:13px;color:var(--text-sub);margin:0 0 20px;line-height:1.5;">Har 5 ghante mein reminder milega - exam date, goal progress, aur motivation message!</p>
-                
+                <p style="font-size:13px;color:var(--text-sub);margin:0 0 20px;line-height:1.5;">Har 5 ghante mein reminder milega!</p>
                 <div class="toggle-row">
-                    <div>
-                        <div class="toggle-label">Enable Study Reminders</div>
-                        <div class="toggle-sub">Har 5 ghante mein notification aayega</div>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="notif-toggle" onchange="toggleNotifications(this.checked)">
-                        <span class="toggle-slider"></span>
-                    </label>
+                    <div><div class="toggle-label">Enable Study Reminders</div><div class="toggle-sub">Har 5 ghante mein notification</div></div>
+                    <label class="toggle-switch"><input type="checkbox" id="notif-toggle" onchange="toggleNotifications(this.checked)"><span class="toggle-slider"></span></label>
                 </div>
                 <div class="toggle-row">
-                    <div>
-                        <div class="toggle-label">Exam Countdown Alert</div>
-                        <div class="toggle-sub">Exam kitne din baaki hai, daily reminder</div>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="exam-notif-toggle" onchange="saveNotifPrefs()">
-                        <span class="toggle-slider"></span>
-                    </label>
+                    <div><div class="toggle-label">Exam Countdown Alert</div><div class="toggle-sub">Exam kitne din baaki hai</div></div>
+                    <label class="toggle-switch"><input type="checkbox" id="exam-notif-toggle" onchange="saveNotifPrefs()"><span class="toggle-slider"></span></label>
                 </div>
                 <div class="toggle-row">
-                    <div>
-                        <div class="toggle-label">Goal Progress Notification</div>
-                        <div class="toggle-sub">Aaj ka goal kitna pura hua, check karo</div>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="goal-notif-toggle" onchange="saveNotifPrefs()">
-                        <span class="toggle-slider"></span>
-                    </label>
+                    <div><div class="toggle-label">Goal Progress Notification</div><div class="toggle-sub">Aaj ka goal kitna pura hua</div></div>
+                    <label class="toggle-switch"><input type="checkbox" id="goal-notif-toggle" onchange="saveNotifPrefs()"><span class="toggle-slider"></span></label>
                 </div>
-
                 <div id="notif-status" style="margin-top:16px;padding:14px;border-radius:10px;font-size:13px;font-weight:600;background:var(--bg);border:1px solid var(--border-color);color:var(--text-sub);display:flex;align-items:center;gap:10px;">
-                    <i class="fas fa-info-circle"></i> Notifications off hain. Toggle karke enable karo.
+                    <i class="fas fa-info-circle"></i> Notifications off hain.
                 </div>
             </div>
         </div>
 
         <div id="view-admin" class="view-section">
             <h1 class="view-title" style="color:var(--success);"><i class="fas fa-shield-alt"></i> Master Control Room</h1>
-            <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:30px;">
+            <div class="admin-grid" style="display:grid;grid-template-columns:1.2fr 1fr;gap:30px;">
                 <div>
                     <div class="admin-form" style="margin-bottom:25px;">
-                        <h3 style="margin:0 0 24px;font-size:16px;color:var(--text-main);display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-color);padding-bottom:12px;"><i class="fas fa-cloud-upload-alt" style="color:var(--primary);"></i> Create/Edit Chapter (Notes & Quiz)</h3>
+                        <h3 style="margin:0 0 24px;font-size:16px;color:var(--text-main);display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-color);padding-bottom:12px;"><i class="fas fa-cloud-upload-alt" style="color:var(--primary);"></i> Create/Edit Chapter</h3>
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px;">
                             <div>
                                 <label>Target Class</label>
@@ -722,15 +790,14 @@
                                 <span style="font-size:11px;font-weight:800;color:white;background:var(--primary);padding:3px 10px;border-radius:10px;" id="q-count">0 Qs</span>
                             </div>
                             <div id="quiz-builder" style="max-height:160px;overflow-y:auto;background:var(--bg);border:1px solid var(--border-color);border-radius:8px;padding:12px;margin-bottom:15px;">
-                                <p style="color:var(--text-sub);font-size:12px;text-align:center;margin:10px 0;font-style:italic;">Draft is empty. Add questions to evaluate students.</p>
+                                <p style="color:var(--text-sub);font-size:12px;text-align:center;margin:10px 0;font-style:italic;">Draft is empty.</p>
                             </div>
-                            <button onclick="openQuizModal()" style="background:rgba(79,70,229,0.1);color:var(--primary);border:1px dashed var(--primary);padding:12px;border-radius:8px;cursor:pointer;width:100%;font-weight:700;font-size:13px;transition:0.2s;" onmouseover="this.style.background='rgba(79,70,229,0.2)'" onmouseout="this.style.background='rgba(79,70,229,0.1)'">
+                            <button onclick="openQuizModal()" style="background:rgba(79,70,229,0.1);color:var(--primary);border:1px dashed var(--primary);padding:12px;border-radius:8px;cursor:pointer;width:100%;font-weight:700;font-size:13px;transition:0.2s;">
                                 <i class="fas fa-plus"></i> Add Multiple Choice Question
                             </button>
                         </div>
                         <button class="admin-btn" style="margin-top:25px;" onclick="publishContent()"><i class="fas fa-cloud-upload-alt"></i> Publish Chapter</button>
                     </div>
-
                     <div class="admin-vid-section">
                         <h3><i class="fas fa-video" style="color:var(--primary);"></i> Add Video to Chapter</h3>
                         <label>Select Target Chapter</label>
@@ -739,46 +806,33 @@
                         </select>
                         <label>Video Category</label>
                         <div class="vid-type-row" id="vid-type-row">
-                            <label class="vid-type-radio sel-full">
-                                <input type="radio" name="vid-type" value="full" checked onchange="updateVidTypeStyle()"> <span>📘 Full Detail</span>
-                            </label>
-                            <label class="vid-type-radio">
-                                <input type="radio" name="vid-type" value="oneshot" onchange="updateVidTypeStyle()"> <span>⚡ One Shot</span>
-                            </label>
-                            <label class="vid-type-radio">
-                                <input type="radio" name="vid-type" value="mindmap" onchange="updateVidTypeStyle()"> <span>🗺️ Mind Map</span>
-                            </label>
+                            <label class="vid-type-radio sel-full"><input type="radio" name="vid-type" value="full" checked onchange="updateVidTypeStyle()"> <span>📘 Full Detail</span></label>
+                            <label class="vid-type-radio"><input type="radio" name="vid-type" value="oneshot" onchange="updateVidTypeStyle()"> <span>⚡ One Shot</span></label>
+                            <label class="vid-type-radio"><input type="radio" name="vid-type" value="mindmap" onchange="updateVidTypeStyle()"> <span>🗺️ Mind Map</span></label>
                         </div>
-                        <label>YouTube Link or Video ID <span style="font-weight:500;text-transform:none;color:var(--success);">(Title will auto-fetch)</span></label>
+                        <label>YouTube Link or Video ID <span style="font-weight:500;text-transform:none;color:var(--success);">(Title auto-fetch)</span></label>
                         <input type="text" id="admin-vid-url" placeholder="Paste link here..." style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;margin-bottom:15px;border-radius:10px;border:1px solid var(--border-color);outline:none;font-family:inherit;font-size:14px;">
                         <div style="display:grid;grid-template-columns:1fr 100px;gap:15px;margin-bottom:20px;">
-                            <div>
-                                <label>Video Title</label>
-                                <input type="text" id="admin-vid-title" placeholder="Fetched title will appear here" style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;border-radius:10px;border:1px solid var(--border-color);outline:none;font-family:inherit;font-size:14px;margin-bottom:0;">
-                            </div>
-                            <div>
-                                <label>Part No.</label>
-                                <input type="number" id="admin-vid-part" placeholder="1" min="1" value="1" style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;border-radius:10px;border:1px solid var(--border-color);outline:none;font-family:inherit;font-size:14px;text-align:center;margin-bottom:0;">
-                            </div>
+                            <div><label>Video Title</label><input type="text" id="admin-vid-title" placeholder="Fetched title will appear here" style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;border-radius:10px;border:1px solid var(--border-color);outline:none;font-family:inherit;font-size:14px;margin-bottom:0;"></div>
+                            <div><label>Part No.</label><input type="number" id="admin-vid-part" placeholder="1" min="1" value="1" style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;border-radius:10px;border:1px solid var(--border-color);outline:none;font-family:inherit;font-size:14px;text-align:center;margin-bottom:0;"></div>
                         </div>
                         <button class="admin-btn" onclick="publishVideo()"><i class="fas fa-plus-circle"></i> Add Video</button>
                     </div>
-
+                    <!-- LIVE CLASS - FIXED -->
                     <div class="admin-live-section">
-                        <h3 style="margin:0 0 5px;font-size:18px;font-weight:800;color:var(--text-main);"><i class="fas fa-broadcast-tower" style="color:var(--danger);"></i> Live Broadcast Control</h3>
-                        <p style="font-size:12px;color:var(--text-sub);margin:0 0 20px;">Stream multiple YouTube Live events directly into the app.</p>
+                        <h3><i class="fas fa-broadcast-tower" style="color:var(--danger);"></i> Live Broadcast Control</h3>
+                        <p style="font-size:12px;color:var(--text-sub);margin:0 0 20px;">Multiple subjects ke liye alag live classes chalao.</p>
                         <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">Broadcast Title</label>
-                        <input type="text" id="live-title-input" placeholder="e.g., Physics Doubt Clearing Session" style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;margin-bottom:15px;border-radius:10px;border:1px solid #fca5a5;outline:none;font-family:inherit;font-size:14px;">
-                        <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">YouTube Live Link</label>
-                        <input type="text" id="live-ytid-input" placeholder="Paste link to live video" style="background:var(--bg);color:var(--text-main);width:100%;padding:14px;margin-bottom:20px;border-radius:10px;border:1px solid #fca5a5;outline:none;font-family:inherit;font-size:14px;">
-                        <button onclick="goLive()" style="width:100%;background:var(--danger);color:white;padding:16px;border:none;border-radius:10px;cursor:pointer;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:0.2s;box-shadow:0 4px 12px rgba(239,68,68,0.3);">
+                        <input type="text" id="live-title-input" placeholder="e.g., Physics - Newton's Laws" style="border:1px solid #fca5a5;">
+                        <label style="font-size:12px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">YouTube Link</label>
+                        <input type="text" id="live-ytid-input" placeholder="Paste YouTube live link here" style="border:1px solid #fca5a5;">
+                        <button onclick="goLive()" style="width:100%;background:var(--danger);color:white;padding:16px;border:none;border-radius:10px;cursor:pointer;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:0.2s;box-shadow:0 4px 12px rgba(239,68,68,0.3);margin-bottom:12px;">
                             <i class="fas fa-circle"></i> Start Broadcast
                         </button>
-                        <div class="live-list-admin" id="live-list-admin" style="margin-top:20px;"></div>
-                        <div id="live-status-admin" style="margin-top:15px;padding:14px 16px;border-radius:10px;font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--border-color);color:var(--text-sub);display:flex;align-items:center;gap:8px;"><i class="fas fa-info-circle"></i> Offline.</div>
+                        <div class="live-list-admin" id="live-list-admin"></div>
+                        <div id="live-status-admin" style="padding:14px 16px;border-radius:10px;font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--border-color);color:var(--text-sub);display:flex;align-items:center;gap:8px;"><i class="fas fa-info-circle"></i> Offline. No active streams.</div>
                     </div>
                 </div>
-
                 <div>
                     <div class="box" style="padding:0; border:1px solid var(--border-color); background:var(--card);">
                         <div style="padding:25px 25px 15px; border-bottom:1px solid var(--border-color);">
@@ -786,6 +840,11 @@
                             <p style="font-size:12px;color:var(--text-sub);margin:0;">Manage chapters, notes, quizzes, and videos.</p>
                         </div>
                         <div id="admin-manage-list" style="max-height:calc(100vh - 200px);overflow-y:auto;padding:15px 25px;"><div class="spinner"></div></div>
+                    </div>
+                    <!-- Admin Reviews View -->
+                    <div class="box" style="padding:25px;margin-top:20px;">
+                        <h3 style="margin:0 0 16px;font-size:16px;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:8px;"><i class="fas fa-star" style="color:#f59e0b;"></i> Student Reviews</h3>
+                        <div id="admin-reviews-list"><div class="spinner"></div></div>
                     </div>
                 </div>
             </div>
@@ -797,7 +856,7 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { getDatabase, ref as dbRef, push, onValue, remove, set, get, query, orderByChild } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getDatabase, ref as dbRef, push, onValue, remove, set, get, update, query, orderByChild } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 const firebaseConfig = {
     apiKey:"AIzaSyBzi3lFxLxGPHhoIICSVI0T-Tcl_xFXwT8",
@@ -819,7 +878,7 @@ const db = getDatabase(app);
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
-window.appState = { class: null, subject: null, activeChapter: null, activeChapterKey: null, points: 0, uid: null, name: null, todayPoints: 0 };
+window.appState = { class: null, subject: null, activeChapter: null, activeChapterKey: null, points: 0, uid: null, name: null };
 window.currentQuizQuestions = [];
 window.quizTimerInterval = null;
 window.activeListener = null;
@@ -830,8 +889,14 @@ window.videoAIChatHistory = [];
 window.watchTimer = null;
 window.watchSeconds = 0;
 window.notifInterval = null;
+window.currentRating = 0;
+window.lbCurrentFilter = 'all';
+window.allLeaderboardUsers = [];
+window.videoCommentsListener = null;
+window.communityListener = null;
+window.reviewsListener = null;
 
-// ============== DARK MODE ==============
+// ====== DARK MODE ======
 window.toggleDarkMode = () => {
     const isDark = document.body.classList.toggle('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -840,12 +905,12 @@ window.toggleDarkMode = () => {
 };
 if(localStorage.getItem('theme') === 'dark') { window.toggleDarkMode(); }
 
-// ============== GOOGLE TRANSLATE ==============
+// ====== GOOGLE TRANSLATE ======
 window.googleTranslateElementInit = () => {
     new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'hi,en,bn,te,mr,ta,gu,kn,ml,pa', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
 };
 
-// ============== HELPERS ==============
+// ====== HELPERS ======
 window.showToast = (msg, type = 'success') => {
     const c = document.getElementById('toast-container');
     const t = document.createElement('div');
@@ -865,52 +930,77 @@ function extractYouTubeId(input) {
     m = input.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/); if (m) return m[1];
     m = input.match(/\/live\/([a-zA-Z0-9_-]{11})/); if (m) return m[1];
     m = input.match(/\/embed\/([a-zA-Z0-9_-]{11})/); if (m) return m[1];
+    m = input.match(/\/shorts\/([a-zA-Z0-9_-]{11})/); if (m) return m[1];
     if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
     return null;
 }
 
+function timeAgo(ts) {
+    const diff = Date.now() - ts;
+    if(diff < 60000) return 'Abhi';
+    if(diff < 3600000) return Math.floor(diff/60000) + ' min pehle';
+    if(diff < 86400000) return Math.floor(diff/3600000) + ' ghante pehle';
+    return Math.floor(diff/86400000) + ' din pehle';
+}
+
+const avatarColors = ['#4f46e5','#10b981','#ef4444','#f59e0b','#8b5cf6','#ec4899','#3b82f6','#06b6d4'];
+function getAvatarColor(name) {
+    if(!name) return avatarColors[0];
+    let h = 0;
+    for(let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) & 0xFFFF;
+    return avatarColors[h % avatarColors.length];
+}
+
+// ====== POINTS — Firebase se sync ======
 window.addPoints = async (pts) => {
     if(!window.appState.uid) return;
     const newTotal = window.appState.points + pts;
-    // Track today's points
-    const today = new Date().toDateString();
-    const storedDay = localStorage.getItem('pointsDay');
-    if(storedDay !== today) {
-        localStorage.setItem('pointsDay', today);
-        localStorage.setItem('todayPoints', '0');
-    }
-    const todayPts = parseInt(localStorage.getItem('todayPoints') || '0') + pts;
-    localStorage.setItem('todayPoints', String(todayPts));
-    window.appState.todayPoints = todayPts;
-    await set(dbRef(db, `users/${window.appState.uid}/points`), newTotal);
-    await set(dbRef(db, `users/${window.appState.uid}/name`), window.appState.name);
+    window.appState.points = newTotal;
+
+    // Today's date key
+    const todayKey = new Date().toISOString().split('T')[0]; // e.g. 2026-03-18
+    const todayPath = 'users/' + window.appState.uid + '/todayPoints/' + todayKey;
+    const currentToday = (await get(dbRef(db, todayPath))).val() || 0;
+
+    const updates = {};
+    updates['users/' + window.appState.uid + '/points'] = newTotal;
+    updates['users/' + window.appState.uid + '/name'] = window.appState.name;
+    updates[todayPath] = currentToday + pts;
+    // Leaderboard
+    updates['leaderboard/' + window.appState.uid + '/points'] = newTotal;
+    updates['leaderboard/' + window.appState.uid + '/name'] = window.appState.name;
+
+    await update(dbRef(db), updates);
+    document.getElementById('sidebar-points-display').innerHTML = '<i class="fas fa-star"></i> ' + newTotal + ' Pts';
     updateGoalDisplay();
 };
 
-// ============== AUTO FETCH YOUTUBE TITLE ==============
-document.getElementById('admin-vid-url').addEventListener('blur', async (e) => {
-    const input = e.target.value.trim();
-    const vidId = extractYouTubeId(input);
-    if(vidId) {
-        try {
-            const oEmbedUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v='+vidId+'&format=json')}`;
-            const response = await fetch(oEmbedUrl);
-            const data = await response.json();
-            const ytData = JSON.parse(data.contents);
-            if(ytData && ytData.title) {
-                document.getElementById('admin-vid-title').value = ytData.title;
-                window.showToast("Title auto-fetched!", "info");
-            }
-        } catch(err) { console.log("Auto-fetch failed", err); }
-    }
-});
+// ====== PROFILE DROPDOWN ======
+window.toggleProfileDropdown = (e) => {
+    e.stopPropagation();
+    const dd = document.getElementById('profile-dropdown');
+    const arrow = document.getElementById('pd-arrow');
+    const isOpen = dd.classList.toggle('open');
+    arrow.style.transform = isOpen ? 'rotate(180deg)' : '';
+};
+window.closeProfileDropdown = () => {
+    document.getElementById('profile-dropdown').classList.remove('open');
+    document.getElementById('pd-arrow').style.transform = '';
+};
+document.addEventListener('click', () => window.closeProfileDropdown());
 
-// ============== AUTH ==============
+window.viewProfile = () => {
+    closeProfileDropdown();
+    const u = window.appState;
+    window.showToast('👤 ' + u.name + ' | ⭐ ' + u.points + ' pts', 'info');
+};
+
+// ====== AUTH ======
 window.toggleSidebar = () => document.getElementById('sidebar').classList.toggle('open');
 document.getElementById('google-login').onclick = () => signInWithPopup(auth, provider).catch(err => window.showToast(err.message, 'error'));
 window.handleLogout = () => signOut(auth).then(() => location.reload());
 
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async user => {
     if (user) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('app-shell').style.display = 'block';
@@ -920,27 +1010,52 @@ onAuthStateChanged(auth, user => {
         window.appState.uid = user.uid;
         window.appState.name = user.displayName;
 
-        // FIX 2: Profile pic - check Firebase first, then Google
+        // Community avatar initial
+        const ca = document.getElementById('compose-avatar');
+        if(ca) { ca.innerText = user.displayName.charAt(0).toUpperCase(); ca.style.background = getAvatarColor(user.displayName); }
+
+        // Load user data from Firebase
+        const userSnap = await get(dbRef(db, 'users/' + user.uid));
+        const userData = userSnap.val() || {};
+
+        window.appState.points = userData.points || 0;
+        document.getElementById('sidebar-points-display').innerHTML = '<i class="fas fa-star"></i> ' + window.appState.points + ' Pts';
+
+        // Profile pic — Firebase first, then Google
         const setProfilePic = (src) => {
-            const img = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+            const img = '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
             document.getElementById('user-pfp').innerHTML = img;
             document.getElementById('settings-pfp-trigger').innerHTML = img;
         };
+        if(userData.photoURL) setProfilePic(userData.photoURL);
+        else if(user.photoURL) setProfilePic(user.photoURL);
 
-        get(dbRef(db, 'users/' + user.uid)).then(s => {
-            if (s.exists() && s.val().photoURL) {
-                setProfilePic(s.val().photoURL);
-            } else if (user.photoURL) {
-                setProfilePic(user.photoURL);
-            }
-        });
-        
-        onValue(dbRef(db, `users/${user.uid}/points`), s => {
-            window.appState.points = s.exists() ? s.val() : 0;
-            document.getElementById('sidebar-points-display').innerHTML = `<i class="fas fa-star"></i> ${window.appState.points} Pts`;
-        });
+        // Load goal from Firebase
+        if(userData.goal) {
+            const g = userData.goal;
+            if(g.points) document.getElementById('goal-points-input').value = g.points;
+            if(g.exam) document.getElementById('goal-exam-select').value = g.exam;
+            if(g.date) document.getElementById('goal-exam-date').value = g.date;
+            updateGoalDisplay();
+        }
 
-        if (user.uid === ADMIN_UID) {
+        // Leaderboard entry (ensure exam goal saved)
+        if(userData.goal && userData.goal.exam) {
+            update(dbRef(db, 'leaderboard/' + user.uid), {
+                points: window.appState.points,
+                name: user.displayName,
+                examGoal: userData.goal.exam,
+                photoURL: userData.photoURL || user.photoURL || ''
+            });
+        } else {
+            update(dbRef(db, 'leaderboard/' + user.uid), {
+                points: window.appState.points,
+                name: user.displayName,
+                photoURL: userData.photoURL || user.photoURL || ''
+            });
+        }
+
+        if(user.uid === ADMIN_UID) {
             document.getElementById('nav-admin').style.display = 'flex';
             window.loadAdminChapters();
             const adminCatSub = document.getElementById('admin-subject');
@@ -949,16 +1064,12 @@ onAuthStateChanged(auth, user => {
             document.getElementById('nav-admin').style.display = 'none';
         }
 
-        // Init today's points
-        const today = new Date().toDateString();
-        const storedDay = localStorage.getItem('pointsDay');
-        if(storedDay !== today) { localStorage.setItem('pointsDay', today); localStorage.setItem('todayPoints', '0'); }
-        window.appState.todayPoints = parseInt(localStorage.getItem('todayPoints') || '0');
-
-        // Load settings
-        loadGoalSettings();
         loadNotifPrefs();
         initLiveListener();
+        loadLeaderboard();
+        loadCommunityFeed();
+        loadReviews();
+        if(user.uid === ADMIN_UID) loadAdminReviews();
 
     } else {
         document.getElementById('login-screen').style.display = 'flex';
@@ -980,7 +1091,8 @@ window.uploadProfilePic = async e => {
                 const b64 = c.toDataURL('image/jpeg', 0.8);
                 await set(dbRef(db, 'users/' + user.uid + '/photoURL'), b64);
                 await set(dbRef(db, 'users/' + user.uid + '/name'), user.displayName);
-                const it = `<img src="${b64}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+                await set(dbRef(db, 'leaderboard/' + user.uid + '/photoURL'), b64);
+                const it = '<img src="' + b64 + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
                 document.getElementById('user-pfp').innerHTML = it;
                 document.getElementById('settings-pfp-trigger').innerHTML = it;
                 window.showToast("Photo updated successfully!");
@@ -990,21 +1102,22 @@ window.uploadProfilePic = async e => {
     reader.readAsDataURL(file);
 };
 
-// ============== NAVIGATION ==============
+// ====== NAVIGATION ======
 window.navigateSidebar = tab => {
     if (window.innerWidth <= 768) window.toggleSidebar();
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-    document.getElementById('nav-' + tab).classList.add('active');
+    const navEl = document.getElementById('nav-' + tab);
+    if(navEl) navEl.classList.add('active');
     document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active', 'active-grid'));
-    if (tab === 'dashboard') document.getElementById('view-class').classList.add('active');
-    if (tab === 'videos') { document.getElementById('view-videos').classList.add('active'); renderRecentVids(); }
-    if (tab === 'live') document.getElementById('view-live').classList.add('active');
-    if (tab === 'settings') { document.getElementById('view-settings').classList.add('active'); loadGoalSettings(); }
-    if (tab === 'admin') { document.getElementById('view-admin').classList.add('active'); window.loadAdminChapters(); }
-    if (tab === 'leaderboard') { document.getElementById('view-leaderboard').classList.add('active'); window.loadLeaderboard(); }
+    const map = { dashboard:'view-class', videos:'view-videos', live:'view-live', community:'view-community', leaderboard:'view-leaderboard', review:'view-review', settings:'view-settings', admin:'view-admin' };
+    if(map[tab]) document.getElementById(map[tab]).classList.add('active');
+    if(tab === 'settings') updateGoalDisplay();
+    if(tab === 'admin') { window.loadAdminChapters(); loadAdminReviews(); }
+    if(tab === 'leaderboard') renderLeaderboard(window.lbCurrentFilter);
+    if(tab === 'videos') renderRecentVids();
 };
 
-// ============== CLASS / SUBJECT / CHAPTER ==============
+// ====== CLASSES / SUBJECTS ======
 window.selectClass = val => {
     appState.class = val;
     document.getElementById('view-class').classList.remove('active');
@@ -1042,10 +1155,10 @@ window.openStudy = async sub => {
     document.getElementById('content-frame').src = '';
     const list = document.getElementById('chapter-list-container');
     list.innerHTML = '<div class="spinner"></div>';
-    
+
     let userProgress = {};
     if(appState.uid) {
-        const pSnap = await get(dbRef(db, `users/${appState.uid}/progress/${appState.class}/${appState.subject}`));
+        const pSnap = await get(dbRef(db, 'users/' + appState.uid + '/progress/' + appState.class + '/' + appState.subject));
         if(pSnap.exists()) userProgress = pSnap.val();
     }
 
@@ -1053,44 +1166,33 @@ window.openStudy = async sub => {
     window.activeListener = onValue(dbRef(db, 'syllabus/' + appState.class + '/' + appState.subject), s => {
         list.innerHTML = ""; const d = s.val();
         if (!d) { list.innerHTML = "<div style='padding:30px 20px;color:var(--text-sub);text-align:center;font-size:13px;border:1px dashed var(--border-color);border-radius:12px;margin:10px;'><i class='fas fa-folder-open' style='font-size:24px;margin-bottom:10px;display:block;'></i>No material available yet.</div>"; return; }
-        
         Object.entries(d).forEach(([key, ch]) => {
             let totalItems = 0; let doneItems = 0;
-            if(ch.videos) {
-                const vk = Object.keys(ch.videos);
-                totalItems += vk.length;
-                vk.forEach(v => { if(userProgress[key] && userProgress[key].videos && userProgress[key].videos[v]) doneItems++; });
-            }
-            if(ch.quizData && ch.quizData.length > 0) {
-                totalItems += 1;
-                if(userProgress[key] && userProgress[key].quiz) doneItems++;
-            }
+            if(ch.videos) { const vk = Object.keys(ch.videos); totalItems += vk.length; vk.forEach(v => { if(userProgress[key] && userProgress[key].videos && userProgress[key].videos[v]) doneItems++; }); }
+            if(ch.quizData && ch.quizData.length > 0) { totalItems += 1; if(userProgress[key] && userProgress[key].quiz) doneItems++; }
             let progHtml = '';
             if(totalItems === 0) {
                 progHtml = '<div class="progress-text">Notes Only</div>';
             } else {
                 let pct = Math.round((doneItems/totalItems)*100);
                 let pColor = pct === 100 ? 'var(--success)' : 'var(--primary)';
-                progHtml = `<div class="progress-bar-container"><div class="progress-bar-fill" style="width:${pct}%;background:${pColor};"></div></div>
-                            <div class="progress-text"><span>Completion</span><span style="color:${pColor};">${pct}%</span></div>`;
+                progHtml = '<div class="progress-bar-container"><div class="progress-bar-fill" style="width:' + pct + '%;background:' + pColor + ';"></div></div><div class="progress-text"><span>Completion</span><span style="color:' + pColor + ';">' + pct + '%</span></div>';
             }
             const div = document.createElement('div'); div.className = "chapter-item";
-            div.innerHTML = `<div class="chapter-name"><i class="far fa-circle"></i> ${ch.name}</div>` + progHtml;
+            div.innerHTML = '<div class="chapter-name"><i class="far fa-circle"></i> ' + ch.name + '</div>' + progHtml;
             div.onclick = () => {
-                appState.activeChapter = ch;
-                appState.activeChapterKey = key;
+                appState.activeChapter = ch; appState.activeChapterKey = key;
                 document.querySelectorAll('.chapter-item').forEach(el => { el.classList.remove('active'); el.querySelector('i').className = "far fa-circle"; });
                 div.classList.add('active'); div.querySelector('i').className = "fas fa-check-circle";
                 document.getElementById('content-panel').style.display = 'flex';
                 document.querySelectorAll('.tab-btn')[0].click();
-                if (window.innerWidth <= 768) setTimeout(() => document.getElementById('content-panel').scrollIntoView({behavior:'smooth'}), 100);
+                if(window.innerWidth <= 768) setTimeout(() => document.getElementById('content-panel').scrollIntoView({behavior:'smooth'}), 100);
             };
             list.appendChild(div);
         });
     });
 };
 
-// ============== TABS ==============
 window.switchResource = (type, btn) => {
     if (!appState.activeChapter) return window.showToast("Please select a chapter first!", "info");
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1101,62 +1203,39 @@ window.switchResource = (type, btn) => {
     const ctrl = document.getElementById('pdf-controls-ui');
     if (window.quizTimerInterval) clearInterval(window.quizTimerInterval);
     frame.style.display = 'none'; qbox.style.display = 'none'; vidbox.style.display = 'none'; ctrl.style.display = 'none';
-    if (type === 'notes') {
-        frame.style.display = 'block'; ctrl.style.display = 'flex';
-        frame.src = 'https://drive.google.com/file/d/' + appState.activeChapter.notes + '/preview';
-    } else if (type === 'quiz') {
-        qbox.style.display = 'flex'; qbox.style.flexDirection = 'column';
-        startQuizEngine();
-    } else if (type === 'videos') {
-        vidbox.style.display = 'flex';
-        loadChapterVideos();
-    }
+    if (type === 'notes') { frame.style.display = 'block'; ctrl.style.display = 'flex'; frame.src = 'https://drive.google.com/file/d/' + appState.activeChapter.notes + '/preview'; }
+    else if (type === 'quiz') { qbox.style.display = 'flex'; qbox.style.flexDirection = 'column'; startQuizEngine(); }
+    else if (type === 'videos') { vidbox.style.display = 'flex'; loadChapterVideos(); }
 };
 
-// ============== CHAPTER VIDEOS ==============
 window.loadChapterVideos = () => {
     const wrap = document.getElementById('chapter-videos-wrap');
     if (!appState.activeChapterKey) { wrap.innerHTML = '<div class="no-videos-msg"><i class="fas fa-film"></i>Chapter select karo</div>'; return; }
     wrap.innerHTML = '<div class="spinner"></div>';
-    const path = 'syllabus/' + appState.class + '/' + appState.subject + '/' + appState.activeChapterKey + '/videos';
-    get(dbRef(db, path)).then(s => {
+    get(dbRef(db, 'syllabus/' + appState.class + '/' + appState.subject + '/' + appState.activeChapterKey + '/videos')).then(s => {
         const vids = s.val();
-        if (!vids || Object.keys(vids).length === 0) {
-            wrap.innerHTML = '<div class="no-videos-msg"><i class="fas fa-video-slash"></i>No videos attached to this chapter yet.<br><span style="color:var(--text-sub);font-size:12px;margin-top:5px;">Check Notes or Quiz section.</span></div>';
-            return;
-        }
+        if (!vids || Object.keys(vids).length === 0) { wrap.innerHTML = '<div class="no-videos-msg"><i class="fas fa-video-slash"></i>No videos attached to this chapter yet.</div>'; return; }
         const byType = { full: [], oneshot: [], mindmap: [] };
-        Object.entries(vids).forEach(([k, v]) => {
-            const t = v.type || 'full';
-            byType[t] = byType[t] || [];
-            byType[t].push({ ...v, key: k });
-        });
+        Object.entries(vids).forEach(([k, v]) => { const t = v.type || 'full'; byType[t] = byType[t] || []; byType[t].push({ ...v, key: k }); });
         Object.keys(byType).forEach(t => byType[t].sort((a,b) => (a.part||1) - (b.part||1)));
         const typeConfig = [
-            { key: 'full',    emoji: '📘', label: 'Detailed Concepts', iconClass: 'full',    badgeClass: 'badge-full' },
+            { key: 'full', emoji: '📘', label: 'Detailed Concepts', iconClass: 'full', badgeClass: 'badge-full' },
             { key: 'oneshot', emoji: '⚡', label: 'One Shot Revision', iconClass: 'oneshot', badgeClass: 'badge-oneshot' },
-            { key: 'mindmap', emoji: '🗺️', label: 'Mind Maps & Tricks',iconClass: 'mindmap', badgeClass: 'badge-mindmap' }
+            { key: 'mindmap', emoji: '🗺️', label: 'Mind Maps & Tricks', iconClass: 'mindmap', badgeClass: 'badge-mindmap' }
         ];
         let html = '';
         typeConfig.forEach(tc => {
             const arr = byType[tc.key] || [];
             if (arr.length === 0) return;
-            html += '<div class="vid-type-section">';
-            html += '<div class="vid-type-header"><div class="vid-type-icon ' + tc.iconClass + '">' + tc.emoji + '</div>';
-            html += '<span class="vid-type-label">' + tc.label + '</span>';
-            html += '<span class="vid-type-count">' + arr.length + ' Video' + (arr.length > 1 ? 's' : '') + '</span></div>';
-            html += '<div class="chapter-vid-grid">';
+            html += '<div class="vid-type-section"><div class="vid-type-header"><div class="vid-type-icon ' + tc.iconClass + '">' + tc.emoji + '</div><span class="vid-type-label">' + tc.label + '</span><span class="vid-type-count">' + arr.length + ' Video' + (arr.length > 1 ? 's' : '') + '</span></div><div class="chapter-vid-grid">';
             arr.forEach(v => {
                 const vid = v.videoId;
                 const safeTitle = (v.title || 'Video').replace(/'/g,"\\'");
                 const partLabel = arr.length > 1 ? 'Part ' + (v.part || 1) : '';
-                html += `<div class="chap-vid-card" onclick="openVideoPlayer('${vid}','${safeTitle}', '${v.key}')">`;
-                html += `<div class="chap-vid-thumb"><img src="https://i.ytimg.com/vi/${vid}/mqdefault.jpg" alt="" loading="lazy"><div class="play-overlay"><i class="fas fa-play-circle"></i></div>`;
-                if (partLabel) html += `<div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.8);color:white;font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px;backdrop-filter:blur(2px);">${partLabel}</div>`;
-                html += `</div><div class="chap-vid-info">`;
-                html += `<div class="chap-vid-badge ${tc.badgeClass}">${tc.emoji} ${partLabel || tc.label.split(' ').slice(0,2).join(' ')}</div>`;
-                html += `<p class="chap-vid-title">${v.title}</p>`;
-                html += `</div></div>`;
+                html += '<div class="chap-vid-card" onclick="openVideoPlayer(\'' + vid + '\',\'' + safeTitle + '\',\'' + v.key + '\')">';
+                html += '<div class="chap-vid-thumb"><img src="https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg" alt="" loading="lazy"><div class="play-overlay"><i class="fas fa-play-circle"></i></div>';
+                if(partLabel) html += '<div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.8);color:white;font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px;">' + partLabel + '</div>';
+                html += '</div><div class="chap-vid-info"><div class="chap-vid-badge ' + tc.badgeClass + '">' + tc.emoji + ' ' + (partLabel || tc.label.split(' ').slice(0,2).join(' ')) + '</div><p class="chap-vid-title">' + (v.title || 'Video') + '</p></div></div>';
             });
             html += '</div></div>';
         });
@@ -1164,40 +1243,40 @@ window.loadChapterVideos = () => {
     }).catch(() => { wrap.innerHTML = '<div class="no-videos-msg"><i class="fas fa-exclamation-triangle"></i>Failed to load videos.</div>'; });
 };
 
-// ============== VIDEO PLAYER (FIX 3: Mobile fullscreen) ==============
-window.openVideoPlayer = (videoId, title, vidKey = null) => {
+// ====== VIDEO PLAYER ======
+window.openVideoPlayer = (videoId, title, vidKey) => {
+    vidKey = vidKey || null;
     window.currentVideoId = videoId; window.currentVideoTitle = title; window.videoAIChatHistory = [];
     document.getElementById('vp-title').innerText = title;
-    document.getElementById('vp-iframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=0`;
+    document.getElementById('vp-iframe').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=0';
     document.getElementById('video-player-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    // Force fullscreen on mobile
+    document.getElementById('vp-ai-messages').innerHTML = '<div class="vp-msg ai"><strong><i class="fas fa-sparkles"></i> AI Ready!</strong><br><br>I\'m here to help with <em>"' + title + '"</em>. Use quick actions or ask your doubt!</div>';
+
+    // Mobile fullscreen
     if(window.innerWidth <= 768) {
         const modal = document.getElementById('video-player-modal');
-        modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '100vw';
-        modal.style.height = '100vh';
-        modal.style.zIndex = '99999';
-        // Try native fullscreen
         if(modal.requestFullscreen) modal.requestFullscreen().catch(()=>{});
         else if(modal.webkitRequestFullscreen) modal.webkitRequestFullscreen();
     }
-    document.getElementById('vp-ai-messages').innerHTML = `<div class="vp-msg ai"><strong><i class="fas fa-sparkles"></i> AI Ready!</strong><br><br>I'm analyzing <em>"${title}"</em>. Use quick actions below or ask me any doubt.</div>`;
+
     window.watchSeconds = 0;
     const ptDisp = document.getElementById('vp-points-display');
     ptDisp.innerHTML = '+0 Pts';
+    if(window.watchTimer) clearInterval(window.watchTimer);
     window.watchTimer = setInterval(() => {
         window.watchSeconds++;
         if(window.watchSeconds % 60 === 0) {
             window.addPoints(10);
-            ptDisp.innerHTML = `+${(window.watchSeconds/60)*10} Pts`;
-            if(vidKey && appState.class && appState.subject && appState.activeChapterKey) {
-                set(dbRef(db, `users/${appState.uid}/progress/${appState.class}/${appState.subject}/${appState.activeChapterKey}/videos/${vidKey}`), true);
+            ptDisp.innerHTML = '+' + ((window.watchSeconds/60)*10) + ' Pts';
+            if(vidKey && appState.uid && appState.class && appState.subject && appState.activeChapterKey) {
+                set(dbRef(db, 'users/' + appState.uid + '/progress/' + appState.class + '/' + appState.subject + '/' + appState.activeChapterKey + '/videos/' + vidKey), true);
             }
         }
     }, 1000);
+
+    // Load comments
+    loadVideoComments(videoId);
 };
 
 window.closeVideoPlayer = () => {
@@ -1207,11 +1286,43 @@ window.closeVideoPlayer = () => {
     document.getElementById('vp-ai-panel').classList.remove('open');
     if(window.watchTimer) clearInterval(window.watchTimer);
     if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
-    if(document.getElementById('view-study').classList.contains('active-grid')) {
-        openStudy(appState.subject);
-    }
+    if(window.videoCommentsListener) { window.videoCommentsListener(); window.videoCommentsListener = null; }
+    if(document.getElementById('view-study').classList.contains('active-grid')) openStudy(appState.subject);
 };
 document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeVideoPlayer(); });
+
+// ====== VIDEO COMMENTS ======
+function loadVideoComments(videoId) {
+    const list = document.getElementById('vp-comments-list');
+    const countEl = document.getElementById('vp-comment-count');
+    list.innerHTML = '<div style="color:#475569;font-size:12px;text-align:center;padding:15px;">Loading...</div>';
+    if(window.videoCommentsListener) { window.videoCommentsListener(); window.videoCommentsListener = null; }
+    window.videoCommentsListener = onValue(dbRef(db, 'videoComments/' + videoId), snap => {
+        const data = snap.val();
+        if(!data) { list.innerHTML = '<div style="color:#475569;font-size:12px;text-align:center;padding:15px;">Pehla comment karo! 💬</div>'; countEl.innerText='0'; return; }
+        const comments = Object.values(data).sort((a,b) => b.timestamp - a.timestamp);
+        countEl.innerText = comments.length;
+        list.innerHTML = comments.slice(0,30).map(c =>
+            '<div class="vp-comment-item">' +
+            '<div class="vp-comment-author">' + (c.authorName || 'Anonymous') + ' <span style="color:#475569;font-weight:400;font-size:10px;">' + timeAgo(c.timestamp) + '</span></div>' +
+            '<div class="vp-comment-text">' + c.text + '</div>' +
+            '</div>'
+        ).join('');
+    });
+}
+window.postVideoComment = async () => {
+    const input = document.getElementById('vp-comment-input');
+    const text = input.value.trim();
+    if(!text || !window.currentUser) return;
+    if(!window.currentUser) return window.showToast('Login required','error');
+    input.value = '';
+    await push(dbRef(db, 'videoComments/' + window.currentVideoId), {
+        text: text,
+        authorName: window.appState.name,
+        authorUid: window.appState.uid,
+        timestamp: Date.now()
+    });
+};
 
 window.toggleVideoAI = () => document.getElementById('vp-ai-panel').classList.toggle('open');
 window.videoAIQuick = p => { document.getElementById('vp-ai-input').value = p; sendVideoAI(); };
@@ -1219,41 +1330,32 @@ window.sendVideoAI = async () => {
     const input = document.getElementById('vp-ai-input');
     const msg = input.value.trim(); if (!msg) return; input.value = '';
     const md = document.getElementById('vp-ai-messages');
-    md.innerHTML += `<div class="vp-msg user">${msg}</div>`;
+    md.innerHTML += '<div class="vp-msg user">' + msg + '</div>';
     const tid = 'vt' + Date.now();
-    md.innerHTML += `<div class="vp-msg ai ai-typing" id="${tid}"><span>...</span></div>`;
+    md.innerHTML += '<div class="vp-msg ai" id="' + tid + '"><i class="fas fa-spinner fa-spin"></i></div>';
     md.scrollTop = md.scrollHeight;
     try {
         window.videoAIChatHistory.push({ role: "user", parts: [{ text: msg }] });
-        const ctx = `Act as an expert teacher. The student is watching a video titled: "${window.currentVideoTitle}". Answer their question: "${msg}". Keep it concise (under 200 words), easy to understand, and use a mix of Hindi-English if helpful.`;
+        const ctx = 'Act as an expert teacher. Student is watching: "' + window.currentVideoTitle + '". Answer: "' + msg + '". Concise, under 200 words, Hindi-English mix.';
         const body = { contents: [{ role: "user", parts: [{ text: ctx }] }, ...window.videoAIChatHistory], generationConfig: { maxOutputTokens: 400, temperature: 0.7 } };
         const res = await fetch(GEMINI_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
         const data = await res.json();
-        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process that. Try again.";
+        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, try again.";
         window.videoAIChatHistory.push({ role: "model", parts: [{ text: reply }] });
         document.getElementById(tid)?.remove();
-        md.innerHTML += `<div class="vp-msg ai">${reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</div>`;
-    } catch (e) { document.getElementById(tid)?.remove(); md.innerHTML += `<div class="vp-msg ai">Error: ${e.message}</div>`; }
+        md.innerHTML += '<div class="vp-msg ai">' + reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</div>';
+    } catch (e) { document.getElementById(tid)?.remove(); md.innerHTML += '<div class="vp-msg ai">Error: ' + e.message + '</div>'; }
     md.scrollTop = md.scrollHeight;
 };
 
-// ============== QUIZ LOGIC ==============
+// ====== QUIZ ======
 window.startQuizEngine = () => {
     const qs = appState.activeChapter.quizData || [], area = document.getElementById('questions-area'), sub = document.getElementById('submit-btn-wrapper'), tim = document.getElementById('quiz-timer');
     if (!qs.length) { area.innerHTML = '<div style="text-align:center;padding:60px 20px;"><i class="fas fa-clipboard-list" style="font-size:48px;color:var(--border-color);margin-bottom:15px;display:block;"></i><h2 style="color:var(--text-main);margin:0 0 8px;font-size:20px;">No Test Found</h2><p style="font-size:14px;color:var(--text-sub);margin:0;">The admin hasn\'t added a quiz for this chapter yet.</p></div>'; sub.style.display = 'none'; tim.innerText = "00:00"; return; }
     sub.style.display = 'block'; document.getElementById('submit-quiz-btn').style.display = 'inline-block';
-    area.innerHTML = qs.map((item, i) => `
-        <div style="background:var(--card);border:1px solid var(--border-color);border-radius:16px;padding:25px;margin-bottom:20px;box-shadow:var(--shadow-sm);">
-            <h4 style="margin:0 0 20px;color:var(--text-main);line-height:1.5;font-size:15px;font-weight:800;"><span style="color:var(--primary);margin-right:5px;">Q${i+1}.</span> ${item.q}</h4>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-                <label class="quiz-opt-label"><input type="radio" name="q${i}" value="A"> A) ${item.a}</label>
-                <label class="quiz-opt-label"><input type="radio" name="q${i}" value="B"> B) ${item.b}</label>
-                ${item.c ? `<label class="quiz-opt-label"><input type="radio" name="q${i}" value="C"> C) ${item.c}</label>` : ''}
-                ${item.d ? `<label class="quiz-opt-label"><input type="radio" name="q${i}" value="D"> D) ${item.d}</label>` : ''}
-            </div>
-        </div>`).join('');
+    area.innerHTML = qs.map((item, i) => '<div style="background:var(--card);border:1px solid var(--border-color);border-radius:16px;padding:25px;margin-bottom:20px;box-shadow:var(--shadow-sm);"><h4 style="margin:0 0 20px;color:var(--text-main);line-height:1.5;font-size:15px;font-weight:800;"><span style="color:var(--primary);margin-right:5px;">Q' + (i+1) + '.</span>' + item.q + '</h4><div style="display:flex;flex-direction:column;gap:12px;"><label class="quiz-opt-label"><input type="radio" name="q' + i + '" value="A"> A) ' + item.a + '</label><label class="quiz-opt-label"><input type="radio" name="q' + i + '" value="B"> B) ' + item.b + '</label>' + (item.c ? '<label class="quiz-opt-label"><input type="radio" name="q' + i + '" value="C"> C) ' + item.c + '</label>' : '') + (item.d ? '<label class="quiz-opt-label"><input type="radio" name="q' + i + '" value="D"> D) ' + item.d + '</label>' : '') + '</div></div>').join('');
     let t = qs.length * 120;
-    window.quizTimerInterval = setInterval(() => { let m = Math.floor(t/60), s = t%60; tim.innerHTML = '<i class="far fa-clock"></i> ' + m + ':' + (s<10?'0'+s:s); tim.style.color = t<=60?"var(--danger)":"var(--text-main)"; if (t<=0) { clearInterval(window.quizTimerInterval); window.showToast("Time's up!", "error"); window.submitQuiz(); } t--; }, 1000);
+    window.quizTimerInterval = setInterval(() => { let m = Math.floor(t/60), s = t%60; tim.innerHTML = '<i class="far fa-clock"></i> ' + m + ':' + (s<10?'0'+s:s); tim.style.color = t<=60?"var(--danger)":"var(--text-main)"; if(t<=0){clearInterval(window.quizTimerInterval);window.showToast("Time's up!", "error");window.submitQuiz();}t--; }, 1000);
 };
 
 window.submitQuiz = () => {
@@ -1261,51 +1363,459 @@ window.submitQuiz = () => {
     const qs = appState.activeChapter.quizData || []; let sc = 0, co = 0, wr = 0, sk = 0;
     let rev = '<div style="margin-top:40px;border-top:2px solid var(--border-color);padding-top:30px;"><h3 style="color:var(--text-main);text-align:left;font-size:18px;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><i class="fas fa-clipboard-check" style="color:var(--success);"></i> Detailed Analysis</h3>';
     qs.forEach((item, i) => {
-        const sel = document.querySelector(`input[name="q${i}"]:checked`)?.value;
+        const sel = document.querySelector('input[name="q' + i + '"]:checked')?.value;
         let sco = 'var(--text-sub)', si = 'Skipped', bg = 'var(--bg)', bcolor = 'var(--border-color)';
-        if (sel === item.correct) { sc+=15; co++; sco='var(--success)'; si='Correct (+15 Pts)'; bg='rgba(16,185,129,0.05)'; bcolor='var(--success)';}
-        else if (sel) { wr++; sco='var(--danger)'; si='Incorrect (0 Pts)'; bg='rgba(239,68,68,0.05)'; bcolor='var(--danger)';}
-        else { sk++; }
-        rev += `<div style="background:${bg};padding:20px;border-radius:12px;margin-bottom:16px;border-left:4px solid ${bcolor};border:1px solid var(--border-color);border-left:4px solid ${bcolor};">
-                    <p style="margin:0 0 15px;font-weight:700;color:var(--text-main);font-size:14px;line-height:1.5;">Q${i+1}: ${item.q}</p>
-                    <div style="font-size:13px;color:var(--text-sub);display:grid;grid-template-columns:1fr 1fr;gap:15px;background:var(--card);padding:12px;border-radius:8px;border:1px solid var(--border-color);">
-                        <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Your Answer</div><b style="color:${sco};font-size:14px;">${sel||'None'}</b><br><span style="color:${sco};font-size:11px;font-weight:700;">${si}</span></div>
-                        <div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Correct Answer</div><b style="color:var(--success);font-size:14px;">${item.correct}</b></div>
-                    </div>
-                </div>`;
+        if(sel === item.correct){sc+=15;co++;sco='var(--success)';si='Correct (+15 Pts)';bg='rgba(16,185,129,0.05)';bcolor='var(--success)';}
+        else if(sel){wr++;sco='var(--danger)';si='Incorrect';bg='rgba(239,68,68,0.05)';bcolor='var(--danger)';}
+        else{sk++;}
+        rev += '<div style="background:' + bg + ';padding:20px;border-radius:12px;margin-bottom:16px;border-left:4px solid ' + bcolor + ';border:1px solid var(--border-color);border-left:4px solid ' + bcolor + ';"><p style="margin:0 0 15px;font-weight:700;color:var(--text-main);font-size:14px;line-height:1.5;">Q' + (i+1) + ': ' + item.q + '</p><div style="font-size:13px;color:var(--text-sub);display:grid;grid-template-columns:1fr 1fr;gap:15px;background:var(--card);padding:12px;border-radius:8px;border:1px solid var(--border-color);"><div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Your Answer</div><b style="color:' + sco + ';font-size:14px;">' + (sel||'None') + '</b><br><span style="color:' + sco + ';font-size:11px;font-weight:700;">' + si + '</span></div><div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Correct</div><b style="color:var(--success);font-size:14px;">' + item.correct + '</b></div></div></div>';
     });
     rev += '</div>';
     if(sc > 0) window.addPoints(sc);
     if(appState.uid && appState.class && appState.subject && appState.activeChapterKey) {
-        set(dbRef(db, `users/${appState.uid}/progress/${appState.class}/${appState.subject}/${appState.activeChapterKey}/quiz`), true);
+        set(dbRef(db, 'users/' + appState.uid + '/progress/' + appState.class + '/' + appState.subject + '/' + appState.activeChapterKey + '/quiz'), true);
     }
     const max = qs.length*15, remark = sc>(max*0.7)?"🔥 Excellent Performance!":"📚 Keep Practicing!";
-    document.getElementById('questions-area').innerHTML = `
-        <div style="text-align:center;padding:40px 20px;background:var(--card);border:1px solid var(--border-color);border-radius:20px;box-shadow:var(--shadow-md);">
-            <h1 style="color:var(--text-main);margin:0 0 8px;font-size:28px;font-weight:900;">Test Completed</h1>
-            <h3 style="color:var(--text-sub);margin:0;font-size:15px;font-weight:600;">${remark}</h3>
-            <div style="background:var(--bg);border:1px solid var(--border-color);border-radius:16px;padding:25px;margin:30px auto;max-width:300px;">
-                <div style="font-size:14px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Points Earned</div>
-                <div style="font-size:64px;font-weight:900;color:${sc>0?'var(--success)':'var(--danger)'};line-height:1;margin-bottom:10px;">+${sc}</div>
-                <div style="font-size:13px;color:var(--text-sub);font-weight:600;">Out of ${max} possible points</div>
-            </div>
-            <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:10px;">
-                <div style="background:rgba(16,185,129,0.1);padding:10px 20px;border-radius:10px;color:var(--success);font-weight:800;font-size:14px;border:1px solid rgba(16,185,129,0.2);">✅ ${co} Correct</div>
-                <div style="background:rgba(239,68,68,0.1);padding:10px 20px;border-radius:10px;color:var(--danger);font-weight:800;font-size:14px;border:1px solid rgba(239,68,68,0.2);">❌ ${wr} Incorrect</div>
-                <div style="background:var(--bg);padding:10px 20px;border-radius:10px;color:var(--text-sub);font-weight:800;font-size:14px;border:1px solid var(--border-color);">⚪ ${sk} Skipped</div>
-            </div>
-            ${rev}
-            <div style="margin-top:40px;">
-                <button onclick="document.querySelectorAll('.tab-btn')[0].click(); openStudy(appState.subject);" style="background:var(--primary);color:white;padding:16px;border:none;border-radius:12px;cursor:pointer;font-weight:800;font-size:15px;width:100%;max-width:300px;box-shadow:0 4px 15px rgba(79,70,229,0.3);transition:0.2s;">Return to Subject</button>
-            </div>
-        </div>`;
+    document.getElementById('questions-area').innerHTML = '<div style="text-align:center;padding:40px 20px;background:var(--card);border:1px solid var(--border-color);border-radius:20px;box-shadow:var(--shadow-md);"><h1 style="color:var(--text-main);margin:0 0 8px;font-size:28px;font-weight:900;">Test Completed</h1><h3 style="color:var(--text-sub);margin:0;font-size:15px;font-weight:600;">' + remark + '</h3><div style="background:var(--bg);border:1px solid var(--border-color);border-radius:16px;padding:25px;margin:30px auto;max-width:300px;"><div style="font-size:14px;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Points Earned</div><div style="font-size:64px;font-weight:900;color:' + (sc>0?'var(--success)':'var(--danger)') + ';line-height:1;margin-bottom:10px;">+' + sc + '</div><div style="font-size:13px;color:var(--text-sub);font-weight:600;">Out of ' + max + ' possible</div></div><div style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:10px;"><div style="background:rgba(16,185,129,0.1);padding:10px 20px;border-radius:10px;color:var(--success);font-weight:800;font-size:14px;border:1px solid rgba(16,185,129,0.2);">✅ ' + co + ' Correct</div><div style="background:rgba(239,68,68,0.1);padding:10px 20px;border-radius:10px;color:var(--danger);font-weight:800;font-size:14px;border:1px solid rgba(239,68,68,0.2);">❌ ' + wr + ' Incorrect</div><div style="background:var(--bg);padding:10px 20px;border-radius:10px;color:var(--text-sub);font-weight:800;font-size:14px;border:1px solid var(--border-color);">⚪ ' + sk + ' Skipped</div></div>' + rev + '<div style="margin-top:40px;"><button onclick="document.querySelectorAll(\'.tab-btn\')[0].click(); openStudy(appState.subject);" style="background:var(--primary);color:white;padding:16px;border:none;border-radius:12px;cursor:pointer;font-weight:800;font-size:15px;width:100%;max-width:300px;box-shadow:0 4px 15px rgba(79,70,229,0.3);transition:0.2s;">Return to Subject</button></div></div>';
     document.getElementById('submit-quiz-btn').style.display = 'none';
     document.getElementById('quiz-timer').innerHTML = '<i class="fas fa-flag-checkered"></i> Done';
     document.getElementById('quiz-timer').style.color = 'var(--text-sub)';
-    window.showToast(`Test submitted! You earned +${sc} Pts`, "success");
+    window.showToast('Test submitted! +' + sc + ' Pts earned', "success");
 };
 
-// ============== ADMIN ==============
+// ====== GLOBAL VIDEOS ======
+window.openGlobalVideo = () => {
+    const input = document.getElementById('global-vid-input').value.trim();
+    const vid = extractYouTubeId(input);
+    if (!vid) return window.showToast("Please paste a valid YouTube URL", "error");
+    const recent = JSON.parse(localStorage.getItem('recentVids') || '[]');
+    const already = recent.findIndex(r => r.id === vid);
+    if (already > -1) recent.splice(already, 1);
+    recent.unshift({ id: vid, url: input, time: Date.now() });
+    if (recent.length > 12) recent.pop();
+    localStorage.setItem('recentVids', JSON.stringify(recent));
+    renderRecentVids();
+    openVideoPlayer(vid, "Custom YouTube Video");
+    document.getElementById('global-vid-input').value = '';
+};
+function renderRecentVids() {
+    const recent = JSON.parse(localStorage.getItem('recentVids') || '[]');
+    const sec = document.getElementById('recent-vids-section');
+    const list = document.getElementById('recent-vids-list');
+    if (!recent.length || !sec || !list) return;
+    sec.style.display = 'block';
+    list.innerHTML = recent.map(r => '<div style="display:flex;align-items:center;gap:15px;padding:12px;background:var(--card);border-radius:14px;border:1px solid var(--border-color);cursor:pointer;transition:all 0.2s ease;box-shadow:var(--shadow-sm);" onclick="openVideoPlayer(\'' + r.id + '\',\'Watch History Video\')" onmouseover="this.style.borderColor=\'var(--primary)\'; this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.borderColor=\'var(--border-color)\'; this.style.transform=\'translateY(0)\'"><div style="position:relative;width:100px;height:56px;flex-shrink:0;"><img src="https://i.ytimg.com/vi/' + r.id + '/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" alt=""><div style="position:absolute;inset:0;background:rgba(0,0,0,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-play" style="color:white;font-size:14px;"></i></div></div><div style="flex:1;overflow:hidden;"><p style="margin:0;font-size:13px;font-weight:700;color:var(--text-main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + r.url + '</p><p style="margin:4px 0 0;font-size:11px;color:var(--text-sub);font-family:monospace;">ID: ' + r.id + '</p></div></div>').join('');
+}
+document.addEventListener('DOMContentLoaded', renderRecentVids);
+
+// ====== LIVE CLASS — FIXED ======
+function initLiveListener() {
+    onValue(dbRef(db, 'liveClasses'), snapshot => {
+        const data = snapshot.val();
+        const dot = document.getElementById('nav-live-dot');
+        const liveContent = document.getElementById('live-content');
+        const liveListAdmin = document.getElementById('live-list-admin');
+        const statusAdmin = document.getElementById('live-status-admin');
+
+        if(data && Object.keys(data).length > 0) {
+            const classes = Object.entries(data).filter(([k,v]) => v && v.isLive && v.videoId);
+            if(classes.length > 0) {
+                if(dot) dot.style.display = 'inline-block';
+                if(liveContent) {
+                    liveContent.innerHTML =
+                        '<div style="margin-bottom:20px;padding:16px 24px;background:linear-gradient(135deg,var(--danger),#991b1b);border-radius:16px;color:white;display:flex;align-items:center;gap:15px;box-shadow:0 8px 20px rgba(239,68,68,0.3);">' +
+                        '<i class="fas fa-circle" style="animation:pulse 1.5s infinite;font-size:12px;"></i>' +
+                        '<strong style="font-size:16px;letter-spacing:0.5px;">' + classes.length + ' Broadcast' + (classes.length > 1 ? 's' : '') + ' Live Now!</strong></div>' +
+                        '<div style="display:flex;flex-direction:column;gap:30px;margin-top:20px;">' +
+                        classes.map(([k,v]) =>
+                            '<div class="cinematic-live">' +
+                            '<iframe src="https://www.youtube.com/embed/' + v.videoId + '?rel=0&modestbranding=1&showinfo=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+                            '<div class="cinematic-info"><h2><i class="fab fa-youtube" style="color:var(--danger);"></i> ' + (v.title || 'Live Class') + '</h2><div class="cinematic-badge">LIVE NOW</div></div>' +
+                            '</div>'
+                        ).join('') + '</div>';
+                }
+                if(liveListAdmin) {
+                    liveListAdmin.innerHTML = classes.map(([k,v]) =>
+                        '<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border:1px solid rgba(239,68,68,0.2);border-radius:12px;margin-bottom:10px;">' +
+                        '<div style="flex:1;overflow:hidden;"><div style="font-size:14px;font-weight:700;color:var(--text-main);">🔴 ' + (v.title || 'Live Broadcast') + '</div><div style="font-size:11px;color:var(--text-sub);font-family:monospace;margin-top:4px;">ID: ' + v.videoId + '</div></div>' +
+                        '<button onclick="endSingleLive(\'' + k + '\')" style="background:var(--danger);color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:800;flex-shrink:0;">End Stream</button>' +
+                        '</div>'
+                    ).join('');
+                }
+                if(statusAdmin) {
+                    statusAdmin.style.background = 'rgba(239,68,68,0.1)'; statusAdmin.style.borderColor = 'rgba(239,68,68,0.2)'; statusAdmin.style.color = 'var(--danger)';
+                    statusAdmin.innerHTML = '<i class="fas fa-circle" style="animation:pulse 1s infinite;"></i> ' + classes.length + ' class(es) actively broadcasting.';
+                }
+                return;
+            }
+        }
+        if(dot) dot.style.display = 'none';
+        if(liveContent) liveContent.innerHTML = '<div style="text-align:center;padding:100px 30px;background:var(--card);border-radius:24px;border:1px solid var(--border-color);box-shadow:var(--shadow-sm);"><i class="fas fa-satellite-dish" style="font-size:64px;color:var(--border-color);margin-bottom:24px;display:block;"></i><h2 style="color:var(--text-main);font-size:24px;font-weight:800;margin:0 0 10px;">No Live Broadcasts</h2><p style="color:var(--text-sub);font-size:15px;margin:0;">Check back later or explore the syllabus.</p></div>';
+        if(liveListAdmin) liveListAdmin.innerHTML = '';
+        if(statusAdmin) { statusAdmin.style.background = 'var(--bg)'; statusAdmin.style.borderColor = 'var(--border-color)'; statusAdmin.style.color = 'var(--text-sub)'; statusAdmin.innerHTML = '<i class="fas fa-info-circle"></i> System Offline. No active streams.'; }
+    });
+}
+
+window.goLive = async () => {
+    const title = document.getElementById('live-title-input').value.trim();
+    const input = document.getElementById('live-ytid-input').value.trim();
+    if(!title) return window.showToast("Please enter a broadcast title!", "error");
+    if(!input) return window.showToast("Please enter a YouTube link!", "error");
+    const vid = extractYouTubeId(input);
+    if(!vid) return window.showToast("Invalid YouTube link! Please check the URL.", "error");
+    try {
+        await push(dbRef(db, 'liveClasses'), { isLive: true, title: title, videoId: vid, startedAt: Date.now() });
+        window.showToast("🔴 Broadcast Started! Students can see it now.", "success");
+        document.getElementById('live-title-input').value = '';
+        document.getElementById('live-ytid-input').value = '';
+    } catch(e) {
+        window.showToast("Error: " + e.message, "error");
+    }
+};
+window.endSingleLive = async (key) => {
+    if(!confirm("End this live broadcast for all students?")) return;
+    await remove(dbRef(db, 'liveClasses/' + key));
+    window.showToast("Broadcast Ended.", "success");
+};
+
+// ====== COMMUNITY ======
+window.submitCommunityPost = async () => {
+    const text = document.getElementById('community-post-text').value.trim();
+    if(!text) return window.showToast("Kuch likho pehle!", "error");
+    if(!window.appState.uid) return;
+    await push(dbRef(db, 'community'), {
+        text: text,
+        authorName: window.appState.name,
+        authorUid: window.appState.uid,
+        timestamp: Date.now(),
+        likes: 0
+    });
+    document.getElementById('community-post-text').value = '';
+    window.showToast("Post published! 🎉");
+};
+
+function loadCommunityFeed() {
+    if(window.communityListener) { window.communityListener(); window.communityListener = null; }
+    window.communityListener = onValue(dbRef(db, 'community'), snap => {
+        const feed = document.getElementById('community-feed');
+        if(!feed) return;
+        const data = snap.val();
+        if(!data) { feed.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-sub);"><i class="fas fa-comments" style="font-size:40px;margin-bottom:14px;display:block;color:var(--border-color);"></i><h3>Pehla post karo! 🙌</h3><p>Community mein apna sawaal share karo.</p></div>'; return; }
+        const posts = Object.entries(data).sort((a,b) => b[1].timestamp - a[1].timestamp);
+        feed.innerHTML = posts.map(([key, p]) => {
+            const bgColor = getAvatarColor(p.authorName);
+            return '<div class="community-post-card">' +
+                '<div class="community-author-row">' +
+                '<div class="community-avatar" style="background:' + bgColor + ';">' + (p.authorName||'A').charAt(0).toUpperCase() + '</div>' +
+                '<div><div class="community-author-name">' + (p.authorName||'Anonymous') + '</div></div>' +
+                '<div class="community-post-time">' + timeAgo(p.timestamp) + '</div>' +
+                '</div>' +
+                '<div class="community-post-text">' + p.text + '</div>' +
+                '<div class="community-actions">' +
+                '<button class="community-action-btn" onclick="likePost(\'' + key + '\',' + (p.likes||0) + ')"><i class="fas fa-heart"></i> ' + (p.likes||0) + '</button>' +
+                '<button class="community-action-btn" onclick="toggleReplies(\'' + key + '\')"><i class="fas fa-reply"></i> Reply</button>' +
+                '</div>' +
+                '<div class="community-replies-section" id="replies-sec-' + key + '">' +
+                '<div id="replies-list-' + key + '"><div class="spinner" style="margin:10px auto;width:20px;height:20px;"></div></div>' +
+                '<div class="reply-input-row">' +
+                '<input class="reply-input" id="reply-input-' + key + '" placeholder="Reply likho..." onkeydown="if(event.key===\'Enter\'){event.preventDefault();postReply(\'' + key + '\')}">' +
+                '<button class="reply-send-btn" onclick="postReply(\'' + key + '\')"><i class="fas fa-paper-plane"></i></button>' +
+                '</div></div></div>';
+        }).join('');
+    });
+}
+
+window.likePost = async (key, currentLikes) => {
+    await update(dbRef(db, 'community/' + key), {likes: currentLikes + 1});
+};
+window.toggleReplies = (key) => {
+    const sec = document.getElementById('replies-sec-' + key);
+    sec.style.display = sec.style.display === 'block' ? 'none' : 'block';
+    if(sec.style.display === 'block') loadReplies(key);
+};
+function loadReplies(key) {
+    onValue(dbRef(db, 'community/' + key + '/replies'), snap => {
+        const rl = document.getElementById('replies-list-' + key);
+        if(!rl) return;
+        const data = snap.val();
+        if(!data) { rl.innerHTML = '<p style="font-size:12px;color:var(--text-sub);padding:8px 0;">Pehla reply karo!</p>'; return; }
+        rl.innerHTML = Object.values(data).sort((a,b)=>a.timestamp-b.timestamp).map(r =>
+            '<div class="community-reply-item">' +
+            '<div class="community-reply-avatar" style="background:' + getAvatarColor(r.authorName) + ';">' + (r.authorName||'A').charAt(0).toUpperCase() + '</div>' +
+            '<div class="community-reply-bubble"><div class="community-reply-name">' + (r.authorName||'Anonymous') + '</div><div class="community-reply-text">' + r.text + '</div></div>' +
+            '</div>'
+        ).join('');
+    });
+}
+window.postReply = async (key) => {
+    const input = document.getElementById('reply-input-' + key);
+    const text = input.value.trim(); if(!text || !window.appState.uid) return;
+    input.value = '';
+    await push(dbRef(db, 'community/' + key + '/replies'), {
+        text: text, authorName: window.appState.name,
+        authorUid: window.appState.uid, timestamp: Date.now()
+    });
+};
+
+// ====== LEADERBOARD ======
+function loadLeaderboard() {
+    onValue(dbRef(db, 'leaderboard'), snap => {
+        window.allLeaderboardUsers = [];
+        snap.forEach(child => {
+            const val = child.val();
+            if(val && val.name && typeof val.points === 'number') {
+                window.allLeaderboardUsers.push({ uid: child.key, name: val.name, points: val.points, examGoal: val.examGoal || '', photoURL: val.photoURL || '' });
+            }
+        });
+        window.allLeaderboardUsers.sort((a,b) => b.points - a.points);
+        renderLeaderboard(window.lbCurrentFilter);
+    });
+}
+
+function renderLeaderboard(filter) {
+    window.lbCurrentFilter = filter;
+    let users = filter === 'all' ? [...window.allLeaderboardUsers] : window.allLeaderboardUsers.filter(u => u.examGoal === filter);
+
+    const lbContainer = document.getElementById('lb-list-container');
+    if(!lbContainer) return;
+    if(!users.length) {
+        lbContainer.innerHTML = '<div style="text-align:center;padding:50px;background:var(--card);border-radius:20px;border:1px dashed var(--border-color);"><i class="fas fa-medal" style="font-size:48px;color:var(--border-color);margin-bottom:15px;display:block;"></i><h3 style="color:var(--text-main);margin:0 0 5px;">No Ranks Yet</h3><p style="color:var(--text-sub);font-size:14px;margin:0;">Start watching videos and taking quizzes to rank!</p></div>';
+        return;
+    }
+
+    lbContainer.innerHTML = users.slice(0, 50).map((u, i) => {
+        let pic;
+        if(u.photoURL) {
+            pic = '<img src="' + u.photoURL + '" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);" onerror="this.outerHTML=\'<div style=\\\"width:48px;height:48px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:800;\\\">' + (u.name||'A').charAt(0).toUpperCase() + '</div>\'">';
+        } else {
+            pic = '<div style="width:48px;height:48px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:800;">' + (u.name||'A').charAt(0).toUpperCase() + '</div>';
+        }
+
+        let rankIcon = '#' + (i+1), rankStyle = "color:var(--text-sub);font-size:18px;font-weight:900;";
+        let cardBg = "var(--card)", borderStyle = "1px solid var(--border-color)";
+        let badgeHtml = '';
+        if(i === 0) { rankIcon = '🥇'; rankStyle = "font-size:28px;"; cardBg = "linear-gradient(to right, rgba(245,158,11,0.08), var(--card))"; borderStyle = "1px solid rgba(245,158,11,0.35)"; badgeHtml = '<div class="badge-master">👑 Master</div>'; }
+        else if(i === 1) { rankIcon = '🥈'; rankStyle = "font-size:26px;"; cardBg = "linear-gradient(to right, rgba(148,163,184,0.08), var(--card))"; badgeHtml = '<div class="badge-gold">🥈 Gold</div>'; }
+        else if(i === 2) { rankIcon = '🥉'; rankStyle = "font-size:24px;"; cardBg = "linear-gradient(to right, rgba(180,83,9,0.08), var(--card))"; badgeHtml = '<div class="badge-bronze">🥉 Bronze</div>'; }
+
+        const isMe = u.uid === window.appState.uid;
+        if(isMe) borderStyle = "2px solid var(--primary)";
+
+        return '<div style="display:flex;align-items:center;padding:16px 20px;background:' + cardBg + ';border:' + borderStyle + ';border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:0.2s;" onmouseover="this.style.transform=\'translateX(4px)\'" onmouseout="this.style.transform=\'translateX(0)\'">' +
+            (isMe ? '<div style="position:absolute;top:0;right:0;background:var(--primary);color:white;font-size:10px;font-weight:800;padding:4px 12px;border-bottom-left-radius:10px;letter-spacing:0.5px;">YOU</div>' : '') +
+            '<div style="font-weight:900;width:50px;text-align:center;margin-right:10px;' + rankStyle + '">' + rankIcon + '</div>' +
+            pic +
+            '<div style="flex:1;margin-left:16px;overflow:hidden;">' +
+            '<h4 style="margin:0;font-size:15px;color:var(--text-main);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (u.name||'Anonymous') + '</h4>' +
+            (u.examGoal ? '<p style="margin:3px 0 0;font-size:12px;color:var(--text-sub);font-weight:600;">🎯 ' + u.examGoal + '</p>' : '') +
+            badgeHtml + '</div>' +
+            '<div style="text-align:right;flex-shrink:0;">' +
+            '<div style="font-size:22px;font-weight:900;color:var(--warning);line-height:1;">' + u.points.toLocaleString() + '</div>' +
+            '<div style="font-size:11px;color:var(--text-sub);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">Points</div>' +
+            '</div></div>';
+    }).join('');
+}
+
+window.filterLeaderboard = (filter, btn) => {
+    document.querySelectorAll('.lb-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderLeaderboard(filter);
+};
+
+// ====== REVIEWS ======
+window.currentRating = 0;
+window.setRating = (n) => {
+    window.currentRating = n;
+    for(let i = 1; i <= 5; i++) {
+        document.getElementById('star-' + i).innerText = i <= n ? '⭐' : '☆';
+    }
+};
+window.submitReview = async () => {
+    const text = document.getElementById('review-text').value.trim();
+    if(!window.currentRating) return window.showToast("Rating do pehle!", "error");
+    if(!text) return window.showToast("Feedback likho!", "error");
+    if(!window.appState.uid) return;
+    await push(dbRef(db, 'reviews'), {
+        text: text, rating: window.currentRating,
+        authorName: window.appState.name, authorUid: window.appState.uid,
+        timestamp: Date.now()
+    });
+    document.getElementById('review-text').value = '';
+    window.setRating(0);
+    window.showToast("Review submit ho gayi! Shukriya 🙏");
+};
+
+function loadReviews() {
+    if(window.reviewsListener) { window.reviewsListener(); window.reviewsListener = null; }
+    window.reviewsListener = onValue(dbRef(db, 'reviews'), snap => {
+        const el = document.getElementById('reviews-list');
+        if(!el) return;
+        const data = snap.val();
+        if(!data) { el.innerHTML = '<div style="text-align:center;padding:30px;color:var(--text-sub);">Pehli review karo! 🌟</div>'; return; }
+        const reviews = Object.values(data).sort((a,b) => b.timestamp - a.timestamp).slice(0, 20);
+        el.innerHTML = reviews.map(r =>
+            '<div class="review-card">' +
+            '<div class="review-header">' +
+            '<div class="review-avatar">' + (r.authorName||'A').charAt(0).toUpperCase() + '</div>' +
+            '<div><div class="review-name">' + (r.authorName||'Anonymous') + '</div><div class="review-time">' + timeAgo(r.timestamp) + '</div></div>' +
+            '<div class="review-stars">' + '⭐'.repeat(r.rating) + '</div>' +
+            '</div>' +
+            '<div class="review-text">' + r.text + '</div>' +
+            '</div>'
+        ).join('');
+    });
+}
+
+function loadAdminReviews() {
+    onValue(dbRef(db, 'reviews'), snap => {
+        const el = document.getElementById('admin-reviews-list');
+        if(!el) return;
+        const data = snap.val();
+        if(!data) { el.innerHTML = '<p style="color:var(--text-sub);font-size:13px;text-align:center;padding:20px;">Koi reviews nahi abhi.</p>'; return; }
+        const reviews = Object.values(data).sort((a,b) => b.timestamp - a.timestamp);
+        const avg = (reviews.reduce((s,r) => s+r.rating, 0) / reviews.length).toFixed(1);
+        el.innerHTML = '<div style="background:rgba(245,158,11,0.1);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:14px;font-weight:700;color:var(--warning);">⭐ Avg Rating: ' + avg + '/5 (' + reviews.length + ' reviews)</div>' +
+            reviews.slice(0,8).map(r =>
+                '<div style="padding:12px 0;border-bottom:1px solid var(--border-color);">' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
+                '<div style="font-size:13px;font-weight:700;color:var(--text-main);">' + (r.authorName||'Anonymous') + '</div>' +
+                '<div style="font-size:13px;">' + '⭐'.repeat(r.rating) + '</div></div>' +
+                '<div style="font-size:13px;color:var(--text-sub);line-height:1.5;">' + r.text + '</div>' +
+                '</div>'
+            ).join('');
+    });
+}
+
+// ====== GOAL — Firebase se save karo (Google account) ======
+window.saveGoal = async () => {
+    const points = document.getElementById('goal-points-input').value;
+    const exam = document.getElementById('goal-exam-select').value;
+    const date = document.getElementById('goal-exam-date').value;
+    if(!exam) return window.showToast("Please select your exam!", "error");
+    if(!date) return window.showToast("Please select your exam date!", "error");
+    if(!window.appState.uid) return;
+
+    const goal = { points: parseInt(points) || 100, exam, date };
+    // FIREBASE mein save karo — kisi bhi device pe same rahega
+    await update(dbRef(db, 'users/' + window.appState.uid), { goal: goal });
+    // Leaderboard mein exam goal update karo
+    await update(dbRef(db, 'leaderboard/' + window.appState.uid), { examGoal: exam });
+
+    window.showToast("✅ Goal saved to your account! Kisi bhi device pe same rahega.", "success");
+    updateGoalDisplay();
+    scheduleNotifications();
+};
+
+async function updateGoalDisplay() {
+    if(!window.appState.uid) return;
+    const snap = await get(dbRef(db, 'users/' + window.appState.uid + '/goal'));
+    const goal = snap.val();
+    const goalDisplay = document.getElementById('goal-display');
+    if(!goal || !goalDisplay) return;
+
+    goalDisplay.style.display = 'block';
+    const examDate = new Date(goal.date);
+    const today = new Date();
+    const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+
+    // Today's points from Firebase
+    const todayKey = new Date().toISOString().split('T')[0];
+    const todaySnap = await get(dbRef(db, 'users/' + window.appState.uid + '/todayPoints/' + todayKey));
+    const todayPts = todaySnap.val() || 0;
+    const goalPts = goal.points || 100;
+    const pct = Math.min(100, Math.round((todayPts / goalPts) * 100));
+
+    document.getElementById('goal-exam-label').innerText = '📅 ' + goal.exam + ' Prep';
+    document.getElementById('goal-days-left').innerText = daysLeft > 0 ? daysLeft + ' days left — Keep going!' : daysLeft === 0 ? '🚨 Exam is today!' : 'Exam date passed';
+    document.getElementById('goal-days-left').style.color = daysLeft <= 7 ? 'var(--danger)' : daysLeft <= 30 ? 'var(--warning)' : 'var(--success)';
+    document.getElementById('goal-pts-label').innerText = todayPts + ' / ' + goalPts + ' Pts';
+    document.getElementById('goal-progress-fill').style.width = pct + '%';
+    document.getElementById('goal-pct-label').innerText = pct + '% of daily goal ' + (pct >= 100 ? '🎉 Goal Achieved!' : '');
+
+    // Update input fields if empty
+    const pointsInput = document.getElementById('goal-points-input');
+    const examSelect = document.getElementById('goal-exam-select');
+    const dateInput = document.getElementById('goal-exam-date');
+    if(!pointsInput.value) pointsInput.value = goal.points || '';
+    if(!examSelect.value) examSelect.value = goal.exam || '';
+    if(!dateInput.value) dateInput.value = goal.date || '';
+}
+
+// ====== NOTIFICATIONS ======
+window.toggleNotifications = async (enabled) => {
+    if(enabled) {
+        if(!('Notification' in window)) { window.showToast("Browser notifications not supported", "error"); document.getElementById('notif-toggle').checked = false; return; }
+        const perm = await Notification.requestPermission();
+        if(perm === 'granted') {
+            localStorage.setItem('notifEnabled', 'true');
+            scheduleNotifications();
+            const status = document.getElementById('notif-status');
+            status.innerHTML = '<i class="fas fa-check-circle" style="color:var(--success);"></i> Notifications enabled! Reminders every 5 hours.';
+            status.style.background = 'rgba(16,185,129,0.05)'; status.style.borderColor = 'rgba(16,185,129,0.2)'; status.style.color = 'var(--success)';
+            window.showToast("Notifications enabled! 🔔", "success");
+        } else { document.getElementById('notif-toggle').checked = false; localStorage.setItem('notifEnabled', 'false'); window.showToast("Permission denied.", "error"); }
+    } else {
+        localStorage.setItem('notifEnabled', 'false');
+        if(window.notifInterval) clearInterval(window.notifInterval);
+        const status = document.getElementById('notif-status');
+        status.innerHTML = '<i class="fas fa-info-circle"></i> Notifications off hain. Toggle karke enable karo.';
+        status.style.background = 'var(--bg)'; status.style.borderColor = 'var(--border-color)'; status.style.color = 'var(--text-sub)';
+    }
+    saveNotifPrefs();
+};
+
+async function scheduleNotifications() {
+    if(window.notifInterval) clearInterval(window.notifInterval);
+    if(localStorage.getItem('notifEnabled') !== 'true') return;
+    await sendMotivationNotif();
+    window.notifInterval = setInterval(async () => { await sendMotivationNotif(); }, 5 * 60 * 60 * 1000);
+}
+
+async function sendMotivationNotif() {
+    if(Notification.permission !== 'granted') return;
+    if(!window.appState.uid) return;
+    const snap = await get(dbRef(db, 'users/' + window.appState.uid + '/goal'));
+    const goal = snap.val();
+    const todayKey = new Date().toISOString().split('T')[0];
+    const todaySnap = await get(dbRef(db, 'users/' + window.appState.uid + '/todayPoints/' + todayKey));
+    const todayPts = todaySnap.val() || 0;
+    let title = '📚 EduNext Pro — Study Time!';
+    let body = 'Padhai karo! Aaj ka goal complete karo aur leaderboard pe chado! 🚀';
+    if(goal) {
+        const examDate = new Date(goal.date);
+        const daysLeft = Math.ceil((examDate - new Date()) / (1000 * 60 * 60 * 24));
+        const goalPts = goal.points || 100;
+        const pct = Math.round((todayPts / goalPts) * 100);
+        if(document.getElementById('exam-notif-toggle')?.checked && daysLeft > 0) title = '⏰ ' + goal.exam + ' — ' + daysLeft + ' days left!';
+        if(document.getElementById('goal-notif-toggle')?.checked) {
+            body = pct >= 100 ? '🎉 Aaj ka goal achieve! ' + todayPts + ' pts earned. Keep it up!' : 'Aaj ka goal: ' + todayPts + '/' + goalPts + ' Pts (' + pct + '%). Mehnat karo! 💪';
+        }
+    }
+    try { new Notification(title, { body, tag: 'edunext-reminder', renotify: true }); } catch(e) {}
+}
+
+function loadNotifPrefs() {
+    const enabled = localStorage.getItem('notifEnabled') === 'true';
+    const examNotif = localStorage.getItem('examNotif') === 'true';
+    const goalNotif = localStorage.getItem('goalNotif') === 'true';
+    const notifToggle = document.getElementById('notif-toggle');
+    const examToggle = document.getElementById('exam-notif-toggle');
+    const goalToggle = document.getElementById('goal-notif-toggle');
+    if(notifToggle) notifToggle.checked = enabled;
+    if(examToggle) examToggle.checked = examNotif;
+    if(goalToggle) goalToggle.checked = goalNotif;
+    if(enabled && Notification.permission === 'granted') {
+        scheduleNotifications();
+        const status = document.getElementById('notif-status');
+        if(status) { status.innerHTML = '<i class="fas fa-check-circle" style="color:var(--success);"></i> Notifications active! Every 5 hours.'; status.style.background = 'rgba(16,185,129,0.05)'; status.style.borderColor = 'rgba(16,185,129,0.2)'; status.style.color = 'var(--success)'; }
+    }
+}
+window.saveNotifPrefs = () => {
+    localStorage.setItem('examNotif', document.getElementById('exam-notif-toggle')?.checked ? 'true' : 'false');
+    localStorage.setItem('goalNotif', document.getElementById('goal-notif-toggle')?.checked ? 'true' : 'false');
+};
+
+// ====== ADMIN ======
 window.openFullPreview = () => { if (appState.activeChapter?.notes) window.open('https://drive.google.com/file/d/' + appState.activeChapter.notes + '/view', '_blank'); };
 window.downloadPDF = () => { if (appState.activeChapter?.notes) window.open('https://drive.google.com/uc?export=download&id=' + appState.activeChapter.notes, '_blank'); };
 window.openQuizModal = () => document.getElementById('modal-overlay').style.display = 'flex';
@@ -1321,9 +1831,8 @@ window.saveQuizModal = () => {
 window.renderQuizBuilder = () => {
     const con = document.getElementById('quiz-builder'); document.getElementById('q-count').innerText = window.currentQuizQuestions.length + ' Qs';
     if (!window.currentQuizQuestions.length) { con.innerHTML = '<p style="color:var(--text-sub);font-size:12px;text-align:center;margin:10px 0;font-style:italic;">Draft is empty.</p>'; return; }
-    con.innerHTML = window.currentQuizQuestions.map((item, i) => `<div style="font-size:13px;border-bottom:1px solid var(--border-color);padding:10px 0;color:var(--text-main);"><b style="color:var(--primary);">Q${i+1}:</b> ${item.q}<br><span style="color:var(--success);font-weight:700;font-size:11px;margin-top:4px;display:block;">Answer: Option ${item.correct}</span></div>`).join('');
+    con.innerHTML = window.currentQuizQuestions.map((item, i) => '<div style="font-size:13px;border-bottom:1px solid var(--border-color);padding:10px 0;color:var(--text-main);"><b style="color:var(--primary);">Q' + (i+1) + ':</b> ' + item.q + '<br><span style="color:var(--success);font-weight:700;font-size:11px;margin-top:4px;display:block;">Answer: Option ' + item.correct + '</span></div>').join('');
 };
-
 window.publishContent = () => {
     const c = document.getElementById('admin-class').value, s = document.getElementById('admin-subject').value, n = document.getElementById('admin-chapter').value, p = document.getElementById('admin-pdf').value;
     if (!n || !p) return window.showToast("Chapter Name and Drive ID are required!", "error");
@@ -1332,14 +1841,27 @@ window.publishContent = () => {
     else if (p.includes('id=')) cId = p.split('id=')[1].split('&')[0];
     push(dbRef(db, 'syllabus/' + c + '/' + s), {name:n, notes:cId, quizData:window.currentQuizQuestions.length > 0 ? window.currentQuizQuestions : null}).then(() => {
         window.showToast("Chapter Published Successfully!"); document.getElementById('admin-chapter').value = ''; document.getElementById('admin-pdf').value = '';
-        window.currentQuizQuestions = []; window.renderQuizBuilder();
-        window.loadAdminChapters();
+        window.currentQuizQuestions = []; window.renderQuizBuilder(); window.loadAdminChapters();
     });
 };
 
+// Auto-fetch YouTube title
+document.getElementById('admin-vid-url').addEventListener('blur', async (e) => {
+    const input = e.target.value.trim();
+    const vidId = extractYouTubeId(input);
+    if(vidId) {
+        try {
+            const oEmbedUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + vidId + '&format=json');
+            const response = await fetch(oEmbedUrl);
+            const data = await response.json();
+            const ytData = JSON.parse(data.contents);
+            if(ytData && ytData.title) { document.getElementById('admin-vid-title').value = ytData.title; window.showToast("Title auto-fetched!", "info"); }
+        } catch(err) {}
+    }
+});
+
 window.publishVideo = () => {
-    const c = document.getElementById('admin-class').value;
-    const s = document.getElementById('admin-subject').value;
+    const c = document.getElementById('admin-class').value, s = document.getElementById('admin-subject').value;
     const chKey = document.getElementById('admin-vid-chapter').value;
     const title = document.getElementById('admin-vid-title').value.trim();
     const urlInput = document.getElementById('admin-vid-url').value.trim();
@@ -1351,7 +1873,7 @@ window.publishVideo = () => {
     const videoId = extractYouTubeId(urlInput);
     if (!videoId) return window.showToast("Invalid YouTube link format!", "error");
     push(dbRef(db, 'syllabus/' + c + '/' + s + '/' + chKey + '/videos'), { title, videoId, type, part, addedAt: Date.now() }).then(() => {
-        window.showToast("Video Successfully Added to Chapter!");
+        window.showToast("Video Successfully Added!");
         document.getElementById('admin-vid-title').value = '';
         document.getElementById('admin-vid-url').value = '';
         document.getElementById('admin-vid-part').value = String(part + 1);
@@ -1362,7 +1884,7 @@ window.publishVideo = () => {
 window.updateVidTypeStyle = () => {
     document.querySelectorAll('.vid-type-radio').forEach(el => {
         el.classList.remove('sel-full','sel-oneshot','sel-mindmap');
-        if (el.querySelector('input').checked) el.classList.add('sel-' + el.querySelector('input').value);
+        if(el.querySelector('input').checked) el.classList.add('sel-' + el.querySelector('input').value);
     });
 };
 
@@ -1374,8 +1896,7 @@ window.loadAdminChapters = () => {
     chSel.innerHTML = '<option value="">-- First select class & subject above --</option>';
     if (window.activeAdminListener) window.activeAdminListener();
     window.activeAdminListener = onValue(dbRef(db, 'syllabus/' + cls + '/' + sub), s => {
-        ld.innerHTML = "";
-        chSel.innerHTML = '<option value="">-- Select Target Chapter --</option>';
+        ld.innerHTML = ""; chSel.innerHTML = '<option value="">-- Select Target Chapter --</option>';
         const d = s.val();
         if (!d) { ld.innerHTML = "<div style='padding:40px 20px;color:var(--text-sub);text-align:center;font-size:14px;'><i class='fas fa-folder-open' style='font-size:32px;margin-bottom:10px;display:block;'></i>Database is empty for this section.</div>"; return; }
         Object.entries(d).forEach(([k, ch]) => {
@@ -1383,400 +1904,38 @@ window.loadAdminChapters = () => {
             const vids = ch.videos ? Object.values(ch.videos) : [];
             const q = ch.quizData ? ch.quizData.length : 0;
             let vidHtml = '';
-            if (vids.length > 0) {
+            if(vids.length > 0) {
                 vidHtml = '<div style="margin-top:12px;display:grid;gap:8px;">';
                 const typeLabels = { full:'📘', oneshot:'⚡', mindmap:'🗺️' };
                 vids.forEach(v => {
                     const vid = v.videoId;
-                    vidHtml += `<div class="admin-vid-item">
-                        <img src="https://i.ytimg.com/vi/${vid}/mqdefault.jpg" alt="">
-                        <div class="avi-info" style="flex:1;overflow:hidden;">
-                            <div class="avi-title">${typeLabels[v.type]||'📘'} ${v.title||vid}</div>
-                            <div style="font-size:11px;color:var(--text-sub);font-family:monospace;">ID: ${vid} • Part: ${v.part||1}</div>
-                        </div>
-                        <button class="del-vid-btn" onclick="deleteVideo('${cls}','${sub}','${k}','${Object.keys(ch.videos||{}).find(key => (ch.videos||{})[key] === v) || ''}')"><i class="fas fa-trash"></i></button>
-                    </div>`;
+                    vidHtml += '<div class="admin-vid-item"><img src="https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg" alt=""><div style="flex:1;overflow:hidden;"><div class="avi-title">' + (typeLabels[v.type]||'📘') + ' ' + (v.title||vid) + '</div><div style="font-size:11px;color:var(--text-sub);font-family:monospace;">ID: ' + vid + ' • Part: ' + (v.part||1) + '</div></div>' +
+                        '<button class="del-vid-btn" onclick="deleteVideo(\'' + cls + '\',\'' + sub + '\',\'' + k + '\',\'' + (Object.keys(ch.videos||{}).find(key => (ch.videos||{})[key] === v) || '') + '\')"><i class="fas fa-trash"></i></button></div>';
                 });
                 vidHtml += '</div>';
             }
-            ld.innerHTML += `<div style="padding:20px;background:var(--bg);border:1px solid var(--border-color);border-radius:16px;margin-bottom:16px;box-shadow:var(--shadow-sm);">
-                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-                    <div>
-                        <strong style="color:var(--text-main);display:block;font-size:15px;margin-bottom:6px;">${ch.name}</strong>
-                        <div style="display:flex;gap:8px;align-items:center;">
-                            <span style="font-size:11px;font-weight:700;color:var(--text-main);background:var(--card);padding:4px 10px;border-radius:8px;border:1px solid var(--border-color);"><i class="fas fa-tasks" style="color:var(--primary);margin-right:4px;"></i> ${q} Qs</span>
-                            <span style="font-size:11px;font-weight:700;color:#2563eb;background:rgba(59,130,246,0.1);padding:4px 10px;border-radius:8px;border:1px solid rgba(59,130,246,0.2);"><i class="fas fa-video" style="margin-right:4px;"></i> ${vids.length} Videos</span>
-                            <a href="https://drive.google.com/file/d/${ch.notes}/view" target="_blank" style="font-size:11px;font-weight:700;color:var(--text-sub);text-decoration:none;padding:4px 10px;border-radius:8px;border:1px solid var(--border-color);background:var(--card);"><i class="fas fa-file-pdf"></i> PDF</a>
-                        </div>
-                    </div>
-                    <button onclick="deleteChapter('${k}')" style="background:rgba(239,68,68,0.1);color:var(--danger);border:1px solid rgba(239,68,68,0.2);padding:8px 14px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;transition:0.2s;" onmouseover="this.style.background='var(--danger)';this.style.color='white'" onmouseout="this.style.background='rgba(239,68,68,0.1)';this.style.color='var(--danger)'"><i class="fas fa-trash-alt"></i> Delete Chapter</button>
-                </div>
-                ${vidHtml}
-            </div>`;
+            ld.innerHTML += '<div style="padding:20px;background:var(--bg);border:1px solid var(--border-color);border-radius:16px;margin-bottom:16px;box-shadow:var(--shadow-sm);"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;"><div><strong style="color:var(--text-main);display:block;font-size:15px;margin-bottom:6px;">' + ch.name + '</strong><div style="display:flex;gap:8px;align-items:center;"><span style="font-size:11px;font-weight:700;color:var(--text-main);background:var(--card);padding:4px 10px;border-radius:8px;border:1px solid var(--border-color);"><i class="fas fa-tasks" style="color:var(--primary);margin-right:4px;"></i> ' + q + ' Qs</span><span style="font-size:11px;font-weight:700;color:#2563eb;background:rgba(59,130,246,0.1);padding:4px 10px;border-radius:8px;border:1px solid rgba(59,130,246,0.2);"><i class="fas fa-video" style="margin-right:4px;"></i> ' + vids.length + ' Videos</span><a href="https://drive.google.com/file/d/' + ch.notes + '/view" target="_blank" style="font-size:11px;font-weight:700;color:var(--text-sub);text-decoration:none;padding:4px 10px;border-radius:8px;border:1px solid var(--border-color);background:var(--card);"><i class="fas fa-file-pdf"></i> PDF</a></div></div>' +
+                '<button onclick="deleteChapter(\'' + k + '\')" style="background:rgba(239,68,68,0.1);color:var(--danger);border:1px solid rgba(239,68,68,0.2);padding:8px 14px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;transition:0.2s;" onmouseover="this.style.background=\'var(--danger)\';this.style.color=\'white\'" onmouseout="this.style.background=\'rgba(239,68,68,0.1)\';this.style.color=\'var(--danger)\'"><i class="fas fa-trash-alt"></i> Delete Chapter</button>' +
+                '</div>' + vidHtml + '</div>';
         });
     });
 };
 
 window.deleteChapter = k => {
-    if (confirm("Are you sure? This will delete the chapter, notes, quiz, and all attached videos permanently.")) {
+    if(confirm("Are you sure? This will permanently delete the chapter, notes, quiz, and all attached videos.")) {
         const c = document.getElementById('admin-class').value, s = document.getElementById('admin-subject').value;
         remove(dbRef(db, 'syllabus/' + c + '/' + s + '/' + k)).then(() => window.showToast("Chapter deleted successfully."));
     }
 };
 window.deleteVideo = (cls, sub, chKey, vidKey) => {
-    if (!vidKey) return window.showToast("Error: video key missing", "error");
-    if (confirm("Remove this video from the chapter?")) {
+    if(!vidKey) return window.showToast("Error: video key missing", "error");
+    if(confirm("Remove this video from the chapter?")) {
         remove(dbRef(db, 'syllabus/' + cls + '/' + sub + '/' + chKey + '/videos/' + vidKey)).then(() => window.showToast("Video removed."));
     }
 };
 
-// ============== LIVE CLASS ==============
-function initLiveListener() {
-    onValue(dbRef(db, 'liveClasses'), snapshot => {
-        const data = snapshot.val();
-        const dot = document.getElementById('nav-live-dot');
-        const liveContent = document.getElementById('live-content');
-        const liveListAdmin = document.getElementById('live-list-admin');
-        const statusAdmin = document.getElementById('live-status-admin');
-        if (data && Object.keys(data).length > 0) {
-            const classes = Object.entries(data).filter(([k, v]) => v && v.isLive && v.videoId);
-            if (classes.length > 0) {
-                if (dot) dot.style.display = 'inline-block';
-                if (liveContent) {
-                    liveContent.innerHTML = `<div style="margin-bottom:20px;padding:16px 24px;background:linear-gradient(135deg,var(--danger),#991b1b);border-radius:16px;color:white;display:flex;align-items:center;gap:15px;box-shadow:0 8px 20px rgba(239,68,68,0.3);">
-                        <i class="fas fa-circle" style="animation:pulse 1.5s infinite;font-size:12px;"></i>
-                        <strong style="font-size:16px;letter-spacing:0.5px;">${classes.length} Broadcast${classes.length > 1 ? 's' : ''} Live Now!</strong></div>
-                        <div style="display:flex;flex-direction:column;gap:30px;margin-top:20px;">
-                        ${classes.map(([k, v]) => `
-                            <div class="cinematic-live">
-                                <iframe src="https://www.youtube.com/embed/${v.videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <div class="cinematic-info">
-                                    <h2><i class="fab fa-youtube" style="color:var(--danger);"></i> ${v.title || 'Live Class'}</h2>
-                                    <div class="cinematic-badge">LIVE NOW</div>
-                                </div>
-                            </div>`).join('')}</div>`;
-                }
-                if (liveListAdmin) {
-                    liveListAdmin.innerHTML = classes.map(([k, v]) => `
-                        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border:1px solid rgba(239,68,68,0.2);border-radius:12px;margin-bottom:10px;">
-                            <div style="flex:1;overflow:hidden;">
-                                <div style="font-size:14px;font-weight:700;color:var(--text-main);">🔴 ${v.title || 'Live Broadcast'}</div>
-                                <div style="font-size:11px;color:var(--text-sub);font-family:monospace;margin-top:4px;">ID: ${v.videoId}</div>
-                            </div>
-                            <button onclick="endSingleLive('${k}')" style="background:var(--danger);color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:800;flex-shrink:0;">End Stream</button>
-                        </div>`).join('');
-                }
-                if (statusAdmin) {
-                    statusAdmin.style.background = 'rgba(239,68,68,0.1)'; statusAdmin.style.borderColor = 'rgba(239,68,68,0.2)'; statusAdmin.style.color = 'var(--danger)';
-                    statusAdmin.innerHTML = `<i class="fas fa-circle" style="animation:pulse 1s infinite;"></i> ${classes.length} class(es) actively broadcasting.`;
-                }
-                return;
-            }
-        }
-        if (dot) dot.style.display = 'none';
-        if (liveContent) liveContent.innerHTML = `<div style="text-align:center;padding:100px 30px;background:var(--card);border-radius:24px;border:1px solid var(--border-color);box-shadow:var(--shadow-sm);"><i class="fas fa-satellite-dish" style="font-size:64px;color:var(--border-color);margin-bottom:24px;display:block;"></i><h2 style="color:var(--text-main);font-size:24px;font-weight:800;margin:0 0 10px;">No Live Broadcasts</h2><p style="color:var(--text-sub);font-size:15px;margin:0;">Check back later or explore the syllabus.</p></div>`;
-        if (liveListAdmin) liveListAdmin.innerHTML = '';
-        if (statusAdmin) { statusAdmin.style.background = 'var(--bg)'; statusAdmin.style.borderColor = 'var(--border-color)'; statusAdmin.style.color = 'var(--text-sub)'; statusAdmin.innerHTML = '<i class="fas fa-info-circle"></i> System Offline. No active streams.'; }
-    });
-}
-
-window.goLive = async () => {
-    const title = document.getElementById('live-title-input').value.trim();
-    const input = document.getElementById('live-ytid-input').value.trim();
-    if (!title) return window.showToast("Please enter a broadcast title!", "error");
-    const vid = extractYouTubeId(input);
-    if (!vid) return window.showToast("Invalid YouTube link!", "error");
-    await push(dbRef(db, 'liveClasses'), { isLive: true, title: title, videoId: vid, startedAt: Date.now() });
-    window.showToast("Broadcast Started Successfully!", "success");
-    document.getElementById('live-title-input').value = '';
-    document.getElementById('live-ytid-input').value = '';
-};
-
-window.endSingleLive = async (key) => {
-    if (!confirm("End this live broadcast for all students?")) return;
-    await remove(dbRef(db, 'liveClasses/' + key));
-    window.showToast("Broadcast Ended.");
-};
-
-// ============== GLOBAL VIDEOS ==============
-window.openGlobalVideo = () => {
-    const input = document.getElementById('global-vid-input').value.trim();
-    const vid = extractYouTubeId(input);
-    if (!vid) return window.showToast("Please paste a valid YouTube URL", "error");
-    const recent = JSON.parse(localStorage.getItem('recentVids') || '[]');
-    const already = recent.findIndex(r => r.id === vid);
-    if (already > -1) recent.splice(already, 1);
-    recent.unshift({ id: vid, url: input, time: Date.now() });
-    if (recent.length > 12) recent.pop();
-    localStorage.setItem('recentVids', JSON.stringify(recent));
-    renderRecentVids();
-    openVideoPlayer(vid, "Custom YouTube Video");
-    document.getElementById('global-vid-input').value = '';
-};
-
-function renderRecentVids() {
-    const recent = JSON.parse(localStorage.getItem('recentVids') || '[]');
-    const sec = document.getElementById('recent-vids-section');
-    const list = document.getElementById('recent-vids-list');
-    if (!recent.length || !sec || !list) return;
-    sec.style.display = 'block';
-    list.innerHTML = recent.map(r => `
-        <div style="display:flex;align-items:center;gap:15px;padding:12px;background:var(--card);border-radius:14px;border:1px solid var(--border-color);cursor:pointer;transition:all 0.2s ease;box-shadow:var(--shadow-sm);" onclick="openVideoPlayer('${r.id}','Watch History Video')" onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'">
-            <div style="position:relative;width:100px;height:56px;flex-shrink:0;">
-                <img src="https://i.ytimg.com/vi/${r.id}/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" alt="">
-                <div style="position:absolute;inset:0;background:rgba(0,0,0,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-play" style="color:white;font-size:14px;"></i></div>
-            </div>
-            <div style="flex:1;overflow:hidden;">
-                <p style="margin:0;font-size:13px;font-weight:700;color:var(--text-main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.url}</p>
-                <p style="margin:4px 0 0;font-size:11px;color:var(--text-sub);font-family:monospace;">ID: ${r.id}</p>
-            </div>
-        </div>
-    `).join('');
-}
-document.addEventListener('DOMContentLoaded', renderRecentVids);
-
-// ============== FIX 5: LEADERBOARD - Real users from Firebase ==============
-window.loadLeaderboard = () => {
-    const lbContainer = document.getElementById('lb-list-container');
-    lbContainer.innerHTML = '<div class="spinner"></div>';
-    
-    // Get all users and sort by points
-    get(dbRef(db, 'users')).then(snap => {
-        let users = [];
-        snap.forEach(child => {
-            const val = child.val();
-            // Include user if they have a name AND points
-            if(val && (val.name || val.displayName) && typeof val.points === 'number') {
-                users.push({ 
-                    name: val.name || val.displayName || 'Anonymous',
-                    points: val.points || 0,
-                    photoURL: val.photoURL || null,
-                    uid: child.key
-                });
-            }
-        });
-        
-        // Sort highest first
-        users.sort((a, b) => b.points - a.points);
-        
-        if(users.length === 0) {
-            lbContainer.innerHTML = `<div style="text-align:center;padding:50px;background:var(--card);border-radius:20px;border:1px dashed var(--border-color);">
-                <i class="fas fa-medal" style="font-size:48px;color:var(--border-color);margin-bottom:15px;display:block;"></i>
-                <h3 style="color:var(--text-main);margin:0 0 5px;">No Ranks Yet</h3>
-                <p style="color:var(--text-sub);font-size:14px;margin:0;">Start watching videos and taking quizzes to be the first!</p>
-            </div>`;
-            return;
-        }
-        
-        lbContainer.innerHTML = users.slice(0, 50).map((u, i) => {
-            let pic = u.photoURL 
-                ? `<img src="${u.photoURL}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);" onerror="this.outerHTML='<div style=\'width:48px;height:48px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--text-sub);border:2px solid var(--border-color);font-size:20px;\'><i class=\'fas fa-user\'></i></div>'">`
-                : `<div style="width:48px;height:48px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--text-sub);border:2px solid var(--border-color);font-size:20px;"><i class="fas fa-user"></i></div>`;
-            
-            let rankIcon = `#${i+1}`, rankStyle = "color:var(--text-sub);font-size:18px;font-weight:900;";
-            let cardBg = "var(--card)", borderStyle = "1px solid var(--border-color)";
-            if(i === 0) { rankIcon = '🥇'; rankStyle = "font-size:28px;"; cardBg = "linear-gradient(to right, rgba(245,158,11,0.08), var(--card))"; borderStyle = "1px solid rgba(245,158,11,0.35)"; }
-            else if(i === 1) { rankIcon = '🥈'; rankStyle = "font-size:26px;"; cardBg = "linear-gradient(to right, rgba(148,163,184,0.08), var(--card))"; }
-            else if(i === 2) { rankIcon = '🥉'; rankStyle = "font-size:24px;"; cardBg = "linear-gradient(to right, rgba(180,83,9,0.08), var(--card))"; }
-            
-            const isMe = u.uid === window.appState.uid;
-            if(isMe) borderStyle = "2px solid var(--primary)";
-            
-            return `<div style="display:flex;align-items:center;padding:16px 20px;background:${cardBg};border:${borderStyle};border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:0.2s;" onmouseover="this.style.transform='translateX(4px)'" onmouseout="this.style.transform='translateX(0)'">
-                ${isMe ? '<div style="position:absolute;top:0;right:0;background:var(--primary);color:white;font-size:10px;font-weight:800;padding:4px 12px;border-bottom-left-radius:10px;letter-spacing:0.5px;">YOU</div>' : ''}
-                <div style="font-weight:900;width:50px;text-align:center;margin-right:10px;${rankStyle}">${rankIcon}</div>
-                ${pic}
-                <div style="flex:1;margin-left:16px;overflow:hidden;">
-                    <h4 style="margin:0;font-size:15px;color:var(--text-main);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${u.name}</h4>
-                    <p style="margin:4px 0 0;font-size:12px;color:var(--text-sub);font-weight:600;">🔥 Active Learner</p>
-                </div>
-                <div style="text-align:right;flex-shrink:0;">
-                    <div style="font-size:22px;font-weight:900;color:var(--warning);line-height:1;">${u.points.toLocaleString()}</div>
-                    <div style="font-size:11px;color:var(--text-sub);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">Points</div>
-                </div>
-            </div>`;
-        }).join('');
-    }).catch(err => {
-        lbContainer.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text-sub);">Failed to load leaderboard. Please try again.</div>`;
-        console.error(err);
-    });
-};
-
-// ============== FIX 4: SETTINGS - GOAL & NOTIFICATIONS ==============
-window.saveGoal = () => {
-    const points = document.getElementById('goal-points-input').value;
-    const exam = document.getElementById('goal-exam-select').value;
-    const date = document.getElementById('goal-exam-date').value;
-    if(!exam) return window.showToast("Please select your exam!", "error");
-    if(!date) return window.showToast("Please select your exam date!", "error");
-    const goal = { points: parseInt(points) || 100, exam, date };
-    localStorage.setItem('userGoal', JSON.stringify(goal));
-    window.showToast("Goal saved! Keep going! 🔥", "success");
-    updateGoalDisplay();
-    scheduleNotifications();
-};
-
-function loadGoalSettings() {
-    const goal = JSON.parse(localStorage.getItem('userGoal') || 'null');
-    if(!goal) return;
-    document.getElementById('goal-points-input').value = goal.points || 100;
-    document.getElementById('goal-exam-select').value = goal.exam || '';
-    document.getElementById('goal-exam-date').value = goal.date || '';
-    updateGoalDisplay();
-}
-
-function updateGoalDisplay() {
-    const goal = JSON.parse(localStorage.getItem('userGoal') || 'null');
-    const goalDisplay = document.getElementById('goal-display');
-    if(!goal || !goalDisplay) return;
-    goalDisplay.style.display = 'block';
-    
-    // Days left
-    const examDate = new Date(goal.date);
-    const today = new Date();
-    const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
-    
-    // Today's progress
-    const todayPts = parseInt(localStorage.getItem('todayPoints') || '0');
-    const goalPts = goal.points || 100;
-    const pct = Math.min(100, Math.round((todayPts / goalPts) * 100));
-    
-    document.getElementById('goal-exam-label').innerText = `📅 ${goal.exam} Prep`;
-    document.getElementById('goal-days-left').innerText = daysLeft > 0 ? `${daysLeft} days left — Keep going!` : daysLeft === 0 ? '🚨 Exam is today!' : 'Exam date passed';
-    document.getElementById('goal-days-left').style.color = daysLeft <= 7 ? 'var(--danger)' : daysLeft <= 30 ? 'var(--warning)' : 'var(--success)';
-    document.getElementById('goal-pts-label').innerText = `${todayPts} / ${goalPts} Pts`;
-    document.getElementById('goal-progress-fill').style.width = pct + '%';
-    document.getElementById('goal-pct-label').innerText = `${pct}% of daily goal ${pct >= 100 ? '🎉 Goal Achieved!' : ''}`;
-}
-
-// ============== NOTIFICATION SYSTEM ==============
-window.toggleNotifications = async (enabled) => {
-    if(enabled) {
-        if(!('Notification' in window)) {
-            window.showToast("Browser notifications not supported", "error");
-            document.getElementById('notif-toggle').checked = false;
-            return;
-        }
-        const perm = await Notification.requestPermission();
-        if(perm === 'granted') {
-            localStorage.setItem('notifEnabled', 'true');
-            scheduleNotifications();
-            document.getElementById('notif-status').innerHTML = '<i class="fas fa-check-circle" style="color:var(--success);"></i> Notifications enabled! Reminders will come every 5 hours.';
-            document.getElementById('notif-status').style.background = 'rgba(16,185,129,0.05)';
-            document.getElementById('notif-status').style.borderColor = 'rgba(16,185,129,0.2)';
-            document.getElementById('notif-status').style.color = 'var(--success)';
-            window.showToast("Notifications enabled! 🔔", "success");
-        } else {
-            document.getElementById('notif-toggle').checked = false;
-            localStorage.setItem('notifEnabled', 'false');
-            window.showToast("Permission denied. Enable in browser settings.", "error");
-        }
-    } else {
-        localStorage.setItem('notifEnabled', 'false');
-        if(window.notifInterval) clearInterval(window.notifInterval);
-        document.getElementById('notif-status').innerHTML = '<i class="fas fa-info-circle"></i> Notifications off hain. Toggle karke enable karo.';
-        document.getElementById('notif-status').style.background = 'var(--bg)';
-        document.getElementById('notif-status').style.borderColor = 'var(--border-color)';
-        document.getElementById('notif-status').style.color = 'var(--text-sub)';
-    }
-    saveNotifPrefs();
-};
-
-function scheduleNotifications() {
-    if(window.notifInterval) clearInterval(window.notifInterval);
-    if(localStorage.getItem('notifEnabled') !== 'true') return;
-    
-    // Send one now to confirm
-    sendMotivationNotif();
-    
-    // Then every 5 hours
-    window.notifInterval = setInterval(() => {
-        sendMotivationNotif();
-    }, 5 * 60 * 60 * 1000); // 5 hours
-}
-
-function sendMotivationNotif() {
-    if(Notification.permission !== 'granted') return;
-    const goal = JSON.parse(localStorage.getItem('userGoal') || 'null');
-    const todayPts = parseInt(localStorage.getItem('todayPoints') || '0');
-    
-    let title = '📚 EduNext Pro — Study Time!';
-    let body = 'Padhai karo! Aaj ka goal complete karo aur leaderboard pe chado! 🚀';
-    
-    if(goal) {
-        const examDate = new Date(goal.date);
-        const daysLeft = Math.ceil((examDate - new Date()) / (1000 * 60 * 60 * 24));
-        const goalPts = goal.points || 100;
-        const pct = Math.round((todayPts / goalPts) * 100);
-        
-        const examNotif = document.getElementById('exam-notif-toggle')?.checked;
-        const goalNotif = document.getElementById('goal-notif-toggle')?.checked;
-        
-        if(examNotif && daysLeft > 0) {
-            title = `⏰ ${goal.exam} — ${daysLeft} days left!`;
-        }
-        
-        if(goalNotif) {
-            if(pct >= 100) {
-                body = `🎉 Wah! Aaj ka goal achieve kar liya! ${todayPts} points earn kiye. Keep it up!`;
-            } else {
-                body = `Aaj ka goal: ${todayPts}/${goalPts} Pts (${pct}%). ${daysLeft > 0 ? `${daysLeft} din baaki hain ${goal.exam} ke liye!` : ''} Mehnat karo! 💪`;
-            }
-        }
-        
-        const motivations = [
-            'Sapne wo nahi jo sote waqt aate hain, sapne wo hain jo sone nahi dete! 🌟',
-            'Ek din ki mehnat kal ka future badal sakti hai! 💪',
-            'Champions tab nahi bante jab jeette hain, champions tab bante hain jab nahi chhorte! 🏆',
-            'Padhai boring nahi hai, results exciting hain! 🎯',
-            'Aaj ki mehnat, kal ka success! Keep going! 🚀'
-        ];
-        if(!goalNotif && !examNotif) {
-            body = motivations[Math.floor(Math.random() * motivations.length)];
-        }
-    }
-    
-    try {
-        new Notification(title, {
-            body,
-            icon: 'path/to/Logo2.png',
-            badge: 'path/to/Logo2.png',
-            tag: 'edunext-reminder',
-            renotify: true
-        });
-    } catch(e) { console.log('Notification error:', e); }
-}
-
-function loadNotifPrefs() {
-    const enabled = localStorage.getItem('notifEnabled') === 'true';
-    const examNotif = localStorage.getItem('examNotif') === 'true';
-    const goalNotif = localStorage.getItem('goalNotif') === 'true';
-    
-    const notifToggle = document.getElementById('notif-toggle');
-    const examToggle = document.getElementById('exam-notif-toggle');
-    const goalToggle = document.getElementById('goal-notif-toggle');
-    
-    if(notifToggle) notifToggle.checked = enabled;
-    if(examToggle) examToggle.checked = examNotif;
-    if(goalToggle) goalToggle.checked = goalNotif;
-    
-    if(enabled && Notification.permission === 'granted') {
-        scheduleNotifications();
-        const status = document.getElementById('notif-status');
-        if(status) {
-            status.innerHTML = '<i class="fas fa-check-circle" style="color:var(--success);"></i> Notifications active! Reminders set for every 5 hours.';
-            status.style.background = 'rgba(16,185,129,0.05)';
-            status.style.borderColor = 'rgba(16,185,129,0.2)';
-            status.style.color = 'var(--success)';
-        }
-    }
-}
-
-window.saveNotifPrefs = () => {
-    localStorage.setItem('examNotif', document.getElementById('exam-notif-toggle')?.checked ? 'true' : 'false');
-    localStorage.setItem('goalNotif', document.getElementById('goal-notif-toggle')?.checked ? 'true' : 'false');
-};
-
+// Store currentUser reference
+onAuthStateChanged(auth, user => { window.currentUser = user || null; });
 </script>
 </body>
 </html>
