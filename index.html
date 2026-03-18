@@ -57,7 +57,6 @@
         .profile-img img { width:100%; height:100%; object-fit:cover; }
         .profile-info h4 { margin:0; font-size:14px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; font-weight:700; color:white; max-width:140px; }
         .user-points-badge { margin-top:6px; font-size:11px; font-weight:800; background:linear-gradient(135deg,var(--warning),#d97706); color:white; padding:3px 10px; border-radius:12px; display:inline-flex; align-items:center; gap:4px; }
-        /* Profile Dropdown */
         .profile-dropdown { position:absolute; left:0; top:100%; width:100%; background:#1e293b; border-top:1px solid rgba(255,255,255,0.08); z-index:200; display:none; }
         .profile-dropdown.open { display:block; animation:fadeInDown 0.2s ease; }
         @keyframes fadeInDown { from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:translateY(0);} }
@@ -149,7 +148,8 @@
         .cinematic-info { padding:18px 24px; background:var(--card); display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--border-color); }
         .cinematic-info h2 { margin:0; font-size:18px; color:var(--text-main); display:flex; align-items:center; gap:12px; font-weight: 800; }
         .cinematic-badge { background:var(--danger); color:white; padding:6px 14px; border-radius:10px; font-size:12px; font-weight:800; animation:pulse 1.5s infinite; letter-spacing: 0.5px; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-        /* VIDEO PLAYER - Mobile fullscreen fixed */
+        
+        /* VIDEO PLAYER & SPEED CONTROLS */
         #video-player-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:5000; flex-direction:column; }
         .vp-topbar { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:rgba(0,0,0,0.8); border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
         .vp-close-btn { color:white; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition: 0.2s; flex-shrink: 0; }
@@ -161,17 +161,25 @@
         .vp-left-col { display:flex; flex-direction:column; flex:1; overflow:hidden; }
         .vp-video-area { flex:1; background:#000; min-height:0; }
         .vp-video-area iframe { width:100%; height:100%; border:none; display:block; }
+        
+        /* NEW: FULLSCREEN CHAT STYLES */
+        #video-player-modal:fullscreen .vp-main { flex-direction: row; }
+        #video-player-modal:fullscreen .vp-ai-panel { display: none !important; }
+        #video-player-modal:fullscreen .vp-left-col { flex: 1; }
+        #video-player-modal:-webkit-full-screen .vp-main { flex-direction: row; }
+        #video-player-modal:-webkit-full-screen .vp-ai-panel { display: none !important; }
+        
+        .speed-control { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 12px; margin-right: 12px; }
+        .speed-control input { cursor: pointer; accent-color: var(--primary); width: 70px; }
+        .speed-val { font-family: monospace; font-weight: 800; color: #fff; font-size: 13px; min-width: 32px; }
+        
+        .toggle-chat-fs { display: none; background: rgba(0,0,0,0.6); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; margin-right:12px; transition:0.2s; }
+        .toggle-chat-fs:hover { background: var(--primary); border-color:var(--primary); }
+        #video-player-modal:fullscreen .toggle-chat-fs { display: flex; align-items:center; gap:6px; }
+        #video-player-modal:-webkit-full-screen .toggle-chat-fs { display: flex; align-items:center; gap:6px; }
+
         /* VIDEO COMMENTS */
         .vp-comments-section { height:220px; background:#111827; display:flex; flex-direction:column; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0; }
-        .vp-comments-header { padding:10px 16px; font-size:12px; font-weight:700; color:#94a3b8; border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0; display:flex; align-items:center; gap:6px; }
-        .vp-comments-list { flex:1; overflow-y:auto; padding:10px 14px; display:flex; flex-direction:column; gap:8px; }
-        .vp-comment-item { padding:8px 12px; background:rgba(255,255,255,0.06); border-radius:10px; }
-        .vp-comment-author { font-size:11px; font-weight:800; color:#818cf8; margin-bottom:3px; }
-        .vp-comment-text { font-size:12px; color:#cbd5e1; line-height:1.5; }
-        .vp-comment-input-row { display:flex; gap:8px; padding:10px 14px; border-top:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.2); flex-shrink:0; }
-        .vp-comment-input { flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:white; padding:9px 14px; border-radius:20px; outline:none; font-family:inherit; font-size:13px; }
-        .vp-comment-input::placeholder { color:#475569; }
-        .vp-comment-send { background:var(--primary); color:white; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .vp-ai-panel { width:380px; background:#0f172a; display:none; flex-direction:column; border-left:1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
         .vp-ai-panel.open { display:flex; animation: slideLeft 0.3s ease; }
         @keyframes slideLeft { from { transform: translateX(100%); } to { transform: translateX(0); } }
@@ -327,10 +335,11 @@
             .vid-type-row { grid-template-columns:1fr; }
             /* Mobile video fullscreen */
             #video-player-modal { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:99999; }
-            .vp-topbar { padding:8px 12px; }
+            .vp-topbar { padding:8px 12px; flex-wrap:wrap; }
             .vp-title-bar { font-size:12px; margin:0 8px; }
             .vp-ai-btn { display:none; }
             .vp-points-display { font-size:10px; padding:5px 9px; margin-right:6px; }
+            .speed-control { margin-top:5px; margin-bottom:5px; width:100%; justify-content:center; }
             .vp-main { flex-direction:column; }
             .vp-left-col { flex:1; }
             .vp-video-area { height:220px; flex:none; }
@@ -374,7 +383,19 @@
     <div class="vp-topbar">
         <button class="vp-close-btn" onclick="closeVideoPlayer()"><i class="fas fa-arrow-left"></i></button>
         <p class="vp-title-bar" id="vp-title">Loading Video...</p>
+        
+        <div class="speed-control">
+            <i class="fas fa-tachometer-alt" style="color:#818cf8;"></i>
+            <input type="range" id="speed-slider" min="0.25" max="4" step="0.25" value="1" oninput="updateVideoSpeed(this.value)">
+            <span class="speed-val" id="speed-display">1x</span>
+        </div>
+
         <div class="vp-points-display" id="vp-points-display">+0 Pts</div>
+        
+        <button class="toggle-chat-fs" id="fs-chat-btn" onclick="toggleFsChat()">
+            <i class="fas fa-comments"></i> <span id="chat-btn-text">Hide Chat</span>
+        </button>
+
         <button class="vp-ai-btn" onclick="toggleVideoAI()"><i class="fas fa-sparkles"></i> Ask AI</button>
     </div>
     <div class="vp-main">
@@ -382,16 +403,21 @@
             <div class="vp-video-area">
                 <iframe id="vp-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
             </div>
-            <div class="vp-comments-section">
-                <div class="vp-comments-header"><i class="fas fa-comments"></i> Comments <span id="vp-comment-count" style="background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:8px;font-size:10px;margin-left:4px;">0</span></div>
-                <div class="vp-comments-list" id="vp-comments-list">
-                    <div style="color:#475569;font-size:12px;text-align:center;padding:20px;">Comments load ho rahe hain...</div>
+            
+            <div class="vp-comments-section" id="yt-chat-container" style="padding:0; display:flex; flex-direction:column; background:#111827;">
+                <div class="vp-comments-header" style="justify-content:space-between; padding:10px 15px; background:rgba(0,0,0,0.5);">
+                    <span style="display:flex; align-items:center; gap:8px;">
+                        <i class="fab fa-youtube" style="color:var(--danger); font-size:16px;"></i> 
+                        <span style="color:white; font-size:13px;">YouTube Comments / Chat</span>
+                    </span>
+                    <button onclick="window.open('https://www.youtube.com/watch?v=' + window.currentVideoId, '_blank')" style="background:var(--danger);color:white;border:none;border-radius:12px;padding:6px 12px;font-size:11px;cursor:pointer;font-weight:800;display:flex;align-items:center;gap:6px;transition:0.2s;">
+                        <i class="fas fa-external-link-alt"></i> Open in YouTube
+                    </button>
                 </div>
-                <div class="vp-comment-input-row">
-                    <input class="vp-comment-input" id="vp-comment-input" placeholder="Comment karo..." onkeydown="if(event.key==='Enter'){event.preventDefault();postVideoComment();}">
-                    <button class="vp-comment-send" onclick="postVideoComment()"><i class="fas fa-paper-plane"></i></button>
-                </div>
+                <div id="yt-chat-iframe-wrapper" style="flex:1; width:100%; height:100%; min-height:180px; background:#000;">
+                    </div>
             </div>
+
         </div>
         <div class="vp-ai-panel" id="vp-ai-panel">
             <div class="vp-ai-header"><h4><i class="fas fa-robot"></i> Video AI Tutor</h4><span>Gemini Flash</span></div>
@@ -862,7 +888,7 @@ const firebaseConfig = {
     appId:"1:721533662136:web:99325b87d8bef22cb5154d"
 };
 
-const GEMINI_API = "AIzaSyADGBMHyLHsXbthniJF1aJoYto-JjaIZew"; // Fallback/Default
+const GEMINI_API = "AIzaSyADGBMHyLHsXbthniJF1aJoYto-JjaIZew";
 const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API;
 const ADMIN_UID = "10CLrVVUtmcKZqHr1x2SUHbQGtn1";
 
@@ -890,7 +916,6 @@ window.videoCommentsListener = null;
 window.communityListener = null;
 window.reviewsListener = null;
 
-// ====== DARK MODE ======
 window.toggleDarkMode = () => {
     const isDark = document.body.classList.toggle('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -899,12 +924,10 @@ window.toggleDarkMode = () => {
 };
 if(localStorage.getItem('theme') === 'dark') { window.toggleDarkMode(); }
 
-// ====== GOOGLE TRANSLATE ======
 window.googleTranslateElementInit = () => {
     new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'hi,en,bn,te,mr,ta,gu,kn,ml,pa', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
 };
 
-// ====== HELPERS ======
 window.showToast = (msg, type = 'success') => {
     const c = document.getElementById('toast-container');
     const t = document.createElement('div');
@@ -945,7 +968,6 @@ function getAvatarColor(name) {
     return avatarColors[h % avatarColors.length];
 }
 
-// ====== POINTS — Firebase se sync ======
 window.addPoints = async (pts) => {
     if(!window.appState.uid) return;
     const newTotal = window.appState.points + pts;
@@ -967,7 +989,6 @@ window.addPoints = async (pts) => {
     updateGoalDisplay();
 };
 
-// ====== PROFILE DROPDOWN ======
 window.toggleProfileDropdown = (e) => {
     e.stopPropagation();
     const dd = document.getElementById('profile-dropdown');
@@ -987,7 +1008,6 @@ window.viewProfile = () => {
     window.showToast('👤 ' + u.name + ' | ⭐ ' + u.points + ' pts', 'info');
 };
 
-// ====== AUTH ======
 window.toggleSidebar = () => document.getElementById('sidebar').classList.toggle('open');
 document.getElementById('google-login').onclick = () => signInWithPopup(auth, provider).catch(err => window.showToast(err.message, 'error'));
 window.handleLogout = () => signOut(auth).then(() => location.reload());
@@ -1009,7 +1029,7 @@ onAuthStateChanged(auth, async user => {
         const userData = userSnap.val() || {};
 
         window.appState.points = userData.points || 0;
-        window.appState.userApiKey = userData.apiKey || null; // <--- LOAD API KEY HERE
+        window.appState.userApiKey = userData.apiKey || null;
         document.getElementById('sidebar-points-display').innerHTML = '<i class="fas fa-star"></i> ' + window.appState.points + ' Pts';
 
         const setProfilePic = (src) => {
@@ -1090,7 +1110,6 @@ window.uploadProfilePic = async e => {
     reader.readAsDataURL(file);
 };
 
-// ====== NAVIGATION ======
 window.navigateSidebar = tab => {
     if (window.innerWidth <= 768) window.toggleSidebar();
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
@@ -1105,7 +1124,6 @@ window.navigateSidebar = tab => {
     if(tab === 'videos') renderRecentVids();
 };
 
-// ====== CLASSES / SUBJECTS ======
 window.selectClass = val => {
     appState.class = val;
     document.getElementById('view-class').classList.remove('active');
@@ -1231,15 +1249,49 @@ window.loadChapterVideos = () => {
     }).catch(() => { wrap.innerHTML = '<div class="no-videos-msg"><i class="fas fa-exclamation-triangle"></i>Failed to load videos.</div>'; });
 };
 
-// ====== VIDEO PLAYER ======
+// ====== NEW: VIDEO SPEED ENGINE (UP TO 4X) ======
+window.updateVideoSpeed = (val) => {
+    document.getElementById('speed-display').innerText = val + 'x';
+    const iframe = document.getElementById('vp-iframe');
+    
+    iframe.contentWindow.postMessage(JSON.stringify({
+        "event": "command",
+        "func": "setPlaybackRate",
+        "args": [parseFloat(val), true]
+    }), "*");
+};
+
+// ====== NEW: FULLSCREEN CHAT TOGGLE ======
+window.toggleFsChat = () => {
+    const chatSec = document.getElementById('yt-chat-container');
+    const btnText = document.getElementById('chat-btn-text');
+    
+    if (chatSec.style.display === 'none') {
+        chatSec.style.display = 'flex';
+        chatSec.style.width = '350px';
+        btnText.innerText = 'Hide Chat';
+    } else {
+        chatSec.style.display = 'none';
+        btnText.innerText = 'Show Chat';
+    }
+};
+
+// ====== VIDEO PLAYER (UPDATED FOR YOUTUBE CHAT & SPEED) ======
 window.openVideoPlayer = (videoId, title, vidKey) => {
     vidKey = vidKey || null;
     window.currentVideoId = videoId; window.currentVideoTitle = title; window.videoAIChatHistory = [];
     document.getElementById('vp-title').innerText = title;
-    document.getElementById('vp-iframe').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=0';
+    
+    // enablejsapi=1 is required for Speed Control
+    document.getElementById('vp-iframe').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&enablejsapi=1&modestbranding=1&showinfo=0&playsinline=0';
+    
     document.getElementById('video-player-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
     document.getElementById('vp-ai-messages').innerHTML = '<div class="vp-msg ai"><strong><i class="fas fa-sparkles"></i> AI Ready!</strong><br><br>I\'m here to help with <em>"' + title + '"</em>. Use quick actions or ask your doubt!</div>';
+
+    // Reset Speed
+    document.getElementById('speed-slider').value = 1;
+    document.getElementById('speed-display').innerText = '1x';
 
     if(window.innerWidth <= 768) {
         const modal = document.getElementById('video-player-modal');
@@ -1262,53 +1314,34 @@ window.openVideoPlayer = (videoId, title, vidKey) => {
         }
     }, 1000);
 
-    loadVideoComments(videoId);
+    // Call Original YouTube Live Chat
+    loadYouTubeLiveChat(videoId);
 };
 
 window.closeVideoPlayer = () => {
     document.getElementById('video-player-modal').style.display = 'none';
     document.getElementById('vp-iframe').src = '';
+    document.getElementById('yt-chat-iframe-wrapper').innerHTML = ''; // Clear chat
     document.body.style.overflow = '';
     document.getElementById('vp-ai-panel').classList.remove('open');
     if(window.watchTimer) clearInterval(window.watchTimer);
     if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
-    if(window.videoCommentsListener) { window.videoCommentsListener(); window.videoCommentsListener = null; }
     if(document.getElementById('view-study').classList.contains('active-grid')) openStudy(appState.subject);
 };
 document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeVideoPlayer(); });
 
-// ====== VIDEO COMMENTS ======
-function loadVideoComments(videoId) {
-    const list = document.getElementById('vp-comments-list');
-    const countEl = document.getElementById('vp-comment-count');
-    list.innerHTML = '<div style="color:#475569;font-size:12px;text-align:center;padding:15px;">Loading...</div>';
-    if(window.videoCommentsListener) { window.videoCommentsListener(); window.videoCommentsListener = null; }
-    window.videoCommentsListener = onValue(dbRef(db, 'videoComments/' + videoId), snap => {
-        const data = snap.val();
-        if(!data) { list.innerHTML = '<div style="color:#475569;font-size:12px;text-align:center;padding:15px;">Pehla comment karo! 💬</div>'; countEl.innerText='0'; return; }
-        const comments = Object.values(data).sort((a,b) => b.timestamp - a.timestamp);
-        countEl.innerText = comments.length;
-        list.innerHTML = comments.slice(0,30).map(c =>
-            '<div class="vp-comment-item">' +
-            '<div class="vp-comment-author">' + (c.authorName || 'Anonymous') + ' <span style="color:#475569;font-weight:400;font-size:10px;">' + timeAgo(c.timestamp) + '</span></div>' +
-            '<div class="vp-comment-text">' + c.text + '</div>' +
-            '</div>'
-        ).join('');
-    });
+// ====== ORIGINAL YOUTUBE CHAT ======
+function loadYouTubeLiveChat(videoId) {
+    const chatWrapper = document.getElementById('yt-chat-iframe-wrapper');
+    const domain = window.location.hostname || "localhost";
+    
+    if(window.location.protocol === 'file:') {
+        chatWrapper.innerHTML = '<div style="color:#ef4444;text-align:center;padding:30px;font-size:13px;font-weight:bold;"><i class="fas fa-exclamation-triangle" style="font-size:24px;margin-bottom:10px;display:block;"></i>YouTube Live Chat needs a server (http://localhost or Live Domain). It will not work on file:///. Use Open App button above.</div>';
+    } else {
+        chatWrapper.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/live_chat?v=' + videoId + '&embed_domain=' + domain + '&dark_theme=1" frameborder="0"></iframe>';
+    }
 }
-window.postVideoComment = async () => {
-    const input = document.getElementById('vp-comment-input');
-    const text = input.value.trim();
-    if(!text || !window.currentUser) return;
-    if(!window.currentUser) return window.showToast('Login required','error');
-    input.value = '';
-    await push(dbRef(db, 'videoComments/' + window.currentVideoId), {
-        text: text,
-        authorName: window.appState.name,
-        authorUid: window.appState.uid,
-        timestamp: Date.now()
-    });
-};
+
 
 // ====== ADVANCED AI TUTOR WITH AUTOMATION ======
 
@@ -1320,14 +1353,12 @@ window.sendVideoAI = async (pendingMsg = null) => {
     const msg = pendingMsg || input.value.trim(); 
     if (!msg) return; 
     
-    // 1. Check karo agar student ke paas API key nahi hai
     if (!window.appState.userApiKey) {
-        window.showAIActivationModal(msg); // Message ko modal mein bhej do taaki baad mein auto-send ho sake
+        window.showAIActivationModal(msg); 
         return;
     }
 
-    // 2. Agar key hai, toh normal process shuru karo
-    if (!pendingMsg) input.value = ''; // Input box khali karo
+    if (!pendingMsg) input.value = ''; 
     
     const md = document.getElementById('vp-ai-messages');
     md.innerHTML += '<div class="vp-msg user">' + msg + '</div>';
@@ -1341,8 +1372,7 @@ window.sendVideoAI = async (pendingMsg = null) => {
         const ctx = `Tum ek expert teacher ho. Student abhi "${window.currentVideoTitle}" video dekh raha hai. Uska sawal hai: "${msg}". Chota aur simple jawab do Hindi-English mix mein.`;
         const body = { contents: [{ role: "user", parts: [{ text: ctx }] }, ...window.videoAIChatHistory], generationConfig: { maxOutputTokens: 400, temperature: 0.7 } };
         
-        // Student ki personal key use kar rahe hain
-        const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + window.appState.userApiKey;
+        const url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=" + window.appState.userApiKey;
 
         const res = await fetch(url, {
             method: 'POST',
@@ -1364,7 +1394,7 @@ window.sendVideoAI = async (pendingMsg = null) => {
         document.getElementById(tid)?.remove();
         if (e.message.includes("API_KEY_INVALID")) {
             md.innerHTML += '<div class="vp-msg ai">❌ Error: Aapki API Key galat ya expire ho chuki hai. Page refresh karein ya nayi key daalein.</div>';
-            window.appState.userApiKey = null; // Purani kharab key hata do
+            window.appState.userApiKey = null; 
         } else {
             md.innerHTML += '<div class="vp-msg ai">❌ Error: AI respond nahi kar raha. ' + e.message + '</div>';
         }
@@ -1375,7 +1405,6 @@ window.sendVideoAI = async (pendingMsg = null) => {
 // ====== POPUP & AUTO-ACTIVATION WIZARD ======
 
 window.showAIActivationModal = (pendingMsg) => {
-    // Escaping quotes just in case
     const safeMsg = pendingMsg ? pendingMsg.replace(/'/g, "\\'") : '';
     const html = `
         <div id="ai-modal" style="position:fixed; inset:0; background:rgba(15,23,42,0.85); z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(8px);">
@@ -1416,20 +1445,14 @@ window.activateAndSaveKey = async (pendingMsg) => {
     btn.disabled = true;
 
     try {
-        // Firebase mein hamesha ke liye save
         await update(dbRef(db, 'users/' + window.appState.uid), { apiKey: key });
-        
-        // App state update kardo
         window.appState.userApiKey = key;
-        
-        // Modal hata do
         document.getElementById('ai-modal').remove();
         window.showToast("AI Tutor Activated Successfully! 🎉", "success");
 
-        // AUTOMATION MAGIC: Student ne jo doubt type kiya tha, usko turant process karo
         if (pendingMsg) {
-            document.getElementById('vp-ai-input').value = ''; // Khali karo
-            window.sendVideoAI(pendingMsg); // Auto-send doubt
+            document.getElementById('vp-ai-input').value = ''; 
+            window.sendVideoAI(pendingMsg); 
         }
     } catch (err) {
         window.showToast("Error saving key: " + err.message, "error");
@@ -1498,7 +1521,7 @@ function renderRecentVids() {
 }
 document.addEventListener('DOMContentLoaded', renderRecentVids);
 
-// ====== LIVE CLASS — FIXED ======
+// ====== LIVE CLASS (UPDATED FOR YOUTUBE CHAT SIDE-BY-SIDE) ======
 function initLiveListener() {
     onValue(dbRef(db, 'liveClasses'), snapshot => {
         const data = snapshot.val();
@@ -1515,14 +1538,23 @@ function initLiveListener() {
                     liveContent.innerHTML =
                         '<div style="margin-bottom:20px;padding:16px 24px;background:linear-gradient(135deg,var(--danger),#991b1b);border-radius:16px;color:white;display:flex;align-items:center;gap:15px;box-shadow:0 8px 20px rgba(239,68,68,0.3);">' +
                         '<i class="fas fa-circle" style="animation:pulse 1.5s infinite;font-size:12px;"></i>' +
-                        '<strong style="font-size:16px;letter-spacing:0.5px;">' + classes.length + ' Broadcast' + (classes.length > 1 ? 's' : '') + ' Live Now!</strong></div>' +
+                        '<strong style="font-size:16px;letter-spacing:0.5px;">' + classes.length + ' Broadcast Live Now!</strong></div>' +
                         '<div style="display:flex;flex-direction:column;gap:30px;margin-top:20px;">' +
-                        classes.map(([k,v]) =>
-                            '<div class="cinematic-live">' +
-                            '<iframe src="https://www.youtube.com/embed/' + v.videoId + '?rel=0&modestbranding=1&showinfo=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
-                            '<div class="cinematic-info"><h2><i class="fab fa-youtube" style="color:var(--danger);"></i> ' + (v.title || 'Live Class') + '</h2><div class="cinematic-badge">LIVE NOW</div></div>' +
-                            '</div>'
-                        ).join('') + '</div>';
+                        classes.map(([k,v]) => {
+                            const domain = window.location.hostname || "localhost";
+                            return '<div class="cinematic-live" style="display:flex; flex-wrap:wrap; background:#0f172a; border-radius:16px; overflow:hidden;">' +
+                                '<div style="flex:2.5; min-width:320px; display:flex; flex-direction:column;">' +
+                                    '<iframe style="width:100%; aspect-ratio:16/9; border:none;" src="https://www.youtube.com/embed/' + v.videoId + '?autoplay=1&rel=0&modestbranding=1&showinfo=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+                                    '<div class="cinematic-info" style="border-top:1px solid rgba(255,255,255,0.05);">' +
+                                        '<h2><i class="fab fa-youtube" style="color:var(--danger);"></i> ' + (v.title || 'Live Class') + '</h2>' +
+                                        '<div class="cinematic-badge">LIVE NOW</div>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div style="flex:1; min-width:300px; min-height:400px; border-left:1px solid rgba(255,255,255,0.1); background:#000;">' +
+                                    '<iframe width="100%" height="100%" src="https://www.youtube.com/live_chat?v=' + v.videoId + '&embed_domain=' + domain + '&dark_theme=1" frameborder="0"></iframe>' +
+                                '</div>' +
+                            '</div>';
+                        }).join('') + '</div>';
                 }
                 if(liveListAdmin) {
                     liveListAdmin.innerHTML = classes.map(([k,v]) =>
@@ -1931,7 +1963,6 @@ window.publishContent = () => {
     });
 };
 
-// Auto-fetch YouTube title
 document.getElementById('admin-vid-url').addEventListener('blur', async (e) => {
     const input = e.target.value.trim();
     const vidId = extractYouTubeId(input);
@@ -2020,7 +2051,6 @@ window.deleteVideo = (cls, sub, chKey, vidKey) => {
     }
 };
 
-// Store currentUser reference
 onAuthStateChanged(auth, user => { window.currentUser = user || null; });
 </script>
 </body>
