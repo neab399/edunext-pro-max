@@ -143,6 +143,11 @@
         .btn-save:hover { background: #4338ca; transform: translateY(-1px); }
         .spinner { border:3px solid rgba(0,0,0,0.1); width:28px; height:28px; border-radius:50%; border-left-color:var(--primary); animation:spin 1s linear infinite; margin:30px auto; }
         @keyframes spin { to{transform:rotate(360deg);} }
+        .cinematic-live { border-radius:20px; overflow:hidden; background:#0f172a; margin-bottom:30px; box-shadow:0 20px 40px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); }
+        .cinematic-live iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
+        .cinematic-info { padding:18px 24px; background:var(--card); display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--border-color); }
+        .cinematic-info h2 { margin:0; font-size:18px; color:var(--text-main); display:flex; align-items:center; gap:12px; font-weight: 800; }
+        .cinematic-badge { background:var(--danger); color:white; padding:6px 14px; border-radius:10px; font-size:12px; font-weight:800; animation:pulse 1.5s infinite; letter-spacing: 0.5px; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
         
         /* VIDEO PLAYER & SPEED CONTROLS */
         #video-player-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:5000; flex-direction:column; }
@@ -153,9 +158,16 @@
         .vp-points-display { background:linear-gradient(135deg,var(--warning),#d97706); color:white; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:800; margin-right:12px; display:flex; align-items:center; gap:6px; flex-shrink: 0; }
         .vp-ai-btn { background:linear-gradient(135deg,var(--primary),#818cf8); color:white; border:none; padding:9px 18px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:800; display:flex; align-items:center; gap:8px; transition: 0.2s; flex-shrink: 0; }
         .vp-main { display:flex; flex:1; overflow:hidden; min-height: 0; }
-        .vp-left-col { display:flex; flex-direction:column; flex:1; overflow:hidden; position:relative; }
-        .vp-video-area { flex:1; background:#000; min-height:0; position:relative; }
+        .vp-left-col { display:flex; flex-direction:column; flex:1; overflow:hidden; }
+        .vp-video-area { flex:1; background:#000; min-height:0; }
         .vp-video-area iframe { width:100%; height:100%; border:none; display:block; }
+        
+        /* FULLSCREEN CHAT STYLES */
+        #video-player-modal:fullscreen .vp-main { flex-direction: row; }
+        #video-player-modal:fullscreen .vp-ai-panel { display: none !important; }
+        #video-player-modal:fullscreen .vp-left-col { flex: 1; }
+        #video-player-modal:-webkit-full-screen .vp-main { flex-direction: row; }
+        #video-player-modal:-webkit-full-screen .vp-ai-panel { display: none !important; }
         
         .speed-control { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 12px; margin-right: 12px; }
         .speed-control input { cursor: pointer; accent-color: var(--primary); width: 70px; }
@@ -163,11 +175,11 @@
         
         .toggle-chat-fs { display: none; background: rgba(0,0,0,0.6); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; margin-right:12px; transition:0.2s; }
         .toggle-chat-fs:hover { background: var(--primary); border-color:var(--primary); }
+        #video-player-modal:fullscreen .toggle-chat-fs { display: flex; align-items:center; gap:6px; }
+        #video-player-modal:-webkit-full-screen .toggle-chat-fs { display: flex; align-items:center; gap:6px; }
 
-        /* VIDEO COMMENTS / LIVE CHAT */
-        .vp-comments-section { height:350px; background:#0d1117; display:flex; flex-direction:column; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0; }
-        
-        /* AI PANEL */
+        /* VIDEO COMMENTS */
+        .vp-comments-section { height:220px; background:#111827; display:flex; flex-direction:column; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0; }
         .vp-ai-panel { width:380px; background:#0f172a; display:none; flex-direction:column; border-left:1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
         .vp-ai-panel.open { display:flex; animation: slideLeft 0.3s ease; }
         @keyframes slideLeft { from { transform: translateX(100%); } to { transform: translateX(0); } }
@@ -189,7 +201,7 @@
         .vp-ai-send { background:var(--primary); color:white; border:none; width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition: 0.2s; flex-shrink: 0; }
         .vp-ai-send:hover { background: #6366f1; transform: scale(1.05); }
         
-        /* CHAPTER VIDEOS & LIVE CLASSES THUMBNAILS */
+        /* CHAPTER VIDEOS */
         .chapter-videos-wrap { padding:24px; overflow-y:auto; background:var(--bg); }
         .vid-type-section { margin-bottom:35px; }
         .vid-type-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
@@ -467,10 +479,19 @@
         </div>
         <h1>EduNext <span>Pro</span></h1>
         <p style="color:var(--text-sub);font-size:14px;margin-top:0px;margin-bottom:0;font-weight:500;">Digital Learning Redefined</p>
+        
         <button id="google-login" class="btn-google">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" width="20"> Continue with Google
         </button>
-        <p style="font-size:11px;color:var(--text-sub);margin-top:20px;font-weight:600;"><i class="fas fa-shield-alt" style="color:var(--success);"></i> 256-bit Secure Login</p>
+        
+        <p style="font-size:11px;color:var(--text-sub);margin-top:20px;font-weight:600;">
+            <i class="fas fa-shield-alt" style="color:var(--success);"></i> 256-bit Secure Login
+        </p>
+
+        <p style="font-size:11px; color:var(--text-sub); margin-top:15px; line-height:1.4;">
+            By continuing, you agree to our <br>
+            <a href="/privacy.html" target="_blank" style="color:var(--primary); text-decoration:none; font-weight:700;">Privacy Policy</a>
+        </p>
     </div>
 </div>
 
@@ -860,8 +881,6 @@
                         </div>
                         <button class="admin-btn" onclick="publishVideo()"><i class="fas fa-plus-circle"></i> Add Video</button>
                     </div>
-                </div>
-                <div>
                     <div class="admin-live-section" style="border-color:var(--primary); padding:25px; margin-bottom:25px;">
                         <h3 style="margin:0 0 15px;font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;font-weight:800;">
                             <i class="fas fa-users"></i> Registered Users (<span id="admin-total-users">0</span>)
@@ -885,6 +904,8 @@
                         <div class="live-list-admin" id="live-list-admin"></div>
                         <div id="live-status-admin" style="padding:14px 16px;border-radius:10px;font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--border-color);color:var(--text-sub);display:flex;align-items:center;gap:8px;"><i class="fas fa-info-circle"></i> Offline. No active streams.</div>
                     </div>
+                </div>
+                <div>
                     <div class="box" style="padding:0; border:1px solid var(--border-color); background:var(--card);">
                         <div style="padding:25px 25px 15px; border-bottom:1px solid var(--border-color);">
                             <h3 style="margin:0 0 5px;font-size:18px;color:var(--text-main);display:flex;align-items:center;gap:10px;font-weight:800;"><i class="fas fa-database" style="color:var(--primary);"></i> Content Database</h3>
