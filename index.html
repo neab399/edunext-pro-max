@@ -162,7 +162,6 @@
         .vp-video-area { flex:1; background:#000; min-height:0; }
         .vp-video-area iframe { width:100%; height:100%; border:none; display:block; }
         
-        /* NEW: FULLSCREEN CHAT STYLES */
         #video-player-modal:fullscreen .vp-main { flex-direction: row; }
         #video-player-modal:fullscreen .vp-ai-panel { display: none !important; }
         #video-player-modal:fullscreen .vp-left-col { flex: 1; }
@@ -200,6 +199,7 @@
         .vp-ai-input::placeholder { color:#64748b; }
         .vp-ai-send { background:var(--primary); color:white; border:none; width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition: 0.2s; flex-shrink: 0; }
         .vp-ai-send:hover { background: #6366f1; transform: scale(1.05); }
+        
         /* CHAPTER VIDEOS */
         .chapter-videos-wrap { padding:24px; overflow-y:auto; background:var(--bg); }
         .vid-type-section { margin-bottom:35px; }
@@ -246,6 +246,7 @@
         .admin-vid-item .avi-title { font-size:13px; font-weight:700; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom: 4px; }
         .del-vid-btn { background:rgba(239,68,68,0.1); color:var(--danger); border:1px solid rgba(239,68,68,0.2); padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; flex-shrink:0; transition:all 0.2s ease; display: flex; align-items: center; gap: 6px; }
         .del-vid-btn:hover { background:var(--danger); color:white; border-color: var(--danger); }
+        
         /* SETTINGS */
         .settings-section-card { background:var(--card); border:1px solid var(--border-color); border-radius:20px; padding:30px; margin-bottom:20px; box-shadow:var(--shadow-sm); max-width:600px; }
         .settings-section-card h3 { margin:0 0 20px; font-size:16px; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:10px; border-bottom:2px solid var(--border-color); padding-bottom:12px; }
@@ -265,6 +266,7 @@
         input:checked + .toggle-slider:before { transform:translateX(22px); }
         .goal-progress-bar { width:100%; height:10px; background:var(--border-color); border-radius:10px; overflow:hidden; margin-top:8px; }
         .goal-progress-fill { height:100%; background:linear-gradient(90deg,var(--primary),#818cf8); border-radius:10px; transition:width 0.8s ease; }
+        
         /* COMMUNITY */
         .community-compose { background:var(--card); border:1px solid var(--border-color); border-radius:16px; padding:20px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
         .community-compose textarea { background:var(--bg); color:var(--text-main); width:100%; padding:14px; border:1px solid var(--border-color); border-radius:12px; outline:none; font-family:inherit; font-size:14px; resize:none; height:80px; transition:0.2s; }
@@ -289,6 +291,7 @@
         .reply-input { flex:1; background:var(--bg); color:var(--text-main); border:1px solid var(--border-color); border-radius:20px; padding:9px 16px; outline:none; font-family:inherit; font-size:13px; transition:0.2s; }
         .reply-input:focus { border-color:var(--primary); }
         .reply-send-btn { background:var(--primary); color:white; border:none; width:34px; height:34px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+        
         /* REVIEWS */
         .review-compose { background:var(--card); border:1px solid var(--border-color); border-radius:16px; padding:24px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
         .review-compose h3 { margin:0 0 16px; font-size:16px; font-weight:800; color:var(--text-main); }
@@ -304,20 +307,22 @@
         .review-name { font-size:14px; font-weight:700; color:var(--text-main); }
         .review-time { font-size:11px; color:var(--text-sub); }
         .review-text { font-size:14px; color:var(--text-main); line-height:1.6; }
-        /* LEADERBOARD */
+        
+        /* LEADERBOARD & BADGE STYLES (Fixed Alignment) */
         .lb-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
         .lb-filter-btn { padding:8px 18px; border-radius:20px; border:1px solid var(--border-color); font-size:13px; font-weight:600; cursor:pointer; background:var(--bg); color:var(--text-sub); transition:0.2s; font-family:inherit; }
         .lb-filter-btn.active { background:var(--primary); color:white; border-color:var(--primary); }
         .lb-filter-btn:hover:not(.active) { border-color:var(--primary); color:var(--primary); background:var(--hover-bg); }
-        /* BADGE STYLES */
-        .badge-master { display:inline-block; padding:2px 10px; border-radius:10px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#f59e0b,#d97706); color:white; margin-top:3px; }
-        .badge-gold { display:inline-block; padding:2px 10px; border-radius:10px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#94a3b8,#64748b); color:white; margin-top:3px; }
-        .badge-bronze { display:inline-block; padding:2px 10px; border-radius:10px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#b45309,#92400e); color:white; margin-top:3px; }
+        .badge-master { display:inline-block; padding:3px 10px; border-radius:8px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#f59e0b,#d97706); color:white; text-transform:uppercase; letter-spacing:0.5px; }
+        .badge-gold { display:inline-block; padding:3px 10px; border-radius:8px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#94a3b8,#64748b); color:white; text-transform:uppercase; letter-spacing:0.5px; }
+        .badge-bronze { display:inline-block; padding:3px 10px; border-radius:8px; font-size:10px; font-weight:800; background:linear-gradient(135deg,#b45309,#92400e); color:white; text-transform:uppercase; letter-spacing:0.5px; }
+        
         /* Admin live section styling */
         .admin-live-section { background:var(--card); padding:30px; border-radius:20px; border:2px solid rgba(239,68,68,0.25); box-shadow:var(--shadow-sm); margin-bottom:24px; }
         .admin-live-section h3 { margin:0 0 5px; font-size:18px; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:10px; }
         .admin-live-section input { background:var(--bg); color:var(--text-main); width:100%; padding:14px; margin-bottom:16px; border-radius:10px; border:1px solid var(--border-color); outline:none; font-family:inherit; font-size:14px; transition:0.2s; }
         .admin-live-section input:focus { border-color:var(--danger); box-shadow:0 0 0 3px rgba(239,68,68,0.1); }
+        
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .mobile-header { display:flex; }
@@ -333,7 +338,6 @@
             #content-panel { min-height:600px; height:auto; }
             .chapter-vid-grid { grid-template-columns:1fr; }
             .vid-type-row { grid-template-columns:1fr; }
-            /* Mobile video fullscreen */
             #video-player-modal { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:99999; }
             .vp-topbar { padding:8px 12px; flex-wrap:wrap; }
             .vp-title-bar { font-size:12px; margin:0 8px; }
@@ -353,6 +357,22 @@
 </head>
 <body>
 <div id="toast-container"></div>
+
+<div id="pro-locked-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.8); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(6px);">
+    <div style="background:var(--card); padding:35px; border-radius:24px; max-width:400px; text-align:center; box-shadow:0 15px 40px rgba(0,0,0,0.3); border:1px solid var(--primary); animation:scaleIn 0.3s ease;">
+        <div style="width:70px; height:70px; background:rgba(79,70,229,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+            <i class="fas fa-crown" style="font-size:32px; color:var(--primary);"></i>
+        </div>
+        <h2 style="margin:0 0 12px; color:var(--text-main); font-size:22px; font-weight:900;">Pro Feature Locked</h2>
+        <p style="font-size:14px; color:var(--text-sub); line-height:1.5; margin-bottom:24px;">
+            <strong>EduNext AI Guru</strong> is a premium feature. Unlock unlimited AI doubts and smart notes by upgrading to Pro!
+        </p>
+        <button disabled style="background:#cbd5e1; color:#64748b; border:none; padding:16px; border-radius:12px; width:100%; font-weight:800; font-size:15px; cursor:not-allowed; margin-bottom:12px;">
+            <i class="fas fa-lock"></i> Payment Integration Coming Soon
+        </button>
+        <button onclick="document.getElementById('pro-locked-modal').style.display='none'" style="background:none; border:none; color:var(--text-sub); cursor:pointer; font-weight:700; font-size:14px; transition:0.2s;" onmouseover="this.style.color='var(--text-main)'">Maybe Later</button>
+    </div>
+</div>
 
 <div id="modal-overlay">
     <div class="modal-content">
@@ -420,7 +440,7 @@
 
         </div>
         <div class="vp-ai-panel" id="vp-ai-panel">
-            <div class="vp-ai-header"><h4><i class="fas fa-robot"></i> Video AI Tutor</h4><span>Gemini Flash</span></div>
+            <div class="vp-ai-header"><h4><i class="fas fa-robot"></i> EduNext AI Tutor</h4><span>Pro Engine</span></div>
             <div class="vp-quick-btns">
                 <button class="vp-quick-btn" onclick="videoAIQuick('Is video ko simple hindi mein explain karo')">📖 Explain</button>
                 <button class="vp-quick-btn" onclick="videoAIQuick('Important questions batao')">❓ Questions</button>
@@ -429,7 +449,7 @@
                 <button class="vp-quick-btn" onclick="videoAIQuick('Exam ke liye important kya hai?')">🎯 Exam Tips</button>
             </div>
             <div class="vp-ai-messages" id="vp-ai-messages">
-                <div class="vp-msg ai"><strong>🤖 Hello!</strong><br>Video play ho raha hai. Kuch samajh na aaye toh mujhse pucho!</div>
+                <div class="vp-msg ai"><strong>🤖 Hello!</strong><br>Main aapka EduNext AI assistant hoon. Is video se juda koi bhi doubt puchiye!</div>
             </div>
             <div class="vp-ai-input-area">
                 <input class="vp-ai-input" id="vp-ai-input" placeholder="Type your doubt here..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendVideoAI();}">
@@ -840,6 +860,18 @@
                         </div>
                         <button class="admin-btn" onclick="publishVideo()"><i class="fas fa-plus-circle"></i> Add Video</button>
                     </div>
+                </div>
+                <div>
+                    <div class="admin-live-section" style="border-color:var(--primary); padding:25px; margin-bottom:25px;">
+                        <h3 style="margin:0 0 15px;font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;font-weight:800;">
+                            <i class="fas fa-users"></i> Registered Users (<span id="admin-total-users">0</span>)
+                        </h3>
+                        <p style="font-size:12px;color:var(--text-sub);margin:0 0 15px;">Live track of student logins and emails.</p>
+                        <div id="admin-users-list" style="max-height: 250px; overflow-y: auto; display:flex; flex-direction:column; gap:10px; background:var(--bg); padding:10px; border-radius:12px; border:1px solid var(--border-color);">
+                            <div class="spinner" style="margin:20px auto;width:20px;height:20px;"></div>
+                        </div>
+                    </div>
+
                     <div class="admin-live-section">
                         <h3><i class="fas fa-broadcast-tower" style="color:var(--danger);"></i> Live Broadcast Control</h3>
                         <p style="font-size:12px;color:var(--text-sub);margin:0 0 20px;">Multiple subjects ke liye alag live classes chalao.</p>
@@ -853,8 +885,6 @@
                         <div class="live-list-admin" id="live-list-admin"></div>
                         <div id="live-status-admin" style="padding:14px 16px;border-radius:10px;font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--border-color);color:var(--text-sub);display:flex;align-items:center;gap:8px;"><i class="fas fa-info-circle"></i> Offline. No active streams.</div>
                     </div>
-                </div>
-                <div>
                     <div class="box" style="padding:0; border:1px solid var(--border-color); background:var(--card);">
                         <div style="padding:25px 25px 15px; border-bottom:1px solid var(--border-color);">
                             <h3 style="margin:0 0 5px;font-size:18px;color:var(--text-main);display:flex;align-items:center;gap:10px;font-weight:800;"><i class="fas fa-database" style="color:var(--primary);"></i> Content Database</h3>
@@ -888,8 +918,8 @@ const firebaseConfig = {
     appId:"1:721533662136:web:99325b87d8bef22cb5154d"
 };
 
-const GEMINI_API = "AIzaSyADGBMHyLHsXbthniJF1aJoYto-JjaIZew";
-const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API;
+// NEW API KEY ADDED HERE FOR ADMIN USE
+const GEMINI_API = "AIzaSyAGFC_3e5SPgqyGlXiTi_n6wbw3oR1-8aQ";
 const ADMIN_UID = "10CLrVVUtmcKZqHr1x2SUHbQGtn1";
 
 const app = initializeApp(firebaseConfig);
@@ -898,7 +928,7 @@ const db = getDatabase(app);
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
-window.appState = { class: null, subject: null, activeChapter: null, activeChapterKey: null, points: 0, uid: null, name: null, userApiKey: null };
+window.appState = { class: null, subject: null, activeChapter: null, activeChapterKey: null, points: 0, uid: null, name: null };
 window.currentQuizQuestions = [];
 window.quizTimerInterval = null;
 window.activeListener = null;
@@ -915,6 +945,7 @@ window.allLeaderboardUsers = [];
 window.videoCommentsListener = null;
 window.communityListener = null;
 window.reviewsListener = null;
+window.adminUsersListener = null;
 
 window.toggleDarkMode = () => {
     const isDark = document.body.classList.toggle('dark-mode');
@@ -953,11 +984,12 @@ function extractYouTubeId(input) {
 }
 
 function timeAgo(ts) {
+    if(!ts) return 'Unknown';
     const diff = Date.now() - ts;
-    if(diff < 60000) return 'Abhi';
-    if(diff < 3600000) return Math.floor(diff/60000) + ' min pehle';
-    if(diff < 86400000) return Math.floor(diff/3600000) + ' ghante pehle';
-    return Math.floor(diff/86400000) + ' din pehle';
+    if(diff < 60000) return 'Just now';
+    if(diff < 3600000) return Math.floor(diff/60000) + 'm ago';
+    if(diff < 86400000) return Math.floor(diff/3600000) + 'h ago';
+    return Math.floor(diff/86400000) + 'd ago';
 }
 
 const avatarColors = ['#4f46e5','#10b981','#ef4444','#f59e0b','#8b5cf6','#ec4899','#3b82f6','#06b6d4'];
@@ -1025,11 +1057,18 @@ onAuthStateChanged(auth, async user => {
         const ca = document.getElementById('compose-avatar');
         if(ca) { ca.innerText = user.displayName.charAt(0).toUpperCase(); ca.style.background = getAvatarColor(user.displayName); }
 
+        // Track Login and basic data
+        update(dbRef(db, 'users/' + user.uid), {
+            lastLogin: Date.now(),
+            email: user.email,
+            name: user.displayName,
+            photoURL: user.photoURL || ''
+        });
+
         const userSnap = await get(dbRef(db, 'users/' + user.uid));
         const userData = userSnap.val() || {};
 
         window.appState.points = userData.points || 0;
-        window.appState.userApiKey = userData.apiKey || null;
         document.getElementById('sidebar-points-display').innerHTML = '<i class="fas fa-star"></i> ' + window.appState.points + ' Pts';
 
         const setProfilePic = (src) => {
@@ -1066,6 +1105,7 @@ onAuthStateChanged(auth, async user => {
         if(user.uid === ADMIN_UID) {
             document.getElementById('nav-admin').style.display = 'flex';
             window.loadAdminChapters();
+            window.loadAdminUsersList(); // Load user tracker
             const adminCatSub = document.getElementById('admin-subject');
             adminCatSub.innerHTML = '<option value="physics">Physics</option><option value="chemistry">Chemistry</option><option value="biology">Biology</option><option value="maths">Maths</option><option value="general">General</option><option value="history">History / Social</option><option value="coding">Coding / Tech</option><option value="english">English</option>';
         } else {
@@ -1249,7 +1289,7 @@ window.loadChapterVideos = () => {
     }).catch(() => { wrap.innerHTML = '<div class="no-videos-msg"><i class="fas fa-exclamation-triangle"></i>Failed to load videos.</div>'; });
 };
 
-// ====== NEW: VIDEO SPEED ENGINE (UP TO 4X) ======
+// ====== VIDEO SPEED ENGINE ======
 window.updateVideoSpeed = (val) => {
     document.getElementById('speed-display').innerText = val + 'x';
     const iframe = document.getElementById('vp-iframe');
@@ -1261,7 +1301,7 @@ window.updateVideoSpeed = (val) => {
     }), "*");
 };
 
-// ====== NEW: FULLSCREEN CHAT TOGGLE ======
+// ====== FULLSCREEN CHAT TOGGLE ======
 window.toggleFsChat = () => {
     const chatSec = document.getElementById('yt-chat-container');
     const btnText = document.getElementById('chat-btn-text');
@@ -1276,7 +1316,7 @@ window.toggleFsChat = () => {
     }
 };
 
-// ====== VIDEO PLAYER (UPDATED FOR YOUTUBE CHAT & SPEED) ======
+// ====== VIDEO PLAYER ======
 window.openVideoPlayer = (videoId, title, vidKey) => {
     vidKey = vidKey || null;
     window.currentVideoId = videoId; window.currentVideoTitle = title; window.videoAIChatHistory = [];
@@ -1287,7 +1327,7 @@ window.openVideoPlayer = (videoId, title, vidKey) => {
     
     document.getElementById('video-player-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    document.getElementById('vp-ai-messages').innerHTML = '<div class="vp-msg ai"><strong><i class="fas fa-sparkles"></i> AI Ready!</strong><br><br>I\'m here to help with <em>"' + title + '"</em>. Use quick actions or ask your doubt!</div>';
+    document.getElementById('vp-ai-messages').innerHTML = '<div class="vp-msg ai"><strong>🤖 Hello!</strong><br>Main aapka EduNext AI assistant hoon. Is video se juda koi bhi doubt puchiye!</div>';
 
     // Reset Speed
     document.getElementById('speed-slider').value = 1;
@@ -1343,22 +1383,23 @@ function loadYouTubeLiveChat(videoId) {
 }
 
 
-// ====== ADVANCED AI TUTOR WITH AUTOMATION ======
+// ====== PRO AI TUTOR & PAYMENT LOCK ======
 
 window.toggleVideoAI = () => document.getElementById('vp-ai-panel').classList.toggle('open');
 window.videoAIQuick = p => { document.getElementById('vp-ai-input').value = p; window.sendVideoAI(); };
 
-window.sendVideoAI = async (pendingMsg = null) => {
-    const input = document.getElementById('vp-ai-input');
-    const msg = pendingMsg || input.value.trim(); 
-    if (!msg) return; 
-    
-    if (!window.appState.userApiKey) {
-        window.showAIActivationModal(msg); 
+window.sendVideoAI = async () => {
+    // 1. PAYMENT LOCK LOGIC
+    if (window.appState.uid !== ADMIN_UID) {
+        document.getElementById('pro-locked-modal').style.display = 'flex';
         return;
     }
 
-    if (!pendingMsg) input.value = ''; 
+    const input = document.getElementById('vp-ai-input');
+    const msg = input.value.trim(); 
+    if (!msg) return; 
+    
+    input.value = ''; 
     
     const md = document.getElementById('vp-ai-messages');
     md.innerHTML += '<div class="vp-msg user">' + msg + '</div>';
@@ -1369,10 +1410,15 @@ window.sendVideoAI = async (pendingMsg = null) => {
 
     try {
         window.videoAIChatHistory.push({ role: "user", parts: [{ text: msg }] });
-        const ctx = `Tum ek expert teacher ho. Student abhi "${window.currentVideoTitle}" video dekh raha hai. Uska sawal hai: "${msg}". Chota aur simple jawab do Hindi-English mix mein.`;
+        // IDENTITY HIDING PROMPT
+        const ctx = `Tum EduNext Pro platform ke official AI Tutor ho jiska naam 'EduNext AI Guru' hai. 
+        Strict Rule: Tumhe kabhi bhi Google ya Gemini ka naam nahi lena hai. Tum EduNext ka in-house model ho.
+        Student abhi "${window.currentVideoTitle}" video dekh raha hai. Uska sawaal hai: "${msg}".
+        Chota, helpful aur simple jawab do Hindi-English (Hinglish) mix mein.`;
+        
         const body = { contents: [{ role: "user", parts: [{ text: ctx }] }, ...window.videoAIChatHistory], generationConfig: { maxOutputTokens: 400, temperature: 0.7 } };
         
-        const url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=" + window.appState.userApiKey;
+        const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API;
 
         const res = await fetch(url, {
             method: 'POST',
@@ -1392,74 +1438,11 @@ window.sendVideoAI = async (pendingMsg = null) => {
     } catch (e) {
         console.error("AI Error:", e);
         document.getElementById(tid)?.remove();
-        if (e.message.includes("API_KEY_INVALID")) {
-            md.innerHTML += '<div class="vp-msg ai">❌ Error: Aapki API Key galat ya expire ho chuki hai. Page refresh karein ya nayi key daalein.</div>';
-            window.appState.userApiKey = null; 
-        } else {
-            md.innerHTML += '<div class="vp-msg ai">❌ Error: AI respond nahi kar raha. ' + e.message + '</div>';
-        }
+        md.innerHTML += '<div class="vp-msg ai">❌ Error: AI respond nahi kar raha. ' + e.message + '</div>';
     }
     md.scrollTop = md.scrollHeight;
 };
 
-// ====== POPUP & AUTO-ACTIVATION WIZARD ======
-
-window.showAIActivationModal = (pendingMsg) => {
-    const safeMsg = pendingMsg ? pendingMsg.replace(/'/g, "\\'") : '';
-    const html = `
-        <div id="ai-modal" style="position:fixed; inset:0; background:rgba(15,23,42,0.85); z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(8px);">
-            <div style="background:var(--card); padding:35px; border-radius:24px; max-width:420px; text-align:center; border:1px solid var(--primary); box-shadow: 0 15px 40px rgba(79,70,229,0.3); animation: scaleIn 0.3s ease;">
-                <div style="width:70px; height:70px; background:rgba(79,70,229,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
-                    <i class="fas fa-robot" style="font-size:36px; color:var(--primary);"></i>
-                </div>
-                <h2 style="margin:0 0 12px; color:var(--text-main); font-size:22px; font-weight:900;">Activate AI Tutor</h2>
-                <p style="font-size:14px; color:var(--text-sub); line-height:1.5; margin-bottom:24px;">
-                    Free mein unlimited doubts puchne ke liye apni personal Gemini Key link karein. Ise sirf <strong>ek baar</strong> setup karna hoga.
-                </p>
-                
-                <a href="https://aistudio.google.com/app/apikey" target="_blank" style="background:var(--bg); color:var(--text-main); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px; padding:14px; border-radius:12px; text-decoration:none; border:1px solid var(--border-color); transition:0.2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border-color)'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" width="18"> Get Free Key from Google
-                </a>
-                
-                <div style="text-align:left; margin-bottom:8px;">
-                    <label style="font-size:12px; font-weight:800; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.5px;">Paste your API Key</label>
-                </div>
-                <input type="password" id="modal-api-key" placeholder="AIzaSy..." style="width:100%; padding:14px; border-radius:12px; border:1px solid var(--border-color); margin-bottom:20px; background:var(--bg); color:var(--text-main); font-family:monospace; font-size:14px; outline:none; transition:0.2s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'">
-                
-                <button onclick="activateAndSaveKey('${safeMsg}')" style="background:var(--primary); color:white; border:none; padding:16px; border-radius:12px; cursor:pointer; font-weight:800; width:100%; font-size:15px; box-shadow:0 4px 15px rgba(79,70,229,0.3); transition:0.2s; display:flex; align-items:center; justify-content:center; gap:8px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <i class="fas fa-check-circle"></i> Save & Ask Doubt
-                </button>
-                <button onclick="document.getElementById('ai-modal').remove()" style="background:none; border:none; color:var(--text-sub); margin-top:16px; cursor:pointer; font-weight:600; font-size:14px; transition:0.2s;" onmouseover="this.style.color='var(--text-main)'">Cancel</button>
-            </div>
-        </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', html);
-};
-
-window.activateAndSaveKey = async (pendingMsg) => {
-    const key = document.getElementById('modal-api-key').value.trim();
-    if(!key.startsWith("AIza")) return window.showToast("Invalid Key! Google API key 'AIza' se shuru hoti hai.", "error");
-
-    const btn = event.currentTarget;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-    btn.disabled = true;
-
-    try {
-        await update(dbRef(db, 'users/' + window.appState.uid), { apiKey: key });
-        window.appState.userApiKey = key;
-        document.getElementById('ai-modal').remove();
-        window.showToast("AI Tutor Activated Successfully! 🎉", "success");
-
-        if (pendingMsg) {
-            document.getElementById('vp-ai-input').value = ''; 
-            window.sendVideoAI(pendingMsg); 
-        }
-    } catch (err) {
-        window.showToast("Error saving key: " + err.message, "error");
-        btn.innerHTML = '<i class="fas fa-check-circle"></i> Save & Ask Doubt';
-        btn.disabled = false;
-    }
-};
 
 // ====== QUIZ ======
 window.startQuizEngine = () => {
@@ -1521,7 +1504,7 @@ function renderRecentVids() {
 }
 document.addEventListener('DOMContentLoaded', renderRecentVids);
 
-// ====== LIVE CLASS (UPDATED FOR YOUTUBE CHAT SIDE-BY-SIDE) ======
+// ====== LIVE CLASS ======
 function initLiveListener() {
     onValue(dbRef(db, 'liveClasses'), snapshot => {
         const data = snapshot.val();
@@ -1679,7 +1662,7 @@ window.postReply = async (key) => {
     });
 };
 
-// ====== LEADERBOARD ======
+// ====== LEADERBOARD (FIXED ALIGNMENT) ======
 function loadLeaderboard() {
     onValue(dbRef(db, 'leaderboard'), snap => {
         window.allLeaderboardUsers = [];
@@ -1708,14 +1691,15 @@ function renderLeaderboard(filter) {
     lbContainer.innerHTML = users.slice(0, 50).map((u, i) => {
         let pic;
         if(u.photoURL) {
-            pic = '<img src="' + u.photoURL + '" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);" onerror="this.outerHTML=\'<div style=\\\"width:48px;height:48px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:800;\\\">' + (u.name||'A').charAt(0).toUpperCase() + '</div>\'">';
+            pic = '<img src="' + u.photoURL + '" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0;" onerror="this.outerHTML=\'<div style=\\\"width:48px;height:48px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:800;flex-shrink:0;\\\">' + (u.name||'A').charAt(0).toUpperCase() + '</div>\'">';
         } else {
-            pic = '<div style="width:48px;height:48px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:800;">' + (u.name||'A').charAt(0).toUpperCase() + '</div>';
+            pic = '<div style="width:48px;height:48px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:800;flex-shrink:0;">' + (u.name||'A').charAt(0).toUpperCase() + '</div>';
         }
 
         let rankIcon = '#' + (i+1), rankStyle = "color:var(--text-sub);font-size:18px;font-weight:900;";
         let cardBg = "var(--card)", borderStyle = "1px solid var(--border-color)";
         let badgeHtml = '';
+        
         if(i === 0) { rankIcon = '🥇'; rankStyle = "font-size:28px;"; cardBg = "linear-gradient(to right, rgba(245,158,11,0.08), var(--card))"; borderStyle = "1px solid rgba(245,158,11,0.35)"; badgeHtml = '<div class="badge-master">👑 Master</div>'; }
         else if(i === 1) { rankIcon = '🥈'; rankStyle = "font-size:26px;"; cardBg = "linear-gradient(to right, rgba(148,163,184,0.08), var(--card))"; badgeHtml = '<div class="badge-gold">🥈 Gold</div>'; }
         else if(i === 2) { rankIcon = '🥉'; rankStyle = "font-size:24px;"; cardBg = "linear-gradient(to right, rgba(180,83,9,0.08), var(--card))"; badgeHtml = '<div class="badge-bronze">🥉 Bronze</div>'; }
@@ -1723,18 +1707,27 @@ function renderLeaderboard(filter) {
         const isMe = u.uid === window.appState.uid;
         if(isMe) borderStyle = "2px solid var(--primary)";
 
-        return '<div style="display:flex;align-items:center;padding:16px 20px;background:' + cardBg + ';border:' + borderStyle + ';border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:0.2s;" onmouseover="this.style.transform=\'translateX(4px)\'" onmouseout="this.style.transform=\'translateX(0)\'">' +
-            (isMe ? '<div style="position:absolute;top:0;right:0;background:var(--primary);color:white;font-size:10px;font-weight:800;padding:4px 12px;border-bottom-left-radius:10px;letter-spacing:0.5px;">YOU</div>' : '') +
-            '<div style="font-weight:900;width:50px;text-align:center;margin-right:10px;' + rankStyle + '">' + rankIcon + '</div>' +
-            pic +
-            '<div style="flex:1;margin-left:16px;overflow:hidden;">' +
-            '<h4 style="margin:0;font-size:15px;color:var(--text-main);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (u.name||'Anonymous') + '</h4>' +
-            (u.examGoal ? '<p style="margin:3px 0 0;font-size:12px;color:var(--text-sub);font-weight:600;">🎯 ' + u.examGoal + '</p>' : '') +
-            badgeHtml + '</div>' +
-            '<div style="text-align:right;flex-shrink:0;">' +
-            '<div style="font-size:22px;font-weight:900;color:var(--warning);line-height:1;">' + u.points.toLocaleString() + '</div>' +
-            '<div style="font-size:11px;color:var(--text-sub);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">Points</div>' +
-            '</div></div>';
+        return `
+        <div style="display:flex; align-items:center; padding:16px 20px; background:${cardBg}; border:${borderStyle}; border-radius:16px; margin-bottom:12px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:0.2s;" onmouseover="this.style.transform='translateX(4px)'" onmouseout="this.style.transform='translateX(0)'">
+            ${isMe ? '<div style="position:absolute; top:0; right:0; background:var(--primary); color:white; font-size:10px; font-weight:800; padding:4px 12px; border-bottom-left-radius:10px; letter-spacing:0.5px;">YOU</div>' : ''}
+            
+            <div style="font-weight:900; width:45px; text-align:center; margin-right:12px; ${rankStyle}">${rankIcon}</div>
+            
+            ${pic}
+            
+            <div style="flex:1; margin-left:16px; display:flex; flex-direction:column; justify-content:center; gap:4px; overflow:hidden;">
+                <h4 style="margin:0; font-size:15px; color:var(--text-main); font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${u.name || 'Anonymous'}</h4>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    ${u.examGoal ? `<span style="font-size:11px; color:var(--text-sub); font-weight:700;">🎯 ${u.examGoal}</span>` : ''}
+                    ${badgeHtml}
+                </div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; align-items:flex-end; flex-shrink:0;">
+                <div style="font-size:20px; font-weight:900; color:var(--warning); line-height:1;">${u.points.toLocaleString()}</div>
+                <div style="font-size:10px; color:var(--text-sub); font-weight:800; letter-spacing:1px; margin-top:4px;">POINTS</div>
+            </div>
+        </div>`;
     }).join('');
 }
 
@@ -1808,7 +1801,7 @@ function loadAdminReviews() {
     });
 }
 
-// ====== GOAL — Firebase se save karo (Google account) ======
+// ====== GOAL ======
 window.saveGoal = async () => {
     const points = document.getElementById('goal-points-input').value;
     const exam = document.getElementById('goal-exam-select').value;
@@ -2049,6 +2042,51 @@ window.deleteVideo = (cls, sub, chKey, vidKey) => {
     if(confirm("Remove this video from the chapter?")) {
         remove(dbRef(db, 'syllabus/' + cls + '/' + sub + '/' + chKey + '/videos/' + vidKey)).then(() => window.showToast("Video removed."));
     }
+};
+
+// ====== ADMIN LOGIN TRACKER ======
+window.loadAdminUsersList = () => {
+    if(window.adminUsersListener) { window.adminUsersListener(); window.adminUsersListener = null; }
+    window.adminUsersListener = onValue(dbRef(db, 'users'), snap => {
+        const listContainer = document.getElementById('admin-users-list');
+        const countDisplay = document.getElementById('admin-total-users');
+        if(!listContainer || !countDisplay) return;
+        
+        const data = snap.val();
+        if(!data) {
+            countDisplay.innerText = "0";
+            listContainer.innerHTML = '<p style="color:var(--text-sub); text-align:center; padding:20px; font-size:13px;">No users found.</p>';
+            return;
+        }
+
+        const usersArray = Object.keys(data).map(uid => {
+            return { uid: uid, ...data[uid] };
+        });
+
+        // Sort by last login time (newest first)
+        usersArray.sort((a,b) => (b.lastLogin || 0) - (a.lastLogin || 0));
+
+        countDisplay.innerText = usersArray.length;
+
+        listContainer.innerHTML = usersArray.map(u => {
+            let pic;
+            if(u.photoURL) pic = '<img src="' + u.photoURL + '" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--border-color); flex-shrink:0;">';
+            else pic = '<div style="width:36px;height:36px;border-radius:50%;background:' + getAvatarColor(u.name) + ';display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:14px; flex-shrink:0;">' + (u.name||'A').charAt(0).toUpperCase() + '</div>';
+            
+            return `
+            <div style="display:flex; align-items:center; gap:12px; padding:10px; border-bottom:1px solid var(--border-color); background:var(--card); border-radius:8px;">
+                ${pic}
+                <div style="flex:1; overflow:hidden;">
+                    <div style="font-size:13px; font-weight:800; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${u.name || 'Anonymous User'}</div>
+                    <div style="font-size:11px; color:var(--text-sub); margin-top:2px; font-family:monospace;">${u.email || 'No Email'}</div>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                    <div style="font-size:11px; font-weight:700; color:var(--success);"><i class="fas fa-clock"></i> ${timeAgo(u.lastLogin)}</div>
+                    <div style="font-size:10px; color:var(--text-sub); margin-top:4px;">⭐ ${u.points || 0} Pts</div>
+                </div>
+            </div>`;
+        }).join('');
+    });
 };
 
 onAuthStateChanged(auth, user => { window.currentUser = user || null; });
